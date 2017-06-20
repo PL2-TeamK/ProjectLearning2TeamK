@@ -1,6 +1,6 @@
 package Client;
 
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * 相手の発言の最小単位を表すクラス
@@ -33,5 +33,7 @@ public class Remark {
 
     /**
      * 以下発言データの記述を行う。
+     * staticデータとすることにする
      */
+
 }
