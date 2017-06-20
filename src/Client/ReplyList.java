@@ -1,7 +1,6 @@
 package Client;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * ステージごとの返答リストを示すクラス
@@ -33,5 +32,29 @@ public class ReplyList {
 
     /**
      * 以下、返答データの記述を行う
+     * 返答リストを生成
      */
+    private final static Map<Integer, String> ALL_REPLY;
+    static {
+        // 一時的なmapを作成して、後で変更不可にする。
+        Map<Integer, String> map = new LinkedHashMap<>();
+        map.put(1, "ふーん");
+        map.put(2, "へえー");
+        map.put(3, "そうなんだぁ");
+        map.put(4, "うん");
+        map.put(5, "すごいね");
+        map.put(6, "そんなことないよぉ");
+        map.put(7, "ありえない！");
+        map.put(8, "大丈夫?");
+        map.put(9, "分かるぅ〜");
+        map.put(10, "かわいい〜");
+        map.put(11, "いいなぁ");
+        map.put(12, "知るか");
+        // 追加
+
+
+        // 以下のコードで変更不可のMapを生成する
+        ALL_REPLY = Collections.unmodifiableMap(map);
+    }
+
 }
