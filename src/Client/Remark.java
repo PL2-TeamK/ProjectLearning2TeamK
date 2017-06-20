@@ -14,7 +14,7 @@ public class Remark {
     private HashMap<Integer, Integer> score;
 
     public Remark() {
-
+        // TODO: 発言内容を記録する仕組みの実装
     }
 
     public String getWord() {
@@ -30,4 +30,8 @@ public class Remark {
             return 0;
         }
     }
+
+    /**
+     * 以下発言データの記述を行う。
+     */
 }

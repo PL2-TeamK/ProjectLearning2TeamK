@@ -10,7 +10,7 @@ import java.util.*;
 
 public class User {
     private String name;
-    private ArrayList<Boolean> clearedStege;
+    private ArrayList<Boolean> clearedStage;
     private ArrayList<Integer> highScore;
 
     User(String name) {
@@ -20,7 +20,7 @@ public class User {
     public void setClearedStage(ArrayList<Boolean> argList) {
         // ArrayList<T>のコンストラクタにArrayList<T>のインスタンスを渡すとディープコピーされる。
         // クリア状況をコピー
-        clearedStege = new ArrayList<Boolean>(argList);
+        clearedStage = new ArrayList<Boolean>(argList);
     }
 
     public void setHighScore(ArrayList<Integer> argList) {
@@ -29,7 +29,7 @@ public class User {
     }
 
     public ArrayList<Boolean> getClearedStege() {
-        return clearedStege;
+        return clearedStage;
     }
 
     public ArrayList<Integer> getHighScore() {
