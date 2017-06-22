@@ -1,6 +1,6 @@
 package Client;
 
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * 相手の発言の一連のまとまりを表すクラス
@@ -44,6 +44,34 @@ public class Conversation {
 
     /**
      * 以下、会話データの記述を行う。
+     * 文脈番号をキーにして、発言番号のリストをオブジェクトとするMapを作成
      */
+    private final static Map<Integer, ArrayList<Integer>> ALL_CONVERSATIONS;
+    static {
+        Map<Integer, ArrayList<Integer>> tmpmap;
+        ArrayList<Integer> tmpRemarkList;
+        tmpmap = new HashMap<>();
+        /**
+         * 文脈一個に対して以下の処理を行う
+         * 単語リストの初期化
+         * tmpRemarkList = new ArrayList<>();
+         * tmpRemarkList.add(追加したい単語番号);
+         *
+         * tmpmap.add(文脈番号, tmpRemarkList);
+         * 文脈番号と単語リストの対応付け
+         *
+         * 文脈の個数だけ、上記処理を繰り返す。
+         * 最後に
+         * ALL_CONVERSATIONS = Collections.unmodifiablemap(tmpmap);
+         * を実行し、定数化する。
+         */
+
+
+
+
+
+
+        ALL_CONVERSATIONS = Collections.unmodifiableMap(tmpmap);
+    }
 
 }
