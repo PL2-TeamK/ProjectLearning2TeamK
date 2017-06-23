@@ -10,49 +10,39 @@ import java.util.*;
 
 public class User {
     private String name;
-    private ArrayList<Boolean> clearedStage;
+
     private ArrayList<Integer> highScore;
+    private int maxClearedStage;
 
     public User(String name) {
         this.name = name;
     }
 
-    public void setClearedStage(ArrayList<Boolean> argList) {
-        // ArrayList<T>のコンストラクタにArrayList<T>のインスタンスを渡すとディープコピーされる。
-        // クリア状況をコピー
-        clearedStage = new ArrayList<Boolean>(argList);
-    }
+
 
     public void setHighScore(ArrayList<Integer> argList) {
         // ハイスコア情報をコピー
         highScore = new ArrayList<Integer>(argList);
     }
 
-    public ArrayList<Boolean> getClearedStege() {
-        return clearedStage;
+    public void setMaxClearedStage(int stageNum) {
+        /**
+         * 最大ステージクリア数をセットする。
+         * ステージは順次解放されるので、最大ステージのみ記録するので問題ない
+         */
+        maxClearedStage = stageNum;
     }
+
+
 
     public ArrayList<Integer> getHighScore() {
         return highScore;
     }
 
-    public void updateClearedStage(int stageNum, boolean isCleared) {
-        /**
-         * ステージクリア状況を更新する。
-         * 基本的にfalseを渡しても意味ないよ
-         */
-        switch(stageNum) {
-            case Constants.FIRST_STAGE:
-                clearedStage.set(0, isCleared); break;
-            case Constants.SECOND_STAGE:
-                clearedStage.set(1, isCleared); break;
-            case Constants.THIRD_STAGE:
-                clearedStage.set(2, isCleared);
-                break;
-            case Constants.FOURTH_STAGE:
-                clearedStage.set(3, isCleared); break;
-        }
+    public int getMaxClearedStage() {
+        return maxClearedStage;
     }
+
 
     public boolean updateHighScore(int stageNum, int score) {
         /**
@@ -94,5 +84,18 @@ public class User {
         } else {
             return false;
         }
+    }
+
+    public boolean updateMaxClearedStage(int stageNum) {
+        /**
+         * 最大クリアステージ数を更新する。
+         * 更新された場合はtrueを返す
+         */
+        if (maxClearedStage < stageNum) {
+            stageNum = maxClearedStage;
+            return true;
+        }
+        return  false;
+
     }
 }
