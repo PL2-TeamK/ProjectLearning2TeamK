@@ -16,6 +16,7 @@ public class User {
 
     public User(String name) {
         this.name = name;
+        maxClearedStage = -1;
     }
 
 
@@ -30,7 +31,8 @@ public class User {
          * 最大ステージクリア数をセットする。
          * ステージは順次解放されるので、最大ステージのみ記録するので問題ない
          */
-        maxClearedStage = stageNum;
+        if (maxClearedStage < stageNum)
+            maxClearedStage = stageNum;
     }
 
 
@@ -84,18 +86,5 @@ public class User {
         } else {
             return false;
         }
-    }
-
-    public boolean updateMaxClearedStage(int stageNum) {
-        /**
-         * 最大クリアステージ数を更新する。
-         * 更新された場合はtrueを返す
-         */
-        if (maxClearedStage < stageNum) {
-            stageNum = maxClearedStage;
-            return true;
-        }
-        return  false;
-
     }
 }
