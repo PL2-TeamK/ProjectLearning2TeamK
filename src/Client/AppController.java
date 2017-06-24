@@ -9,4 +9,9 @@ package Client;
 public class AppController {
     private User user;
     private AppView appView;
+
+    public AppController() {
+        // 画面の用意
+        appView = new AppView();
+    }
 }
