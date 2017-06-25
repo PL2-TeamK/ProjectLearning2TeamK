@@ -24,7 +24,7 @@ public class AppView extends JFrame implements ISwitchPanel {
         // スタートパネルだけメインスレッドで作成する。
         startPanel = new StartPanel(this);
         startPanel.setVisible(true);
-
+        add(startPanel);
         Thread makePanelThread = new Thread(() -> {
            // その他のパネルを作成するスレッド
         });
@@ -44,6 +44,7 @@ public class AppView extends JFrame implements ISwitchPanel {
          */
         loginPanel = new LoginPanel(this);
         loginPanel.setVisible(true);
+        add(loginPanel);
         startPanel.setVisible(false);
         startPanel = null;
     }
