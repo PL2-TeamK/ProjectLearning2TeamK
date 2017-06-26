@@ -50,6 +50,8 @@ public class StartPanel extends JLayeredPane {
         titleLabel = new JLabel("タイトル");
         titleLabel.setBounds(Constants.VIEW_WIDTH / 2 - titleWidth / 2, Constants.VIEW_HEIGHT * 1 / 3 - titleHeight / 2, titleWidth, titleHeight);
         titleLabel.setOpaque(true);
+        titleLabel.setBackground(Color.magenta);
+        titleLabel.setHorizontalAlignment(JLabel.CENTER);
         add(titleLabel);
         setLayer(titleLabel, JLayeredPane.DEFAULT_LAYER, 10);
 
@@ -60,7 +62,7 @@ public class StartPanel extends JLayeredPane {
         backgroundLabel.setBounds(0, 0, Constants.VIEW_WIDTH, Constants.VIEW_HEIGHT);
         backgroundLabel.setOpaque(true);
         add(backgroundLabel);
-        setLayer(backgroundLabel, JLayeredPane.DEFAULT_LAYER, 0);
+        setLayer(backgroundLabel, JLayeredPane.DEFAULT_LAYER, 100);
 
 
         setSize(Constants.VIEW_WIDTH, Constants.VIEW_HEIGHT);
