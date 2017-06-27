@@ -7,7 +7,7 @@ import javax.swing.*;
 /**
  * Created by yudaikichise on 2017/06/26.
  */
-public class LoginPanelTest extends JFrame implements ISwitchPanel {
+public class LoginPanelTest extends JFrame implements ISwitchPanel, IReceiveNameAndPass {
     public static void main(String[] args) {
         new LoginPanelTest();
     }
@@ -15,7 +15,7 @@ public class LoginPanelTest extends JFrame implements ISwitchPanel {
     private LoginPanel loginPanel;
 
     public LoginPanelTest() {
-        loginPanel = new LoginPanel(this);
+        loginPanel = new LoginPanel(this, this);
 
         add(loginPanel);
 
@@ -33,5 +33,20 @@ public class LoginPanelTest extends JFrame implements ISwitchPanel {
     @Override
     public void SwitchStartPanelToLoginPanel() {
 
+    }
+
+    @Override
+    public void SwitchNewUserPanelToHomePanel() {
+
+    }
+
+    @Override
+    public void SwitchLoginPanelToHomePanel() {
+
+    }
+
+    @Override
+    public boolean receiveNameAndPass(String name, String pass, boolean isNewUser) {
+        return false;
     }
 }

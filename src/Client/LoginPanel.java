@@ -9,6 +9,7 @@ import java.awt.*;
 public class LoginPanel extends JLayeredPane {
     // 画面遷移メソッドを参照するためのインタフェース
     private ISwitchPanel refToAppView;
+    private IReceiveNameAndPass senderToAppView;
 
     private JLabel backgroundLabel;
     private JLabel panelTitleLabel;
@@ -20,10 +21,11 @@ public class LoginPanel extends JLayeredPane {
     private JLabel emptyAlertLabel;
     private JLabel refusedAlertLabel;
 
-    public LoginPanel(ISwitchPanel reference) {
+    public LoginPanel(ISwitchPanel reference, IReceiveNameAndPass ref2) {
         setLayout(null);
 
         refToAppView = reference;
+        senderToAppView = ref2;
 
         // 背景ラベル
         backgroundLabel = new JLabel();
@@ -78,10 +80,25 @@ public class LoginPanel extends JLayeredPane {
             String name = new String(nameField.getText());
             String pass = new String(passwordField.getPassword());
             if (name.length() != 0 && pass.length() != 0) {
-                // 名前とパスワードが入力されていればAppControllerクラスに渡して結果を待つ
-                // TODO: 未実装
-                // 未入力ということはないので、そのパターンを排除
+                /** 名前とパスワードが入力されていればAppControllerクラスに渡して結果を待つ
+                 *  アラートを消去
+                 */
                 emptyAlertLabel.setVisible(false);
+                refusedAlertLabel.setVisible(false);
+                boolean isLoginSucceeded = senderToAppView.receiveNameAndPass(name, pass, false);
+                if (isLoginSucceeded) {
+                    // ログイン成功
+                    // 画面遷移
+                    refToAppView.SwitchLoginPanelToHomePanel();
+                } else {
+                    /**
+                     * ログイン失敗
+                     * アラートを表示し、テキストフィールドをクリアする(?)
+                     */
+                    refusedAlertLabel.setVisible(true);
+                    nameField.setText("");
+                    passwordField.setText("");
+                }
 
             } else {
                 // 名前とパスワードが入力されていないので、ボタンを有効化

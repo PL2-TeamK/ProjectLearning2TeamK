@@ -8,4 +8,6 @@ package Client;
 public interface ISwitchPanel {
     public void SwitchStartPanelToLoginPanel();
     public void SwitchStartPanelToNewUserPanel();
+    public void SwitchLoginPanelToHomePanel();
+    public void SwitchNewUserPanelToHomePanel();
 }
