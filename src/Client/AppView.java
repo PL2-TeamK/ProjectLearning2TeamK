@@ -14,6 +14,8 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
     private LoginPanel loginPanel;
     private NewUserPanel newUserPanel;
     private HomePanel homePanel;
+    private ChooseStagePanel chooseStagePanel;
+    private RankingPanel rankingPanel;
     private MyPagePanel myPagePanel;
 
     public AppView(IViewToController arg) {
@@ -56,6 +58,7 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
         loginPanel.setVisible(true);
         add(loginPanel);
         startPanel.setVisible(false);
+        remove(startPanel);
         startPanel = null;
     }
 
@@ -70,6 +73,7 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
         newUserPanel.setVisible(true);
         add(newUserPanel);
         startPanel.setVisible(false);
+        remove(startPanel);
         startPanel = null;
     }
 
@@ -81,8 +85,9 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
          * LoginPanelの参照を切る
          */
 
-        createAndVisibleHomePanel();
+        createAndVisualizeHomePanel();
         loginPanel.setVisible(false);
+        remove(loginPanel);
         loginPanel = null;
     }
 
@@ -91,8 +96,9 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
      */
     @Override
     public void switchNewUserPanelToHomePanel() {
-        createAndVisibleHomePanel();
+        createAndVisualizeHomePanel();
         newUserPanel.setVisible(false);
+        remove(newUserPanel);
         newUserPanel = null;
     }
 
@@ -101,7 +107,7 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
      * HomePanelの生成
      * クラス内処理のため、privateに
      */
-    private void createAndVisibleHomePanel() {
+    private void createAndVisualizeHomePanel() {
         homePanel = new HomePanel(this);
         homePanel.setVisible(true);
         add(homePanel);
@@ -111,6 +117,7 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
     public void switchLoginPanelBackToStartPanel() {
         createAndVisualizeStartPanel();
         loginPanel.setVisible(false);
+        remove(loginPanel);
         loginPanel = null;
     }
 
@@ -118,13 +125,69 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
     public void switchNewUserPanelBackToStartPanel() {
         createAndVisualizeStartPanel();
         newUserPanel.setVisible(false);
+        remove(newUserPanel);
         newUserPanel = null;
     }
+
+    /**
+     * スタート画面生成と可視化処理
+     */
 
     private void createAndVisualizeStartPanel() {
         startPanel = new StartPanel(this);
         startPanel.setVisible(true);
         add(startPanel);
+
+    }
+
+    @Override
+    public void switchHomePanelToChooseStagePanel() {
+        chooseStagePanel = new ChooseStagePanel();
+        chooseStagePanel.setVisible(true);
+        add(chooseStagePanel);
+        unvisualizeAndRemoveHomePanel();
+    }
+
+    @Override
+    public void switchHomePanelToRankingPanel() {
+        rankingPanel = new RankingPanel();
+        rankingPanel.setVisible(true);
+        add(chooseStagePanel);
+        unvisualizeAndRemoveHomePanel();
+    }
+
+    @Override
+    public void switchHomePanelToMyPagePanel() {
+        myPagePanel = new MyPagePanel();
+        myPagePanel.setVisible(true);
+        add(myPagePanel);
+        unvisualizeAndRemoveHomePanel();
+    }
+
+    private void unvisualizeAndRemoveHomePanel() {
+        homePanel.setVisible(false);
+        remove(homePanel);
+        homePanel = null;
+    }
+
+    @Override
+    public void switchHomePanelBackToStartPanel() {
+        createAndVisualizeStartPanel();
+        unvisualizeAndRemoveHomePanel();
+    }
+
+    @Override
+    public void switchChooseStagePanelBackToHomePanel() {
+
+    }
+
+    @Override
+    public void switchRankingPanelBackToHomePanel() {
+
+    }
+
+    @Override
+    public void switchMyPagePanelBackToHomePanel() {
 
     }
 

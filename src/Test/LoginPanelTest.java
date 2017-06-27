@@ -56,6 +56,41 @@ public class LoginPanelTest extends JFrame implements ISwitchPanel, IReceiveName
     }
 
     @Override
+    public void switchHomePanelToChooseStagePanel(){
+
+    }
+
+    @Override
+    public void switchHomePanelToRankingPanel(){
+
+    }
+
+    @Override
+    public void switchHomePanelToMyPagePanel() {
+
+    }
+
+    @Override
+    public void switchHomePanelBackToStartPanel() {
+
+    }
+
+    @Override
+    public void switchChooseStagePanelBackToHomePanel() {
+
+    }
+
+    @Override
+    public void switchRankingPanelBackToHomePanel() {
+
+    }
+
+    @Override
+    public void switchMyPagePanelBackToHomePanel() {
+
+    }
+
+    @Override
     public boolean receiveNameAndPass(String name, String pass, boolean isNewUser) {
         return false;
     }
