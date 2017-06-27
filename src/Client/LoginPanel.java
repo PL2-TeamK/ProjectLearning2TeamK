@@ -20,6 +20,7 @@ public class LoginPanel extends JLayeredPane {
     private JLabel passInfoLabel;
     private JLabel emptyAlertLabel;
     private JLabel refusedAlertLabel;
+    private JButton backButton;
 
     public LoginPanel(ISwitchPanel reference, IReceiveNameAndPass ref2) {
         setLayout(null);
@@ -89,7 +90,7 @@ public class LoginPanel extends JLayeredPane {
                 if (isLoginSucceeded) {
                     // ログイン成功
                     // 画面遷移
-                    refToAppView.SwitchLoginPanelToHomePanel();
+                    refToAppView.switchLoginPanelToHomePanel();
                 } else {
                     /**
                      * ログイン失敗
@@ -129,5 +130,16 @@ public class LoginPanel extends JLayeredPane {
         add(refusedAlertLabel);
         setLayer(refusedAlertLabel, JLayeredPane.PALETTE_LAYER, 50);
         refusedAlertLabel.setVisible(false);
+
+
+        // 前の画面に戻る
+        backButton = new JButton("前の画面に戻る");
+        backButton.setBounds(32, 18, 160, 20);
+        backButton.setHorizontalAlignment(JButton.CENTER);
+        add(backButton);
+        setLayer(backButton, JLayeredPane.PALETTE_LAYER);
+        backButton.addActionListener(e -> {
+            refToAppView.switchLoginPanelBackToStartPanel();
+        });
     }
 }

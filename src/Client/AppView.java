@@ -25,7 +25,7 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
         } catch (UnsupportedLookAndFeelException e) {
 
         }
-        
+
         // スタートパネルだけメインスレッドで作成する。
         startPanel = new StartPanel(this);
         startPanel.setVisible(true);
@@ -46,7 +46,7 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
      */
 
     @Override
-    public void SwitchStartPanelToLoginPanel() {
+    public void switchStartPanelToLoginPanel() {
         /**
          * LoginPanelを生成
          * 画面遷移
@@ -60,7 +60,7 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
     }
 
     @Override
-    public void SwitchStartPanelToNewUserPanel() {
+    public void switchStartPanelToNewUserPanel() {
         /**
          * NewUserPanelを生成
          * 画面遷移
@@ -74,7 +74,7 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
     }
 
     @Override
-    public void SwitchLoginPanelToHomePanel() {
+    public void switchLoginPanelToHomePanel() {
         /**
          * HomePanelを生成
          * 画面遷移
@@ -90,7 +90,7 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
      *
      */
     @Override
-    public void SwitchNewUserPanelToHomePanel() {
+    public void switchNewUserPanelToHomePanel() {
         createAndVisibleHomePanel();
         newUserPanel.setVisible(false);
         newUserPanel = null;
@@ -105,6 +105,27 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
         homePanel = new HomePanel(this);
         homePanel.setVisible(true);
         add(homePanel);
+    }
+
+    @Override
+    public void switchLoginPanelBackToStartPanel() {
+        createAndVisualizeStartPanel();
+        loginPanel.setVisible(false);
+        loginPanel = null;
+    }
+
+    @Override
+    public void switchNewUserPanelBackToStartPanel() {
+        createAndVisualizeStartPanel();
+        newUserPanel.setVisible(false);
+        newUserPanel = null;
+    }
+
+    private void createAndVisualizeStartPanel() {
+        startPanel = new StartPanel(this);
+        startPanel.setVisible(true);
+        add(startPanel);
+
     }
 
     /**

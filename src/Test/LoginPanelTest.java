@@ -26,22 +26,32 @@ public class LoginPanelTest extends JFrame implements ISwitchPanel, IReceiveName
     }
 
     @Override
-    public void SwitchStartPanelToNewUserPanel() {
+    public void switchStartPanelToNewUserPanel() {
 
     }
 
     @Override
-    public void SwitchStartPanelToLoginPanel() {
+    public void switchStartPanelToLoginPanel() {
 
     }
 
     @Override
-    public void SwitchNewUserPanelToHomePanel() {
+    public void switchNewUserPanelToHomePanel() {
 
     }
 
     @Override
-    public void SwitchLoginPanelToHomePanel() {
+    public void switchLoginPanelToHomePanel() {
+
+    }
+
+    @Override
+    public void switchLoginPanelBackToStartPanel() {
+
+    }
+
+    @Override
+    public void switchNewUserPanelBackToStartPanel() {
 
     }
 

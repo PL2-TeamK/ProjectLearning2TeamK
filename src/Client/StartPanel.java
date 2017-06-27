@@ -33,7 +33,7 @@ public class StartPanel extends JLayeredPane {
         setLayer(buttonToLogin, JLayeredPane.PALETTE_LAYER, 10);
         buttonToLogin.addActionListener(e -> {
             // ログイン画面への遷移
-            refToAppView.SwitchStartPanelToLoginPanel();
+            refToAppView.switchStartPanelToLoginPanel();
         });
 
         // 新規ユーザーボタン
@@ -43,7 +43,7 @@ public class StartPanel extends JLayeredPane {
         setLayer(buttonToNew, JLayeredPane.PALETTE_LAYER, 10);
         buttonToNew.addActionListener(e -> {
             // 新規登録画面への遷移
-            refToAppView.SwitchStartPanelToNewUserPanel();
+            refToAppView.switchStartPanelToNewUserPanel();
         });
 
         // タイトルラベル

@@ -22,6 +22,7 @@ public class NewUserPanel extends JLayeredPane {
     private JLabel emptyAlertLabel;
     private JLabel passIncorrectAlertLabel;
     private JLabel inputUsernameRefusedAlertLabel;
+    private JButton backButton;
 
     public NewUserPanel(ISwitchPanel switcher, IReceiveNameAndPass sender) {
         panelSwitcher = switcher;
@@ -114,7 +115,7 @@ public class NewUserPanel extends JLayeredPane {
                     boolean isSignupSucceeded = senderToAppView.receiveNameAndPass(name, pass1, true);
                     if (isSignupSucceeded) {
                         // 成功
-                        panelSwitcher.SwitchNewUserPanelToHomePanel();
+                        panelSwitcher.switchNewUserPanelToHomePanel();
                         return;
                     } else {
                         // ユーザー名が既に存在
@@ -162,7 +163,15 @@ public class NewUserPanel extends JLayeredPane {
         add(inputUsernameRefusedAlertLabel);
         setLayer(inputUsernameRefusedAlertLabel, JLayeredPane.PALETTE_LAYER);
 
-
+        // 前の画面に戻る
+        backButton = new JButton("前の画面に戻る");
+        backButton.setBounds(32, 18, 160, 20);
+        backButton.setHorizontalAlignment(JButton.CENTER);
+        add(backButton);
+        setLayer(backButton, JLayeredPane.PALETTE_LAYER);
+        backButton.addActionListener(e -> {
+            panelSwitcher.switchNewUserPanelBackToStartPanel();
+        });
     }
 
 
