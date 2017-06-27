@@ -16,7 +16,9 @@ public class User {
 
     public User(String name) {
         this.name = name;
-        maxClearedStage = -1;
+
+        // 初期値はクリアステージが無いことを示す0
+        maxClearedStage = 0;
     }
 
 

@@ -10,6 +10,8 @@ import javax.swing.plaf.metal.MetalLookAndFeel;
 public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass {
     private IViewToController refToController;
 
+    private User refToUser;
+
     private StartPanel startPanel;
     private LoginPanel loginPanel;
     private NewUserPanel newUserPanel;
@@ -40,6 +42,10 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         setResizable(false);
+    }
+
+    public void setRefToUser(User user) {
+        refToUser = user;
     }
 
 
