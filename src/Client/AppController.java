@@ -25,6 +25,12 @@ public class AppController implements IViewToController {
          * それ以外の場合にはfalseを返す
          */
         // TODO: 未実装: Serverが完成した段階で記述を行う。
+        user = new User(name);
+        appView.setRefToUser(user);
         return true;
     }
+
+
+
+
 }

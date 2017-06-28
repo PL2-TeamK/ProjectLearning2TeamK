@@ -7,8 +7,10 @@ import javax.swing.plaf.metal.MetalLookAndFeel;
  * 全画面のベースになるクラス
  * JFrameを継承し、JLayeredPaneを載せる。
  */
-public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass {
+public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass, IUserDataForAppView {
     private IViewToController refToController;
+
+    private User refToUser;
 
     private StartPanel startPanel;
     private LoginPanel loginPanel;
@@ -41,6 +43,12 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
         setVisible(true);
         setResizable(false);
     }
+
+    public void setRefToUser(User user) {
+        refToUser = user;
+    }
+
+
 
 
     /**
@@ -142,7 +150,7 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
 
     @Override
     public void switchHomePanelToChooseStagePanel() {
-        chooseStagePanel = new ChooseStagePanel();
+        chooseStagePanel = new ChooseStagePanel(this, this);
         chooseStagePanel.setVisible(true);
         add(chooseStagePanel);
         unvisualizeAndRemoveHomePanel();
@@ -178,7 +186,10 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
 
     @Override
     public void switchChooseStagePanelBackToHomePanel() {
-
+        createAndVisualizeHomePanel();
+        chooseStagePanel.setVisible(false);
+        remove(chooseStagePanel);
+        chooseStagePanel = null;
     }
 
     @Override
@@ -205,6 +216,15 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
         // AppControllerに処理を依頼してServerからの返答を待つ
 
         return refToController.sendNameAndPassToServer(name, pass, isNewUser);
+    }
+
+
+    /**
+     * 以下IUserDataForAppViewの実装
+     */
+
+    public int getMaxClearedStage() {
+        return refToUser.getMaxClearedStage();
     }
 
 

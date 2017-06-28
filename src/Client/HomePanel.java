@@ -67,7 +67,7 @@ public class HomePanel extends JLayeredPane {
         add(mypageButton);
         setLayer(mypageButton, PALETTE_LAYER);
         mypageButton.addActionListener(e -> {
-            panelSwitcher.switchHomePanelToRankingPanel();
+            panelSwitcher.switchHomePanelToMyPagePanel();
         });
 
         // ログアウト
@@ -88,12 +88,13 @@ public class HomePanel extends JLayeredPane {
         // ログアウト確認画面
         // 画面マスク
         maskLabel = new JLabel();
-        maskLabel.setOpaque(false);
+        maskLabel.setOpaque(true);
         maskLabel.setBackground(new Color(33, 33, 33, 100));
         maskLabel.setBounds(0, 0, Constants.VIEW_WIDTH, Constants.VIEW_HEIGHT);
         add(maskLabel);
         setLayer(maskLabel, JLayeredPane.MODAL_LAYER);
         maskLabel.setVisible(false);
+
 
         // 決定ボタン
         confirmButton = new JButton("はい、戻ります");
@@ -137,6 +138,8 @@ public class HomePanel extends JLayeredPane {
         add(infoLabel);
         setLayer(infoLabel, JLayeredPane.POPUP_LAYER);
         infoLabel.setVisible(false);
+
+        // テスト
 
     }
 
