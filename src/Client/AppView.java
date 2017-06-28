@@ -148,7 +148,7 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
 
     @Override
     public void switchHomePanelToChooseStagePanel() {
-        chooseStagePanel = new ChooseStagePanel();
+        chooseStagePanel = new ChooseStagePanel(this);
         chooseStagePanel.setVisible(true);
         add(chooseStagePanel);
         unvisualizeAndRemoveHomePanel();
@@ -184,7 +184,10 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
 
     @Override
     public void switchChooseStagePanelBackToHomePanel() {
-
+        createAndVisualizeHomePanel();
+        chooseStagePanel.setVisible(false);
+        remove(chooseStagePanel);
+        chooseStagePanel = null;
     }
 
     @Override
