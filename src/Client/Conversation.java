@@ -31,6 +31,7 @@ public class Conversation {
     public String getRemark() {
         // 発言を取得する。
         currentRemark = remarks.get(remarkCounter);
+        // 次の発言取得のためにカウンタだけ進めとく
         remarkCounter++;
         if (remarkCounter == remarks.size()) {
             // ArrayListの終端に達した場合
@@ -40,6 +41,7 @@ public class Conversation {
     }
 
     public int getScore(int replyNum) {
+        // 先ほど取得した発言のスコアを得る
         return currentRemark.getScore(replyNum);
     }
 
@@ -101,7 +103,72 @@ public class Conversation {
         tmpRemarkList.add(303);
         tmpmap.put(3, tmpRemarkList);
 
+        /**
+         * 文脈番号4
+         */
 
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(401);
+        tmpRemarkList.add(402);
+        tmpmap.put(4, tmpRemarkList);
+
+        /**
+         * 文脈番号5
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(501);
+        tmpRemarkList.add(502);
+        tmpRemarkList.add(503);
+        tmpmap.put(5, tmpRemarkList);
+
+        /**
+         * 文脈番号6
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(601);
+        tmpRemarkList.add(602);
+        tmpRemarkList.add(603);
+        tmpmap.put(6, tmpRemarkList);
+
+        /**
+         * 文脈番号7
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(701);
+        tmpRemarkList.add(702);
+        tmpmap.put(7, tmpRemarkList);
+
+        /**
+         * 文脈番号8
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(801);
+        tmpRemarkList.add(802);
+        tmpmap.put(8, tmpRemarkList);
+
+        /**
+         * 文脈番号9
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(901);
+        tmpRemarkList.add(902);
+        tmpRemarkList.add(903);
+        tmpmap.put(9, tmpRemarkList);
+
+        /**
+         * 文脈番号10
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(1001);
+        tmpRemarkList.add(1002);
+        tmpRemarkList.add(1003);
+        tmpmap.put(10, tmpRemarkList);
 
 
 
