@@ -20,6 +20,12 @@ public class Conversation {
 
         // isEndフラグを初期化
         isEnd = false;
+
+        // remarksを取得しArrayListを生成
+        remarks = new ArrayList<>();
+        ALL_CONVERSATIONS.get(conversationNum).forEach(remarkNum -> {
+            remarks.add(new Remark(remarkNum));
+        });
     }
 
     public String getRemark() {
@@ -66,6 +72,34 @@ public class Conversation {
          * を実行し、定数化する。
          */
 
+        /**
+         * 文脈番号1
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(101);
+        tmpRemarkList.add(102);
+        tmpRemarkList.add(103);
+        tmpmap.put(1, tmpRemarkList);
+
+        /**
+         * 文脈番号2
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(201);
+        tmpRemarkList.add(202);
+        tmpmap.put(2, tmpRemarkList);
+
+        /**
+         * 文脈番号3
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(301);
+        tmpRemarkList.add(302);
+        tmpRemarkList.add(303);
+        tmpmap.put(3, tmpRemarkList);
 
 
 

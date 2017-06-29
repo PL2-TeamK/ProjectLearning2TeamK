@@ -39,7 +39,7 @@ public class Remark {
             return score.get(replyNum);
         } else {
             // key値が存在しない場合、デフォルト値を返す
-            return 0;
+            return -1;
         }
     }
 
@@ -55,7 +55,7 @@ public class Remark {
     static {
         Map<Integer, HashMap<Integer, Integer>> tmpScoreMap = new HashMap<>();
         Map<Integer, String> tmpWordMap = new HashMap<>();
-        Map<Integer, Integer> replyScoreMap;
+        HashMap<Integer, Integer> replyScoreMap;
 
         /**
          * 発言番号一個に対して以下の処理を行う。
@@ -68,7 +68,195 @@ public class Remark {
          * 上記処理を繰り返し、tmpScoreMapとtmpWordMapが完成したら定数化する。
          */
 
+        /**
+         * 文脈番号1
+         */
 
+        replyScoreMap = new HashMap<>();
+        replyScoreMap.put(4, 0);
+        tmpScoreMap.put(101, replyScoreMap);
+        tmpWordMap.put(101, "ゆうきが");
+
+        replyScoreMap = new HashMap<>();
+        replyScoreMap.put(4, 0);
+        tmpScoreMap.put(102, replyScoreMap);
+        tmpWordMap.put(102, "機械工の人と");
+
+        replyScoreMap = new HashMap<>();
+        replyScoreMap.put(2, 1);    // へぇー
+        replyScoreMap.put(1, 1);    // ふーん
+        replyScoreMap.put(3, 1);    // そうなんだぁ
+        tmpScoreMap.put(103, replyScoreMap);
+        tmpWordMap.put(103, "付き合ってるらしいよ(^ ^)");
+
+        /**
+         * 文脈番号2
+         */
+
+        replyScoreMap = new HashMap<>();
+        replyScoreMap.put(4, 0);
+        tmpScoreMap.put(201, replyScoreMap);
+        tmpWordMap.put(201, "Y大の先生って");
+
+        replyScoreMap = new HashMap<>();
+        replyScoreMap.put(2, 1);    // へぇー
+        replyScoreMap.put(1, 1);    // ふーん
+        replyScoreMap.put(3, 1);    // そうなんだぁ
+        tmpScoreMap.put(202, replyScoreMap);
+        tmpWordMap.put(202, "教えるのすっごい上手らしいよー");
+
+        /**
+         * 文脈番号3
+         */
+
+        replyScoreMap = new HashMap<>();
+        replyScoreMap.put(4, 0);
+        tmpScoreMap.put(301, replyScoreMap);
+        tmpWordMap.put(301, "みずきが");
+
+        replyScoreMap = new HashMap<>();
+        replyScoreMap.put(4, 0);
+        tmpScoreMap.put(302, replyScoreMap);
+        tmpWordMap.put(302, "最近ブリーチに");
+
+        replyScoreMap = new HashMap<>();
+        replyScoreMap.put(2, 1);    // へぇー
+        replyScoreMap.put(1, 1);    // ふーん
+        replyScoreMap.put(3, 1);    // そうなんだぁ
+        tmpScoreMap.put(303, replyScoreMap);
+        tmpWordMap.put(303, "はまったらしいよー");
+
+        /**
+         * 文脈番号4
+         */
+
+        replyScoreMap = new HashMap<>();
+        replyScoreMap.put(4, 0);
+        tmpScoreMap.put(401, replyScoreMap);
+        tmpWordMap.put(401, "情報工の人たちって");
+
+        replyScoreMap = new HashMap<>();
+        replyScoreMap.put(2, 1);    // へぇー
+        replyScoreMap.put(1, 1);    // ふーん
+        replyScoreMap.put(3, 1);    // そうなんだぁ
+        tmpScoreMap.put(402, replyScoreMap);
+        tmpWordMap.put(402, "みんな陰キャらしいよー");
+
+        /**
+         * 文脈番号5
+         */
+
+        replyScoreMap = new HashMap<>();
+        replyScoreMap.put(4, 0);
+        tmpScoreMap.put(501, replyScoreMap);
+        tmpWordMap.put(501, "C棟2階の");
+
+        replyScoreMap = new HashMap<>();
+        replyScoreMap.put(4, 0);
+        tmpScoreMap.put(502, replyScoreMap);
+        tmpWordMap.put(502, "女子トイレって");
+
+        replyScoreMap = new HashMap<>();
+        replyScoreMap.put(2, 1);    // へぇー
+        replyScoreMap.put(1, 1);    // ふーん
+        replyScoreMap.put(3, 1);    // そうなんだぁ
+        tmpScoreMap.put(503, replyScoreMap);
+        tmpWordMap.put(503, "貞子でるらしいよー");
+
+        /**
+         * 文脈番号6
+         */
+
+        replyScoreMap = new HashMap<>();
+        replyScoreMap.put(4, 0);
+        tmpScoreMap.put(601, replyScoreMap);
+        tmpWordMap.put(601, "A子ってー");
+
+        replyScoreMap = new HashMap<>();
+        replyScoreMap.put(4, 0);
+        tmpScoreMap.put(602, replyScoreMap);
+        tmpWordMap.put(602, "きっせのこと");
+
+        replyScoreMap = new HashMap<>();
+        replyScoreMap.put(2, 1);    // へぇー
+        replyScoreMap.put(1, 1);    // ふーん
+        replyScoreMap.put(3, 1);    // そうなんだぁ
+        tmpScoreMap.put(603, replyScoreMap);
+        tmpWordMap.put(603, "好きらしいよー");
+
+        /**
+         * 文脈番号7
+         */
+
+        replyScoreMap = new HashMap<>();
+        replyScoreMap.put(4, 0);
+        tmpScoreMap.put(701, replyScoreMap);
+        tmpWordMap.put(701, "ディズニーランドって");
+
+        replyScoreMap = new HashMap<>();
+        replyScoreMap.put(2, 1);    // へぇー
+        replyScoreMap.put(1, 1);    // ふーん
+        replyScoreMap.put(3, 1);    // そうなんだぁ
+        tmpScoreMap.put(702, replyScoreMap);
+        tmpWordMap.put(702, "カラスがいないらしいよー");
+
+        /**
+         * 文脈番号8
+         */
+
+        replyScoreMap = new HashMap<>();
+        replyScoreMap.put(4, 0);
+        tmpScoreMap.put(801, replyScoreMap);
+        tmpWordMap.put(801, "きな粉牛乳って");
+
+        replyScoreMap = new HashMap<>();
+        replyScoreMap.put(2, 1);    // へぇー
+        replyScoreMap.put(1, 1);    // ふーん
+        replyScoreMap.put(3, 1);    // そうなんだぁ
+        tmpScoreMap.put(802, replyScoreMap);
+        tmpWordMap.put(802, "便秘にいいらしいよー");
+
+        /**
+         * 文脈番号9
+         */
+
+        replyScoreMap = new HashMap<>();
+        replyScoreMap.put(4, 0);
+        tmpScoreMap.put(901, replyScoreMap);
+        tmpWordMap.put(901, "唐辛子食べると-");
+
+        replyScoreMap = new HashMap<>();
+        replyScoreMap.put(4, 0);
+        tmpScoreMap.put(902, replyScoreMap);
+        tmpWordMap.put(902, "脂肪燃焼されて");
+
+        replyScoreMap = new HashMap<>();
+        replyScoreMap.put(2, 1);    // へぇー
+        replyScoreMap.put(1, 1);    // ふーん
+        replyScoreMap.put(3, 1);    // そうなんだぁ
+        tmpScoreMap.put(903, replyScoreMap);
+        tmpWordMap.put(903, "痩せるらしいよー");
+
+        /**
+         * 文脈番号10
+         */
+
+        replyScoreMap = new HashMap<>();
+        replyScoreMap.put(4, 0);
+        tmpScoreMap.put(1001, replyScoreMap);
+        tmpWordMap.put(1001, "今季ってー");
+
+        replyScoreMap = new HashMap<>();
+        replyScoreMap.put(4, 0);
+        tmpScoreMap.put(1002, replyScoreMap);
+        tmpWordMap.put(1002, "花柄のレースのガウンが");
+
+        replyScoreMap = new HashMap<>();
+        replyScoreMap.put(2, 1);    // へぇー
+        replyScoreMap.put(1, 1);    // ふーん
+        replyScoreMap.put(3, 1);    // そうなんだぁ
+        tmpScoreMap.put(1003, replyScoreMap);
+        tmpWordMap.put(1003, "流行らしいよー");
 
         SCORE_MAP = Collections.unmodifiableMap(tmpScoreMap);
         WORD_MAP = Collections.unmodifiableMap(tmpWordMap);
