@@ -1,4 +1,5 @@
-package Server;
+
+
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -225,18 +226,20 @@ public class Server{
 
                 BufferedReader bufferedReader = new BufferedReader(new FileReader(accountfile));
                 String line = bufferedReader.readLine();
-                String stage = null;
+                String stage = "";
 
                 while (line != null) {
-                    if (line.split(" ", 0)[0].equals(command[1].split(" ", 0)[0])) {
+
+                    if (line.split(" ", 0)[0].equals(name)) {
                         stage = line.split(",",0)[1];
-                        bufferedReader.close();
                     }
                     line = bufferedReader.readLine();
+
                 }
+
                 bufferedReader.close();
 
-                if(!stage.equals(null)) {
+                if(stage != null) {
                     out.writeUTF("CfmStage," + stage);
                     out.flush();
                 }else {
@@ -258,13 +261,13 @@ public class Server{
                     BufferedWriter bufferedWriter;
                     bufferedReader = new BufferedReader(new FileReader(accountfile));
                     String line = bufferedReader.readLine();
-                    line = bufferedReader.readLine();
+                    //line = bufferedReader.readLine();
                     List<String> accountList = new ArrayList();
 
                     while (line != null) {
 
                         if (name.equals(line.split(" ", 0)[0])) {
-                            accountList.add(name + "," + command[1] + "," + line.split(",",0)[2]);
+                            accountList.add(name + " " + line.split(",",0)[0].split(" ",0)[1]+ "," + command[1] + "," + line.split(",",0)[2]);
                         } else {
                             accountList.add(line);
                         }
@@ -294,46 +297,60 @@ public class Server{
 
         public void commandSendScore(){//自己ハイスコア受信、全体スコア更新
             try {
-                synchronized (accountfile) {
 
-                    System.out.println("自己ハイスコアを受信・更新");//test
-                    BufferedReader bufferedReader;
-                    BufferedWriter bufferedWriter;
+
+                System.out.println("自己ハイスコアを受信・更新");//test
+                BufferedReader bufferedReader;
+                BufferedWriter bufferedWriter;
+                String line;
+                synchronized (accountfile) {
                     bufferedReader = new BufferedReader(new FileReader(accountfile));
-                    String line = bufferedReader.readLine();
+                    //String line = bufferedReader.readLine();
                     line = bufferedReader.readLine();
                     List<String> accountList = new ArrayList();
-                    List<String> rankList = new ArrayList<>();
 
-                    while (line!=null){
+                    while (line != null) {
 
-                        if(name.equals(line.split(" ",0)[0])){
+                        if (name.equals(line.split(" ", 0)[0])) {
                             String newScore = "";
-                            for(int i=1;i<5;i++){
-                                if(Integer.parseInt(command[1].split(" ",0)[0]) == i){
-                                    newScore += command[1].split(" ",0)[1];
-                                }else {
-                                    newScore += line.split(",",0)[2].split(" ",0)[i-1];
+                            for (int i = 1; i < 5; i++) {
+                                if ((Integer.parseInt(command[1].split(" ", 0)[0]) == i) && Integer.parseInt(command[1].split(" ", 0)[1]) > Integer.parseInt(line.split(",", 0)[2].split(" ", 0)[i - 1])) {
+                                    newScore += command[1].split(" ", 0)[1];
+                                } else {
+                                    newScore += line.split(",", 0)[2].split(" ", 0)[i - 1];
                                 }
-                                if(i<4){
+                                if (i < 4) {
                                     newScore += " ";
                                 }
                             }
-                            accountList.add(name + "," + line.split(",",0)[1] + "," + newScore);
-                        }else {
+                            accountList.add(name + " " + line.split(",", 0)[0].split(" ", 0)[1] + "," + line.split(",", 0)[1] + "," + newScore);
+                        } else {
                             accountList.add(line);
                         }
 
                         line = bufferedReader.readLine();
                     }
 
+                    bufferedWriter = new BufferedWriter(new FileWriter(accountfile, false));
+
+                    for (int i = 0; i < accountList.size(); i++) {
+                        bufferedWriter.write(accountList.get(i));
+                        bufferedWriter.newLine();
+                    }
+                }
+
+                bufferedWriter.flush();
+
+                synchronized (rankfile){
+                    List<String> rankList = new ArrayList<>();
                     bufferedReader = new BufferedReader(new FileReader(rankfile));
-                    line = bufferedReader.readLine();
+                    //line = bufferedReader.readLine();
                     line = bufferedReader.readLine();
                     int lookStage = 1;
                     List<String> lookStageHighScoreInfo = new ArrayList<>();
 
                     while (line!=null){
+
 
                         if(line.equals("<<<")){
                             if(lookStage == Integer.parseInt(command[1].split(" ",0)[0])){
@@ -345,43 +362,36 @@ public class Server{
                             rankList.add(line);
                         }else if(lookStage == Integer.parseInt(command[1].split(" ",0)[0])){
                             if(Integer.parseInt(command[1].split(" ",0)[1])>Integer.parseInt(line.split(" ",0)[1])){
+
                                 lookStageHighScoreInfo.add(name + " " + command[1].split(" ",0)[1]);
-                                lookStageHighScoreInfo.add(line);
+
+                                if(lookStageHighScoreInfo.size()<10){//10位更新後は付け足さない
+                                    lookStageHighScoreInfo.add(line);
+                                }
+
                             }else {
                                 if(lookStageHighScoreInfo.size()<10){
                                     lookStageHighScoreInfo.add(line);
                                 }
                             }
+                        }else {
+                            rankList.add(line);
                         }
                         line = bufferedReader.readLine();
                     }
 
-                    bufferedReader.close();
+                    bufferedWriter = new BufferedWriter(new FileWriter(rankfile,false));
 
-                    synchronized (accountfile) {
-                        bufferedWriter = new BufferedWriter(new FileWriter(accountfile, false));
+                    for (int i = 0; i < rankList.size(); i++) {
 
-                        for (int i = 0; i < accountList.size(); i++) {
-
-                            bufferedWriter.write(accountList.get(i));
-                            bufferedWriter.newLine();
-
-                        }
+                        bufferedWriter.write(rankList.get(i));
+                        bufferedWriter.newLine();
                     }
-
-                    synchronized (rankfile){
-                        bufferedWriter = new BufferedWriter(new FileWriter(rankfile,false));
-
-                        for (int i = 0; i < rankList.size(); i++) {
-
-                            bufferedWriter.write(rankList.get(i));
-                            bufferedWriter.newLine();
-
-                        }
-                    }
-
-                    bufferedWriter.close();
                 }
+
+                bufferedReader.close();
+                bufferedWriter.close();
+
             }catch (FileNotFoundException e){
                 e.getMessage();
             }catch (IOException e2){
@@ -398,9 +408,8 @@ public class Server{
                 String score = null;
 
                 while (line != null) {
-                    if (line.split(" ", 0)[0].equals(command[1].split(" ", 0)[0])) {
-                        score = line.split(",",0)[2];
-                        bufferedReader.close();
+                    if (line.split(" ", 0)[0].equals(name)) {
+                        score = line.split(",",0)[2].split(" ",0)[Integer.parseInt(command[1])-1];
                     }
                     line = bufferedReader.readLine();
                 }
@@ -424,8 +433,9 @@ public class Server{
 
                 BufferedReader bufferedReader = new BufferedReader(new FileReader(rankfile));
                 String line = bufferedReader.readLine();
-                String rankInfo = null;
+                String rankInfo = "";
                 int lookStage = 1;
+                int count = 0;//10人未満ならnullをつける
 
                 while (line != null) {
 
@@ -433,19 +443,21 @@ public class Server{
                         lookStage++;
                     }else if(lookStage == Integer.parseInt(command[1])){
                         rankInfo += line + "/";
+                        count++;
                     }
 
                     line = bufferedReader.readLine();
                 }
-                rankInfo = rankInfo.substring(0, rankInfo.length()-1);//最後の/を取り除く
+                if(count<10){
+                    rankInfo += "null";
+                }else {
+                    rankInfo = rankInfo.substring(0, rankInfo.length() - 1);//最後の/を取り除く
+                }
                 bufferedReader.close();
 
-                if(!rankInfo.equals(null)) {
-                    out.writeUTF("RankInfo," + rankInfo);
-                    out.flush();
-                }else {
-                    System.err.println("スコア問い合わせ時にアカウントが見つからないです。");
-                }
+                out.writeUTF("RankInfo," + rankInfo);
+                out.flush();
+
 
             }catch (IOException e){
                 e.getMessage();
