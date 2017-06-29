@@ -9,5 +9,8 @@ public class RankingPanel extends JLayeredPane {
     private ISwitchPanel panelSwitcher;
 
     private JLabel backgroundLabel;
-    private 
+    private JButton backButtons;
+    private JLabel panelTitleLabel;
+    
+
 }
