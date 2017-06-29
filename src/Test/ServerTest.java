@@ -1,18 +1,16 @@
-import com.sun.org.apache.regexp.internal.RE;
-import sun.tools.tree.ShiftRightExpression;
+package Test;
 
-import javax.sound.midi.Receiver;
 import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class serverDrive{
+public class ServerTest {
 
 	private Server1 serverS;
 	private Receiver1 receiverS;
 
 	// コンストラクタ
-	public serverDrive(){
+	public ServerTest(){
 
 	}
 
@@ -127,7 +125,7 @@ public class serverDrive{
 
 	//テスト用のmain
 	public static void main(String args[]){ 
-		serverDrive oclient = new serverDrive();
+		ServerTest oclient = new ServerTest();
 		oclient.connectServer("localhost", 4231);
 
 	}
