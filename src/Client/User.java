@@ -18,7 +18,7 @@ public class User {
         this.name = name;
 
         // 初期値はクリアステージが無いことを示す0
-        maxClearedStage = 0;
+        maxClearedStage = Constants.NO_STAGE_CLEARED; // 0
     }
 
 

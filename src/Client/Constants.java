@@ -10,14 +10,15 @@ package Client;
  */
 public class Constants {
     // ステージ番号を示す定数たち
-    public static final int FIRST_STAGE = 101;
-    public static final int SECOND_STAGE = 102;
-    public static final int THIRD_STAGE = 103;
-    public static final int FOURTH_STAGE = 104;
-    public static final int FIRST_ENDLESS = 201;
-    public static final int SECOND_ENDLESS = 202;
-    public static final int THIRD_ENDLESS = 203;
-    public static final int FOURTH_ENDLESS = 204;
+    public static final int NO_STAGE_CLEARED = 0;
+    public static final int FIRST_STAGE = 1;
+    public static final int SECOND_STAGE = 2;
+    public static final int THIRD_STAGE = 3;
+    public static final int FOURTH_STAGE = 4;
+    public static final int FIRST_ENDLESS = 101;
+    public static final int SECOND_ENDLESS = 102;
+    public static final int THIRD_ENDLESS = 103;
+    public static final int FOURTH_ENDLESS = 104;
 
     // 画面サイズを示す定数たち
     public static final int VIEW_WIDTH = 800;

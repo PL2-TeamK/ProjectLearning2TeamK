@@ -9,7 +9,7 @@ import java.util.Timer;
  */
 public class ConversationTest {
     public static void main(String[] args) {
-        
+
         Conversation conv;
         for (int convNum = 1; convNum <= 10; convNum++) {
             System.out.println("convNum: " + convNum);
