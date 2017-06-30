@@ -22,6 +22,7 @@ public class NewUserPanel extends JLayeredPane {
     private JLabel emptyAlertLabel;
     private JLabel passIncorrectAlertLabel;
     private JLabel inputUsernameRefusedAlertLabel;
+    private JLabel unusableCharAlertLabel;
     private JButton backButton;
 
     public NewUserPanel(ISwitchPanel switcher, IReceiveNameAndPass sender) {
@@ -101,39 +102,36 @@ public class NewUserPanel extends JLayeredPane {
             emptyAlertLabel.setVisible(false);
             passIncorrectAlertLabel.setVisible(false);
             inputUsernameRefusedAlertLabel.setVisible(false);
-
+            unusableCharAlertLabel.setVisible(false);
             confirmButton.setEnabled(false);
 
 
-            if (name.length() != 0 && pass1.length() != 0 && pass2.length() != 0) {
-                if (pass1.equals(pass2)) {
-                    /**
-                     * サーバーへ問い合わせを行う
-                     * 成功時には画面遷移
-                     * 不成功時には、再度入力させる。
-                     */
-                    boolean isSignupSucceeded = senderToAppView.receiveNameAndPass(name, pass1, true);
-                    if (isSignupSucceeded) {
-                        // 成功
-                        panelSwitcher.switchNewUserPanelToHomePanel();
-                        return;
-                    } else {
-                        // ユーザー名が既に存在
-                        inputUsernameRefusedAlertLabel.setVisible(true);
-                        nameField.setText("");
-                    }
-                } else {
-                    // 入力されたパスワードが不一致
-                    passIncorrectAlertLabel.setVisible(true);
-                    passField1.setText("");
-                    passField2.setText("");
-                }
-            } else {
-                // 空欄が存在する
+            if (name.length() == 0 || pass1.length() == 0 || pass2.length() == 0) {
+                // 入力欄に入力がなされていない場合
                 emptyAlertLabel.setVisible(true);
-
+                confirmButton.setEnabled(true);
+            } else if (name.contains(" ") || name.contains(",") || pass1.contains(" ") || pass1.contains(",") || pass2.contains(" ") || pass2.contains(",")){
+                // 入力欄にスペースかカンマが含まれている場合
+                unusableCharAlertLabel.setVisible(true);
+                confirmButton.setEnabled(true);
+                nameField.setText("");
+                passField1.setText("");
+                passField2.setText("");
+            } else if (!pass1.equals(pass2)) {
+                // 2つのパスワード入力が一致していない場合
+                passIncorrectAlertLabel.setVisible(true);
+                confirmButton.setEnabled(true);
+                passField1.setText("");
+                passField2.setText("");
+            } else if (!senderToAppView.receiveNameAndPass(name, pass1, true)) {
+                // 新規ユーザ登録に失敗
+                inputUsernameRefusedAlertLabel.setVisible(true);
+                confirmButton.setEnabled(true);
+                nameField.setText("");
+            } else {
+                // 新規ユーザー登録に成功
+                panelSwitcher.switchNewUserPanelToHomePanel();
             }
-            confirmButton.setEnabled(true);
         });
 
         // 未入力アラートラベル
@@ -162,6 +160,15 @@ public class NewUserPanel extends JLayeredPane {
         inputUsernameRefusedAlertLabel.setVisible(false);
         add(inputUsernameRefusedAlertLabel);
         setLayer(inputUsernameRefusedAlertLabel, JLayeredPane.PALETTE_LAYER);
+
+        // 使用禁止文字アラートラベル
+        unusableCharAlertLabel = new JLabel("スペースとカンマは入力できません");
+        unusableCharAlertLabel.setForeground(Color.red);
+        unusableCharAlertLabel.setBounds(Constants.VIEW_WIDTH / 2 - 160, Constants.VIEW_HEIGHT * 4 / 5 - 50, 320, 20);
+        unusableCharAlertLabel.setHorizontalAlignment(JLabel.CENTER);
+        add(unusableCharAlertLabel);
+        setLayer(unusableCharAlertLabel, JLayeredPane.PALETTE_LAYER, 50);
+        unusableCharAlertLabel.setVisible(false);
 
         // 前の画面に戻る
         backButton = new JButton("前の画面に戻る");
