@@ -40,6 +40,12 @@ public class GameModel {
     private int playTime;
     private Timer timer;
 
+    /**
+     * conversations中のどの文脈に注目しているかを示す変数を用意
+     */
+
+    private int conversationIndex = 0;
+
     public GameModel (int stageNum) {
         /**
          * GameModel()の処理
@@ -125,5 +131,47 @@ public class GameModel {
                     playTime++;
             }
         }, 1000, 1000);
+    }
+
+    public void gameEnd() {
+        // タイマー停止
+        timer.cancel();
+    }
+
+    /**
+     *  注意
+     *  以下、特にゲームバランスに関わる部分である
+     *  計算式の検討は慎重に行うべき
+     */
+
+    public boolean updateMoodPoint (int replyNum, float timing) {
+        /**
+         * 0 <= timing <= 1
+         */
+
+        int score = conversations.get(conversationIndex).getScore(replyNum);
+        if (score < 0) {
+            moodPoint += (2.0f - timing) * (float)score * mpCoefficient;
+        } else if (score > 0){
+            moodPoint += timing * (float)score * mpCoefficient;
+        } else {
+            moodPoint += (timing - 1.0f);
+        }
+
+        if (moodPoint > 0) {
+            return true;
+        } else {
+            // moodPointが0になったらゲームオーバー
+            return false;
+        }
+    }
+
+    public boolean updateHitPoint (int replyNum) {
+        // TODO: 実装
+        if (hitPoint > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
