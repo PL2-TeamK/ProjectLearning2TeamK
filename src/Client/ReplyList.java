@@ -34,7 +34,7 @@ public class ReplyList {
      * 以下、返答データの記述を行う
      * 返答リストを生成
      */
-    private final static Map<Integer, String> ALL_REPLY;
+    public final static Map<Integer, String> ALL_REPLY;
     static {
         // 一時的なmapを作成して、後で変更不可にする。
         Map<Integer, String> map = new LinkedHashMap<>();
