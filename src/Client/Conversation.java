@@ -54,7 +54,7 @@ public class Conversation {
      * 以下、会話データの記述を行う。
      * 文脈番号をキーにして、発言番号のリストをオブジェクトとするMapを作成
      */
-    private final static Map<Integer, ArrayList<Integer>> ALL_CONVERSATIONS;
+    public final static Map<Integer, ArrayList<Integer>> ALL_CONVERSATIONS;
     static {
         Map<Integer, ArrayList<Integer>> tmpmap;
         ArrayList<Integer> tmpRemarkList;
