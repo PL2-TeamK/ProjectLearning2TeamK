@@ -19,7 +19,7 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
     private ChooseStagePanel chooseStagePanel;
     private RankingPanel rankingPanel;
     private MyPagePanel myPagePanel;
-
+    private GamePanel gamePanel;
     public AppView(IViewToController arg) {
         refToController = arg;
 
@@ -200,6 +200,22 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
     @Override
     public void switchMyPagePanelBackToHomePanel() {
 
+    }
+
+    @Override
+    public void switchChooseStagePanelToGamePanel(int stageNum) {
+        /**
+         * ステージ選択後
+         * 指定されたステージ番号のステージ画面を生成し、遷移する。
+         */
+        gamePanel = new GamePanel(stageNum);
+        add(gamePanel);
+        gamePanel.setVisible(true);
+        // gameModelを生成し取得
+        GameModel gameModel = refToController.makeGameModelAndReturnRef(stageNum);
+        gamePanel.setRefToGameModel(gameModel);
+        chooseStagePanel.setVisible(false);
+        remove(chooseStagePanel);
     }
 
     /**

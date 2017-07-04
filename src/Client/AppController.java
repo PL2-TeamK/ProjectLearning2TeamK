@@ -9,6 +9,7 @@ package Client;
 public class AppController implements IViewToController {
     private User user;
     private AppView appView;
+    private GameModel gameModel;
 
     public AppController() {
         // 画面の用意
@@ -28,6 +29,12 @@ public class AppController implements IViewToController {
         user = new User(name);
         appView.setRefToUser(user);
         return true;
+    }
+
+    @Override
+    public GameModel makeGameModelAndReturnRef (int stageNum) {
+        gameModel = new GameModel(stageNum);
+        return  gameModel;
     }
 
 

@@ -1,6 +1,7 @@
 package Client;
 
 import javax.swing.*;
+import java.awt.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -9,6 +10,7 @@ import java.util.ArrayList;
  * ゲーム開始時に生成
  */
 public class GamePanel extends JLayeredPane {
+    GameModel gameModel;
 
     private JLabel backgroundLabel;
     private JLabel mainLabel;
@@ -20,7 +22,9 @@ public class GamePanel extends JLayeredPane {
          * ボタンの生成
          */
         if (stageNum == Constants.FIRST_STAGE || stageNum == Constants.FIRST_ENDLESS) {
+            // 有効なボタン
             int[] validButtonNum = {1, 2, 3, 4, 12};
+            // 無効なボタン
             int[] invalidButtonNum = {5, 6, 7, 8, 9, 10, 11};
             int counter = 0;
             for(int i = 0; i < validButtonNum.length; i++) {
@@ -38,6 +42,27 @@ public class GamePanel extends JLayeredPane {
         } else if (stageNum == Constants.FOURTH_STAGE || stageNum == Constants.FOURTH_ENDLESS) {
 
         }
+        /**
+         * ボタンの描画
+         */
+        for (ReplyButton button: replyButtons) {
+            add(button);
+            setLayer(button, PALETTE_LAYER);
+        }
+
+
+        // 背景のセット
+        backgroundLabel = new JLabel();
+        backgroundLabel.setOpaque(true);
+        backgroundLabel.setBackground(Color.cyan);
+        backgroundLabel.setBounds(0, 0, Constants.VIEW_WIDTH, Constants.VIEW_HEIGHT);
+        add(backgroundLabel);
+        setLayer(backgroundLabel, DEFAULT_LAYER);
+
+    }
+
+    public void setRefToGameModel (GameModel ref) {
+        gameModel = ref;
     }
 
 
@@ -108,10 +133,19 @@ public class GamePanel extends JLayeredPane {
                     xPos = 0;
                     yPos = 0;
             }
-
-            setBounds(Constants.VIEW_WIDTH / 14 * (1 + xPos * 3), Constants.VIEW_WIDTH / 14 * (7 + yPos * 2), Constants.VIEW_WIDTH * 3 / 14, Constants.VIEW_HEIGHT * 2 / 14);
+            /**
+             * 描画座標のセット
+             * コマンドのセット
+             * テキストのセット
+             * 表示設定
+             */
+            setBounds(Constants.VIEW_WIDTH / 14 * (1 + xPos * 3), Constants.VIEW_HEIGHT / 14 * (7 + yPos * 2), Constants.VIEW_WIDTH * 3 / 14, Constants.VIEW_HEIGHT * 2 / 14);
             setActionCommand(replyNum + ""); // replyNumがそのままコマンドになる
-            setText(ReplyList.ALL_REPLY.get(replyNum));
+            if (isValid) {
+                setText(ReplyList.ALL_REPLY.get(replyNum));
+            } else {
+                setText("今日は必要ないね");
+            }
             setEnabled(isValid);
         }
 

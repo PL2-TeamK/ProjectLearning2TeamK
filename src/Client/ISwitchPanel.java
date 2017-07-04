@@ -19,5 +19,6 @@ public interface ISwitchPanel {
     void switchChooseStagePanelBackToHomePanel();
     void switchRankingPanelBackToHomePanel();
     void switchMyPagePanelBackToHomePanel();
+    void switchChooseStagePanelToGamePanel(int stageNum);
 
 }

@@ -91,6 +91,11 @@ public class LoginPanelTest extends JFrame implements ISwitchPanel, IReceiveName
     }
 
     @Override
+    public void switchChooseStagePanelToGamePanel(int stageNum) {
+
+    }
+
+    @Override
     public boolean receiveNameAndPass(String name, String pass, boolean isNewUser) {
         return false;
     }

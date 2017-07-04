@@ -55,7 +55,8 @@ public class ChooseStagePanel extends JLayeredPane {
             }
             normalStageButtons[i].addActionListener(e -> {
                 String actionCommand = e.getActionCommand();
-                distinguishWhichButtonClicked(actionCommand);
+                int stageNum = distinguishWhichButtonClicked(actionCommand);
+                panelSwitcher.switchChooseStagePanelToGamePanel(stageNum);
             });
 
             endlessStageButtons[i] = new JButton();
@@ -74,7 +75,8 @@ public class ChooseStagePanel extends JLayeredPane {
             }
             endlessStageButtons[i].addActionListener(e -> {
                 String actionCommand = e.getActionCommand();
-                distinguishWhichButtonClicked(actionCommand);
+                int stageNum = distinguishWhichButtonClicked(actionCommand);
+                panelSwitcher.switchChooseStagePanelToGamePanel(stageNum);
             });
         }
 
@@ -85,8 +87,31 @@ public class ChooseStagePanel extends JLayeredPane {
      * @param actionCommand
      */
 
-    private void distinguishWhichButtonClicked(String actionCommand) {
+    private int distinguishWhichButtonClicked(String actionCommand) {
         String[] tokens = actionCommand.split(",");
+        String gameMode = tokens[0];
+        int tmpStageNum = Integer.parseInt(tokens[1]);
+
+        if (gameMode.equals("normal")) {
+            switch (tmpStageNum) {
+                case 1: return Constants.FIRST_STAGE;
+                case 2: return Constants.SECOND_STAGE;
+                case 3: return Constants.THIRD_STAGE;
+                case 4: return Constants.FOURTH_STAGE;
+                default: return -1;
+            }
+        } else if (gameMode.equals("endless")) {
+            switch (tmpStageNum) {
+                case 1: return Constants.FIRST_ENDLESS;
+                case 2: return Constants.SECOND_ENDLESS;
+                case 3: return Constants.THIRD_ENDLESS;
+                case 4: return Constants.FOURTH_ENDLESS;
+                default: return -1;
+            }
+        } else {
+            return -1;
+        }
+
     }
     
 
