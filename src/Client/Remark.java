@@ -39,7 +39,7 @@ public class Remark {
             return score.get(replyNum);
         } else {
             // key値が存在しない場合、デフォルト値を返す
-            return -1;
+            return -3;
         }
     }
 
@@ -249,7 +249,7 @@ public class Remark {
         replyScoreMap = new HashMap<>();
         replyScoreMap.put(4, 0);
         tmpScoreMap.put(1002, replyScoreMap);
-        tmpWordMap.put(1002, "花柄のレースのガウンが");
+        tmpWordMap.put(1002, "花柄とかレースのガウンが");
 
         replyScoreMap = new HashMap<>();
         replyScoreMap.put(2, 1);    // へぇー
