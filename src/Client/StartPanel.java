@@ -21,6 +21,8 @@ public class StartPanel extends JLayeredPane {
     private final int titleWidth = 320;
     private final int titleHeight = 180;
 
+
+
     public StartPanel(AppView arg) {
         refToAppView = arg;
 
@@ -61,6 +63,7 @@ public class StartPanel extends JLayeredPane {
         backgroundLabel.setBackground(Color.cyan);
         backgroundLabel.setBounds(0, 0, Constants.VIEW_WIDTH, Constants.VIEW_HEIGHT);
         backgroundLabel.setOpaque(true);
+        backgroundLabel.setIcon(new ImageIcon("../resource/image"));
         add(backgroundLabel);
         setLayer(backgroundLabel, JLayeredPane.DEFAULT_LAYER, 100);
 
