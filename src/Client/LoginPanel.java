@@ -32,19 +32,21 @@ public class LoginPanel extends JLayeredPane {
         // 背景ラベル
         backgroundLabel = new JLabel();
         backgroundLabel.setOpaque(true);
-        backgroundLabel.setBounds(0, 0, Constants.VIEW_WIDTH, Constants.VIEW_WIDTH);
-        backgroundLabel.setBackground(Color.cyan);
+        backgroundLabel.setIcon(new ImageIcon("./resource/image/background/login.png"));
+        backgroundLabel.setBounds(0, 0, Constants.VIEW_WIDTH, Constants.VIEW_HEIGHT);
+//        backgroundLabel.setBackground(Color.cyan);
+
         add(backgroundLabel);
         setLayer(backgroundLabel, JLayeredPane.DEFAULT_LAYER, 20);
 
         // パネルタイトルラベル
-        panelTitleLabel = new JLabel("ログイン");
-        panelTitleLabel.setOpaque(false);
-        panelTitleLabel.setBackground(Color.magenta);
-        panelTitleLabel.setHorizontalAlignment(JLabel.CENTER);
-        panelTitleLabel.setBounds(Constants.VIEW_WIDTH / 2 - 80, Constants.VIEW_HEIGHT / 4 - 45, 160, 90);
-        add(panelTitleLabel);
-        setLayer(panelTitleLabel, JLayeredPane.PALETTE_LAYER, 50);
+//        panelTitleLabel = new JLabel("ログイン");
+//        panelTitleLabel.setOpaque(false);
+//        panelTitleLabel.setBackground(Color.magenta);
+//        panelTitleLabel.setHorizontalAlignment(JLabel.CENTER);
+//        panelTitleLabel.setBounds(Constants.VIEW_WIDTH / 2 - 80, Constants.VIEW_HEIGHT / 4 - 45, 160, 90);
+//        add(panelTitleLabel);
+//        setLayer(panelTitleLabel, JLayeredPane.PALETTE_LAYER, 50);
 
         // テキストフィールドを示すラベル
         nameInfoLabel = new JLabel("ユーザー名");
@@ -73,7 +75,8 @@ public class LoginPanel extends JLayeredPane {
         setLayer(passwordField, JLayeredPane.PALETTE_LAYER, 50);
 
         // 確定ボタン
-        confirmButton = new JButton("決定");
+        confirmButton = new JButton();
+        confirmButton.setIcon(new ImageIcon("./resource/image/buttons/loginBtn2.png"));
         confirmButton.setHorizontalAlignment(JButton.CENTER);
         confirmButton.addActionListener(e -> {
             // ボタンが押されたので、とりあえず停止
@@ -117,7 +120,7 @@ public class LoginPanel extends JLayeredPane {
 
 
         });
-        confirmButton.setBounds(Constants.VIEW_WIDTH / 2 - 80, Constants.VIEW_HEIGHT * 4 / 5 - 15, 160, 30);
+        confirmButton.setBounds(Constants.VIEW_WIDTH / 2 - 80, Constants.VIEW_HEIGHT * 4 / 5 - 15, 120, 40);
         add(confirmButton);
         setLayer(confirmButton, JLayeredPane.PALETTE_LAYER, 50);
 

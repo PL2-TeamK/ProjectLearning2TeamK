@@ -7,10 +7,10 @@ import java.util.*;
  * 相手の発言の一連のまとまりを表すクラス
  */
 public class Conversation {
-    private ArrayList<Remark> remarks;
+    private ArrayList<Remarks> remarks;
     private int remarkCounter;
     private boolean isEnd;
-    private Remark currentRemark;
+    private Remarks currentRemarks;
 
     public Conversation(int conversationNum) {
         // どのまとまりかを示す引数をとる。
@@ -25,25 +25,25 @@ public class Conversation {
         // remarksを取得しArrayListを生成
         remarks = new ArrayList<>();
         ALL_CONVERSATIONS.get(conversationNum).forEach(remarkNum -> {
-            remarks.add(new Remark(remarkNum));
+            remarks.add(new Remarks(remarkNum));
         });
     }
 
     public String getRemark() {
         // 発言を取得する。
-        currentRemark = remarks.get(remarkCounter);
+        currentRemarks = remarks.get(remarkCounter);
         // 次の発言取得のためにカウンタだけ進めとく
         remarkCounter++;
         if (remarkCounter == remarks.size()) {
             // ArrayListの終端に達した場合
             isEnd = true;
         }
-        return  currentRemark.getWord();
+        return  currentRemarks.getWord();
     }
 
     public int getScore(int replyNum) {
         // 先ほど取得した発言のスコアを得る
-        return currentRemark.getScore(replyNum);
+        return currentRemarks.getScore(replyNum);
     }
 
     public boolean getIsEnd() {
