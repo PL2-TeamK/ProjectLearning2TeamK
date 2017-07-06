@@ -32,6 +32,7 @@ public class StartPanel extends JLayeredPane {
         buttonToLogin = new JButton();
         buttonToLogin.setIcon(new ImageIcon("./resource/image/buttons/loginBtn.png"));
         buttonToLogin.setBorderPainted(false);
+        buttonToLogin.setContentAreaFilled(false);
         buttonToLogin.setBounds(Constants.VIEW_WIDTH * 1 / 3 - buttonWidth / 2, Constants.VIEW_HEIGHT * 2 / 3, buttonWidth, buttonHeight);
         add(buttonToLogin);
         setLayer(buttonToLogin, JLayeredPane.PALETTE_LAYER, 10);
@@ -39,11 +40,13 @@ public class StartPanel extends JLayeredPane {
             // ログイン画面への遷移
             refToAppView.switchStartPanelToLoginPanel();
         });
+        buttonToLogin.setOpaque(false);
 
         // 新規ユーザーボタン
         buttonToNew = new JButton();
         buttonToNew.setIcon(new ImageIcon("./resource/image/buttons/signUpBtn.png"));
         buttonToNew.setBorderPainted(false);
+        buttonToNew.setContentAreaFilled(false);
         buttonToNew.setBounds(Constants.VIEW_WIDTH * 2 / 3 - buttonWidth / 2, Constants.VIEW_HEIGHT * 2 / 3, buttonWidth, buttonHeight);
         add(buttonToNew);
         setLayer(buttonToNew, JLayeredPane.PALETTE_LAYER, 10);

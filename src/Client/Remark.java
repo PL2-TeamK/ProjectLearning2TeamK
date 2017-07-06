@@ -9,11 +9,11 @@ import java.util.*;
  * key値が存在するかを事前に、containsKey(Object key)で確認し、存在しない場合にはデフォルト値を返すような実装も可能
  * フィールドの値をどこで設定するかが問題(RemarkかConversationか)
  */
-public class Remarks {
+public class Remark {
     private String word;
     private HashMap<Integer, Integer> score;
 
-    public Remarks(int remarkNum) {
+    public Remark(int remarkNum) {
         /**
          * 引数で与えられた番号の発言のインスタンスを生成する。
          * 発言番号は重複しない

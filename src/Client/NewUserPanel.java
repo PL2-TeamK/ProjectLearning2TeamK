@@ -36,16 +36,17 @@ public class NewUserPanel extends JLayeredPane {
         backgroundLabel = new JLabel();
         backgroundLabel.setOpaque(true);
         backgroundLabel.setBounds(0, 0, Constants.VIEW_WIDTH, Constants.VIEW_HEIGHT);
-        backgroundLabel.setBackground(Color.cyan);
+//        backgroundLabel.setBackground(Color.cyan);
+        backgroundLabel.setIcon(new ImageIcon("./resource/image/background/signup.png"));
         add(backgroundLabel);
         setLayer(backgroundLabel, JLayeredPane.DEFAULT_LAYER);
 
-        // パネルラベルタイトル
-        panelTitleLabel = new JLabel("新規ユーザー登録");
-        panelTitleLabel.setHorizontalAlignment(JLabel.CENTER);
-        panelTitleLabel.setBounds(Constants.VIEW_WIDTH / 2 - 80, Constants.VIEW_HEIGHT / 5, 160, 50);
-        add(panelTitleLabel);
-        setLayer(panelTitleLabel, JLayeredPane.PALETTE_LAYER);
+//        // パネルラベルタイトル
+//        panelTitleLabel = new JLabel("新規ユーザー登録");
+//        panelTitleLabel.setHorizontalAlignment(JLabel.CENTER);
+//        panelTitleLabel.setBounds(Constants.VIEW_WIDTH / 2 - 80, Constants.VIEW_HEIGHT / 5, 160, 50);
+//        add(panelTitleLabel);
+//        setLayer(panelTitleLabel, JLayeredPane.PALETTE_LAYER);
 
         // テキストフィールドを示すラベル
         nameInfoLabel = new JLabel("ユーザー名を登録");
@@ -84,9 +85,10 @@ public class NewUserPanel extends JLayeredPane {
         setLayer(passField2, JLayeredPane.PALETTE_LAYER);
 
         // 確定ボタン
-        confirmButton = new JButton("決定");
+        confirmButton = new JButton();
+        confirmButton.setIcon(new ImageIcon("./resource/image/buttons/registBtn.png"));
         confirmButton.setHorizontalAlignment(JButton.CENTER);
-        confirmButton.setBounds(Constants.VIEW_WIDTH / 2 - 160, Constants.VIEW_HEIGHT * 4 / 5, 320, 50);
+        confirmButton.setBounds(Constants.VIEW_WIDTH / 2 - 160, Constants.VIEW_HEIGHT * 4 / 5, 120, 40);
         add(confirmButton);
         setLayer(confirmButton, JLayeredPane.PALETTE_LAYER);
         confirmButton.addActionListener(e -> {

@@ -29,21 +29,23 @@ public class HomePanel extends JLayeredPane {
         backgroundLabel = new JLabel();
         backgroundLabel.setOpaque(true);
         backgroundLabel.setBounds(0, 0, Constants.VIEW_WIDTH, Constants.VIEW_HEIGHT);
-        backgroundLabel.setBackground(Color.cyan);
+//        backgroundLabel.setBackground(Color.cyan);
+        backgroundLabel.setIcon(new ImageIcon("./resource/image/background/menu.png"));
         add(backgroundLabel);
         setLayer(backgroundLabel, JLayeredPane.DEFAULT_LAYER);
 
-        // パネルラベルタイトル
-        panelTitleLabel = new JLabel("ホーム");
-        panelTitleLabel.setHorizontalAlignment(JLabel.CENTER);
-        panelTitleLabel.setBounds(Constants.VIEW_WIDTH / 2 - 160, Constants.VIEW_HEIGHT / 4 - 20, 320, 40);
-        add(panelTitleLabel);
-        setLayer(panelTitleLabel, JLayeredPane.PALETTE_LAYER);
+//        // パネルラベルタイトル
+//        panelTitleLabel = new JLabel("ホーム");
+//        panelTitleLabel.setHorizontalAlignment(JLabel.CENTER);
+//        panelTitleLabel.setBounds(Constants.VIEW_WIDTH / 2 - 160, Constants.VIEW_HEIGHT / 4 - 20, 320, 40);
+//        add(panelTitleLabel);
+//        setLayer(panelTitleLabel, JLayeredPane.PALETTE_LAYER);
 
         // ステージ選択画面に遷移するボタン
-        chooseStageButton = new JButton("ステージ選択");
+        chooseStageButton = new JButton();
+        chooseStageButton.setIcon(new ImageIcon("./resource/image/buttons/stageSelectBtn.png"));
         chooseStageButton.setHorizontalAlignment(JButton.CENTER);
-        chooseStageButton.setBounds(Constants.VIEW_WIDTH / 4 - 80, Constants.VIEW_HEIGHT * 3 / 5 - 80, 160, 160);
+        chooseStageButton.setBounds(Constants.VIEW_WIDTH / 4 - 80, Constants.VIEW_HEIGHT * 3 / 5 - 80, 120, 120);
         add(chooseStageButton);
         setLayer(chooseStageButton, JLayeredPane.PALETTE_LAYER);
         chooseStageButton.addActionListener(e -> {
@@ -51,9 +53,10 @@ public class HomePanel extends JLayeredPane {
         });
 
         // ランキング画面に遷移するボタン
-        rankingButton = new JButton("ランキング");
+        rankingButton = new JButton();
+        rankingButton.setIcon(new ImageIcon("./resource/image/buttons/rankingBtn.png"));
         rankingButton.setHorizontalAlignment(JButton.CENTER);
-        rankingButton.setBounds(Constants.VIEW_WIDTH / 2 - 80, Constants.VIEW_HEIGHT * 3 / 5 - 80, 160, 160);
+        rankingButton.setBounds(Constants.VIEW_WIDTH / 2 - 80, Constants.VIEW_HEIGHT * 3 / 5 - 80, 120, 120);
         add(rankingButton);
         setLayer(rankingButton, JLayeredPane.PALETTE_LAYER);
         rankingButton.addActionListener(e -> {
@@ -61,9 +64,10 @@ public class HomePanel extends JLayeredPane {
         });
 
         // マイページに遷移するボタン
-        mypageButton = new JButton("マイページ");
+        mypageButton = new JButton();
+        mypageButton.setIcon(new ImageIcon("./resource/image/buttons/myPageBtn.png"));
         mypageButton.setHorizontalAlignment(JButton.CENTER);
-        mypageButton.setBounds(Constants.VIEW_WIDTH * 3 / 4 - 80, Constants.VIEW_HEIGHT * 3 / 5 - 80, 160, 160);
+        mypageButton.setBounds(Constants.VIEW_WIDTH * 3 / 4 - 80, Constants.VIEW_HEIGHT * 3 / 5 - 80, 120, 120);
         add(mypageButton);
         setLayer(mypageButton, PALETTE_LAYER);
         mypageButton.addActionListener(e -> {
@@ -88,6 +92,7 @@ public class HomePanel extends JLayeredPane {
         // ログアウト確認画面
         // 画面マスク
         maskLabel = new JLabel();
+        maskLabel.setIcon(new ImageIcon("./resource/image/background/menu.png"));
         maskLabel.setOpaque(true);
         maskLabel.setBackground(new Color(33, 33, 33, 100));
         maskLabel.setBounds(0, 0, Constants.VIEW_WIDTH, Constants.VIEW_HEIGHT);

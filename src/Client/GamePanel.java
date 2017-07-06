@@ -77,7 +77,10 @@ public class GamePanel extends JLayeredPane {
          * @param replyNum
          * @param isValid
          */
+        private boolean isValid;
+
         ReplyButton(int replyNum, boolean isValid) {
+            this.isValid = isValid;
             int xPos;
             int yPos;
             switch (replyNum) {
@@ -149,6 +152,45 @@ public class GamePanel extends JLayeredPane {
             setEnabled(isValid);
         }
 
+        public void setStateStandBy() {
+            // 有効なボタンのみ有効化する
+            setEnabled(isValid);
+        }
+
 
     }
+
+    /**
+     * タイミングを示すCanvas
+     * 外側の円と内側から広がった円を表示
+     *
+     */
+    class timingCanvas extends Canvas {
+        private int outerRadius;
+        private int innerRadius;
+        private int canvasWidth;
+        private int canvasHeight;
+
+        public void startListening() {
+            // 内側の円の半径を0に変更し、Timerを起動
+        }
+
+        public float stopListening() {
+            // ボタンが押されたら呼ばれるメソッドで、タイミングを0から1で返す。
+            // Timerをストップする
+
+            return 1.0f;
+        }
+
+        private void updateCanvas() {
+            // 内側の円の半径を変更して、再描画を行う。
+        }
+
+        @Override
+        public void paint(Graphics g) {
+            // 描画メソッド
+        }
+    }
+
+    
 }
