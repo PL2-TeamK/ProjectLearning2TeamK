@@ -2,8 +2,6 @@ package Client;
 
 import javax.swing.*;
 import java.awt.*;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 /**
  * ゲーム画面
@@ -15,6 +13,9 @@ public class GamePanel extends JLayeredPane {
     private JLabel backgroundLabel;
     private JLabel mainLabel;
     private ReplyButton[] replyButtons = new ReplyButton[12];
+    private TimingCanvas timingCanvas;
+    private GaugeCanvas hpGaugeCanvas;
+    private GaugeCanvas mpGaugeCanvas;
 
 
     public GamePanel(int stageNum) {
@@ -48,6 +49,16 @@ public class GamePanel extends JLayeredPane {
         for (ReplyButton button: replyButtons) {
             add(button);
             setLayer(button, PALETTE_LAYER);
+            button.addActionListener(e -> {
+                // ボタンが押された時の処理をセット
+                // 返答番号が文字列で格納されている。
+                String command = e.getActionCommand();
+                int replyNum = Integer.parseInt(command);
+                // 押されたタイミング値を取得
+                float timing = timingCanvas.replyButtonClicked();
+                // GameModelの値の更新を行う。
+                updateGameModelAndCanvas(replyNum, timing);
+            });
         }
 
 
@@ -59,10 +70,50 @@ public class GamePanel extends JLayeredPane {
         add(backgroundLabel);
         setLayer(backgroundLabel, DEFAULT_LAYER);
 
+        // TimingCanvasを用意
+        timingCanvas = new TimingCanvas(Constants.VIEW_HEIGHT * 8 / 20);
+        // TimingCanvasがtimeoutForInputを呼べるようにする。
+        timingCanvas.setBounds(Constants.VIEW_WIDTH * 1 / 20, Constants.VIEW_HEIGHT * 1 / 4 - Constants.VIEW_HEIGHT * 4 / 20, Constants.VIEW_HEIGHT * 8 /20, Constants.VIEW_HEIGHT * 8 / 20);
+        add(timingCanvas);
+        setLayer(timingCanvas, PALETTE_LAYER);
+
+        // hpGaugeCanvasを用意
+        hpGaugeCanvas = new GaugeCanvas(Constants.VIEW_WIDTH * 1 / 20, Constants.VIEW_HEIGHT * 4 / 10);
+        hpGaugeCanvas.setBounds(Constants.VIEW_WIDTH * 8 / 10 - Constants.VIEW_WIDTH * 1 / 40, Constants.VIEW_HEIGHT * 1 / 4 - Constants.VIEW_HEIGHT * 2 / 10,
+                Constants.VIEW_WIDTH * 1 / 20, Constants.VIEW_HEIGHT * 4 / 10);
+        hpGaugeCanvas.setGaugeColor(new Color(Integer.parseInt("E6855E", 16)));
+        hpGaugeCanvas.setValue(100.0f);
+        add(hpGaugeCanvas);
+        setLayer(hpGaugeCanvas, PALETTE_LAYER);
+
+        //mpGaugeCanvasを用意
+        mpGaugeCanvas = new GaugeCanvas(Constants.VIEW_WIDTH * 1 / 20, Constants.VIEW_HEIGHT * 4 / 10);
+        mpGaugeCanvas.setBounds(Constants.VIEW_WIDTH * 9 / 10 - Constants.VIEW_WIDTH * 1 / 40, Constants.VIEW_HEIGHT * 1 / 4 - Constants.VIEW_HEIGHT * 2 /10,
+                Constants.VIEW_WIDTH * 1 / 20, Constants.VIEW_HEIGHT * 4 / 10);
+        mpGaugeCanvas.setGaugeColor(new Color(Integer.parseInt("5EC84E", 16)));
+        mpGaugeCanvas.setValue(100.0f);
+        add(mpGaugeCanvas);
+        setLayer(mpGaugeCanvas, PALETTE_LAYER);
+
     }
 
     public void setRefToGameModel (GameModel ref) {
         gameModel = ref;
+    }
+
+    /**
+     * ICallBackFromTimingCanvasの実装
+     */
+    public void timeoutForInput() {
+        updateGameModelAndCanvas(-1, 0.0f);
+    }
+
+    public void updateGameModelAndCanvas(int replyNum, float timing) {
+        gameModel.updateHitPoint(replyNum);
+        gameModel.updateMoodPoint(replyNum, timing);
+        // Canvasに値を渡して更新
+        hpGaugeCanvas.setValue(gameModel.getHitPoint());
+        mpGaugeCanvas.setValue(gameModel.getMoodPoint());
     }
 
 
@@ -165,32 +216,104 @@ public class GamePanel extends JLayeredPane {
      * 外側の円と内側から広がった円を表示
      *
      */
-    class timingCanvas extends Canvas {
+    class TimingCanvas extends Canvas {
+
+
         private int outerRadius;
         private int innerRadius;
+        // 正方形だからwidthだけ
         private int canvasWidth;
-        private int canvasHeight;
+
+
+        private Timer timer;
+
+        public TimingCanvas(int width) {
+            canvasWidth = width;
+            setSize(width, width);
+            outerRadius = width * 8 / 20;
+            setBackground(new Color(0, 0, 0, 0));
+        }
 
         public void startListening() {
             // 内側の円の半径を0に変更し、Timerを起動
+            innerRadius = 0;
+            timer = new Timer(30, e -> {
+                // TimerFunc
+                updateCanvas();
+                if (innerRadius > canvasWidth * 9 / 20) {
+                    // timing = 0fにしたい
+                    timer.stop();
+                    // インナークラスからはそのアウタークラスのメソッドにアクセスできる!?
+                    GamePanel.this.timeoutForInput();
+                }
+            });
+            timer.setRepeats(true);
         }
 
-        public float stopListening() {
+        public float replyButtonClicked() {
             // ボタンが押されたら呼ばれるメソッドで、タイミングを0から1で返す。
             // Timerをストップする
+            timer.stop();
+            float timing;
 
             return 1.0f;
         }
 
         private void updateCanvas() {
             // 内側の円の半径を変更して、再描画を行う。
+            innerRadius += outerRadius / 60;
+            repaint();
         }
 
         @Override
         public void paint(Graphics g) {
+            Graphics2D g2d = (Graphics2D)g;
             // 描画メソッド
+            g2d.setColor(new Color(0, 0, 0, 0));
+            g2d.clearRect(0, 0, canvasWidth, canvasWidth);
+            g2d.setColor(Color.yellow);
+            g2d.fillOval(canvasWidth / 2 - outerRadius, canvasWidth / 2 - outerRadius,
+                    2 * outerRadius, 2 * outerRadius);
         }
+
     }
 
-    
+    /**
+     * 体力値と雰囲気値表示用Canvas
+     */
+
+    class GaugeCanvas extends Canvas {
+        private float value;
+        private int canvasWidth;
+        private int canvasHeight;
+        private Color gaugeColor;
+
+        public GaugeCanvas (int width, int height) {
+            canvasWidth = width;
+            canvasHeight = height;
+            setSize(canvasWidth, canvasHeight);
+            gaugeColor = Color.black;
+        }
+
+        public void setValue(float value) {
+            this.value = value;
+            repaint();
+        }
+
+        public void setGaugeColor(Color color) {
+            gaugeColor = color;
+        }
+
+        @Override
+        public void paint(Graphics g) {
+            Graphics2D g2d = (Graphics2D)g;
+            // 描画処理の記述
+            g2d.setColor(gaugeColor);
+            g2d.fillRect(0, (int)(canvasHeight * (100.f - value) / 100.f), canvasWidth, canvasHeight);
+        }
+
+
+    }
+
+
 }

@@ -64,13 +64,13 @@ public class GameModel {
         conversations = new ArrayList<>();
         switch (stageNum){
             case Constants.FIRST_STAGE:
-                for (int convNum = 1; convNum <= 30; convNum++) {
+                for (int convNum = 1; convNum <= 10; convNum++) {
                     conversations.add(new Conversation(convNum));
                 }
                 break;
 
             case Constants.FIRST_ENDLESS:
-                for (int convNum = 1; convNum <= 30; convNum++) {
+                for (int convNum = 1; convNum <= 10; convNum++) {
                     conversations.add(new Conversation(convNum));
                 }
                 break;

@@ -101,6 +101,7 @@ public class HomePanel extends JLayeredPane {
         maskLabel.setVisible(false);
 
 
+
         // 決定ボタン
         confirmButton = new JButton("はい、戻ります");
         confirmButton.setHorizontalAlignment(JButton.CENTER);
