@@ -24,5 +24,8 @@ public class Constants {
     public static final int VIEW_WIDTH = 800;
     public static final int VIEW_HEIGHT = 450;
 
+    // 最後の会話に到達したことを示す文字列
+    public static final String LAST_CONV = "reached to final conversation";
+
 
 }

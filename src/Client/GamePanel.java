@@ -16,6 +16,10 @@ public class GamePanel extends JLayeredPane {
     private TimingCanvas timingCanvas;
     private GaugeCanvas hpGaugeCanvas;
     private GaugeCanvas mpGaugeCanvas;
+    private JLabel remarkLabel;
+
+    private int remarkWidth = Constants.VIEW_WIDTH / 3;
+    private int remarkHeight = 40;
 
 
     public GamePanel(int stageNum) {
@@ -95,6 +99,32 @@ public class GamePanel extends JLayeredPane {
         add(mpGaugeCanvas);
         setLayer(mpGaugeCanvas, PALETTE_LAYER);
 
+        // 動く発言ラベルの設定
+        remarkLabel = new JLabel();
+        remarkLabel.setHorizontalAlignment(JLabel.CENTER);
+        remarkLabel.setVerticalAlignment(JLabel.CENTER);
+        remarkLabel.setBounds(Constants.VIEW_WIDTH / 2 - remarkWidth / 2, Constants.VIEW_HEIGHT / 5 - remarkHeight,
+                remarkWidth, remarkHeight);
+        remarkLabel.setBackground(Color.yellow);
+        add(remarkLabel);
+        setLayer(remarkLabel, PALETTE_LAYER);
+
+    }
+
+    public void gameHandle() {
+        // ゲーム終了まで
+        boolean roopFlag = true;
+        while (roopFlag) {
+            // 発言取得、remarkLabel更新
+
+            // remarkLabelが動くアニメーション
+
+            // ボタンを有効にする
+
+            // タイミング円のアニメーション開始
+
+            // 
+        }
     }
 
     public void setRefToGameModel (GameModel ref) {
@@ -274,6 +304,7 @@ public class GamePanel extends JLayeredPane {
             g2d.setColor(Color.yellow);
             g2d.fillOval(canvasWidth / 2 - outerRadius, canvasWidth / 2 - outerRadius,
                     2 * outerRadius, 2 * outerRadius);
+
         }
 
     }

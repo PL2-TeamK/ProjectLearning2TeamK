@@ -26,6 +26,7 @@ public class GameModel {
     private float moodPoint;
     private float hpCoefficient;
     private float mpCoefficient;
+    private boolean isEndless;
 
     /**
      * Conversationsインスタンス列
@@ -45,6 +46,7 @@ public class GameModel {
      */
 
     private int conversationIndex = 0;
+
 
     public GameModel (int stageNum) {
         /**
@@ -101,6 +103,13 @@ public class GameModel {
 
             default:
                 // このパターンはやばい
+        }
+
+        if (stageNum >= 100) {
+            // エンドレスモードかを検査
+            isEndless = true;
+        } else {
+            isEndless = false;
         }
 
 
@@ -173,5 +182,28 @@ public class GameModel {
         } else {
             return false;
         }
+    }
+
+    public String getNextRemarkText() {
+        if (conversations.get(conversationIndex).getIsEnd()) {
+            // 現在着目している会話が終了点の場合、次の会話を選択する。
+            if (isEndless) {
+                // エンドレスの場合
+                // ランダムかな
+                // TODO
+            } else {
+                // 通常ステージの場合
+                // 順番に会話を並べとこう
+                conversationIndex++;
+            }
+
+        }
+        if (conversationIndex == conversations.size()) {
+            // 通常モードで最後に到達した場合
+            return Constants.LAST_CONV;
+        }
+        // 現在着目している会話の発言を返す。
+        // 自動でRemarkインスタンスの発言カウンタは進む
+        return conversations.get(conversationIndex).getRemark();
     }
 }
