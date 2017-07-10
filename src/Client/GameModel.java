@@ -112,7 +112,7 @@ public class GameModel {
             isEndless = false;
         }
 
-
+//        System.out.println(stageNum);
 
     }
 
@@ -187,6 +187,8 @@ public class GameModel {
     public String getNextRemarkText() {
         if (conversations.get(conversationIndex).getIsEnd()) {
             // 現在着目している会話が終了点の場合、次の会話を選択する。
+//            System.out.println("conv end");
+//            System.out.println(isEndless);
             if (isEndless) {
                 // エンドレスの場合
                 // ランダムかな
@@ -194,6 +196,7 @@ public class GameModel {
             } else {
                 // 通常ステージの場合
                 // 順番に会話を並べとこう
+//                System.out.println("index updated");
                 conversationIndex++;
             }
 

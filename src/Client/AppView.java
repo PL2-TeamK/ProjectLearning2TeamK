@@ -20,6 +20,8 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
     private RankingPanel rankingPanel;
     private MyPagePanel myPagePanel;
     private GamePanel gamePanel;
+    private ResultPanel resultPanel;
+
     public AppView(IViewToController arg) {
         refToController = arg;
 
@@ -214,8 +216,26 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
         // gameModelを生成し取得
         GameModel gameModel = refToController.makeGameModelAndReturnRef(stageNum);
         gamePanel.setRefToGameModel(gameModel);
+        gamePanel.setPanelSwitcher(this);
         chooseStagePanel.setVisible(false);
         remove(chooseStagePanel);
+        chooseStagePanel = null;
+        gamePanel.gameHandler();
+    }
+
+    @Override
+    public void switchGamePanelToResultPanel() {
+        /**
+         * 結果表示画面
+         * 一般ステージの場合は、成否のみ
+         * エンドレスモードの場合は、スコアとハイスコア更新の有無
+         */
+        resultPanel = new ResultPanel();
+        add(resultPanel);
+        resultPanel.setVisible(true);
+        gamePanel.setVisible(false);
+        remove(gamePanel);
+        gamePanel = null;
     }
 
     /**

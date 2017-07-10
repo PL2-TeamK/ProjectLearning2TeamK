@@ -61,7 +61,7 @@ public class ChooseStagePanel extends JLayeredPane {
 
             endlessStageButtons[i] = new JButton();
             endlessStageButtons[i].setBounds(Constants.VIEW_WIDTH * (i + 1) / 5 - Constants.VIEW_WIDTH * 1 / 12, Constants.VIEW_HEIGHT * 2 / 3 - Constants.VIEW_HEIGHT / 8, Constants.VIEW_WIDTH * 1 / 6, Constants.VIEW_HEIGHT / 4);
-            normalStageButtons[i].setActionCommand("endless," + (i + 1));
+            endlessStageButtons[i].setActionCommand("endless," + (i + 1));
             add(endlessStageButtons[i]);
             setLayer(endlessStageButtons[i], JLayeredPane.PALETTE_LAYER);
             if (maxClearedStage > i) {

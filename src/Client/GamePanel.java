@@ -9,6 +9,7 @@ import java.awt.*;
  */
 public class GamePanel extends JLayeredPane {
     GameModel gameModel;
+    ISwitchPanel panelSwitcher;
 
     private JLabel backgroundLabel;
     private JLabel mainLabel;
@@ -62,6 +63,9 @@ public class GamePanel extends JLayeredPane {
                 float timing = timingCanvas.replyButtonClicked();
                 // GameModelの値の更新を行う。
                 updateGameModelAndCanvas(replyNum, timing);
+
+                // 再びRemarkの更新などを行う
+                gameHandler();
             });
         }
 
@@ -103,47 +107,102 @@ public class GamePanel extends JLayeredPane {
         remarkLabel = new JLabel();
         remarkLabel.setHorizontalAlignment(JLabel.CENTER);
         remarkLabel.setVerticalAlignment(JLabel.CENTER);
-        remarkLabel.setBounds(Constants.VIEW_WIDTH / 2 - remarkWidth / 2, Constants.VIEW_HEIGHT / 5 - remarkHeight,
+        remarkLabel.setBounds(Constants.VIEW_WIDTH / 2 - remarkWidth / 2, Constants.VIEW_HEIGHT / 5 - remarkHeight / 2,
                 remarkWidth, remarkHeight);
+        remarkLabel.setOpaque(true);
         remarkLabel.setBackground(Color.yellow);
         add(remarkLabel);
         setLayer(remarkLabel, PALETTE_LAYER);
 
     }
 
-    public void gameHandle() {
-        // ゲーム終了まで
-        boolean roopFlag = true;
-        while (roopFlag) {
-            // 発言取得、remarkLabel更新
+    public void gameHandler() {
+        // ボタンが押されたあと、ゲームが継続する場合呼ばれる。
 
-            // remarkLabelが動くアニメーション
+        // 発言取得、remarkLabel更新
+        String remarkText = gameModel.getNextRemarkText();
+        if (remarkText.equals(Constants.LAST_CONV)) {
+            // 通常モードの最後の発言が終わった場合
+            gameFinish();
 
-            // ボタンを有効にする
-
-            // タイミング円のアニメーション開始
-
-            // 
+            // gameFinishを読んだ後は仕事がないので、メソッドを抜ける
+            return;
         }
+        // remarkLabelが動くアニメーション
+        remarkLabel.setText(remarkText);
+//        int labelPosX = Constants.VIEW_WIDTH / 2 - remarkWidth / 2;
+//        Timer labelTimer = new Timer(40, e -> {
+//            int nextPosY = (int)remarkLabel.getBounds().getY() + 10;
+//            remarkLabel.setBounds(labelPosX, nextPosY, remarkWidth, remarkHeight);
+//            if (nextPosY >= Constants.VIEW_HEIGHT * 2 / 5) {
+//                labelTimer.stop(); // <- ここでだめ
+//            }
+//        });
+//        labelTimer.setRepeats(true);
+//        labelTimer.start();
+        repaint();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
+
+        // ボタンを有効にする
+        for (ReplyButton button : replyButtons) {
+            button.setStateStandBy();
+        }
+        // タイミング円のアニメーション開始
+        timingCanvas.startListening();
+        // 次はボタンアクションか時間で停止する。
+
+    }
+
+    public void gameFinish() {
+        // ゲーム終了時に呼ばれるメソッド
+        // TODO: 実装
+        panelSwitcher.switchGamePanelToResultPanel();
     }
 
     public void setRefToGameModel (GameModel ref) {
         gameModel = ref;
     }
 
+    public void setPanelSwitcher (ISwitchPanel switcher) {
+        // 画面遷移用の参照をセットする。
+        this.panelSwitcher = switcher;
+    }
+
     /**
      * ICallBackFromTimingCanvasの実装
      */
     public void timeoutForInput() {
-        updateGameModelAndCanvas(-1, 0.0f);
+        // 時間切れにより、全てのボタン入力を停止する。
+        for (ReplyButton button : replyButtons) {
+            button.setEnabled(false);
+        }
+        boolean isGameValid = updateGameModelAndCanvas(-1, 0.0f);
+        if (isGameValid) {
+            gameHandler();
+        } else {
+            gameFinish();
+        }
+
+        repaint();
     }
 
-    public void updateGameModelAndCanvas(int replyNum, float timing) {
-        gameModel.updateHitPoint(replyNum);
-        gameModel.updateMoodPoint(replyNum, timing);
+    public boolean updateGameModelAndCanvas(int replyNum, float timing) {
+        // mpかhpのどちらかが0ならfalse
+        boolean hpValid = gameModel.updateHitPoint(replyNum);
+        boolean mpValid = gameModel.updateMoodPoint(replyNum, timing);
         // Canvasに値を渡して更新
         hpGaugeCanvas.setValue(gameModel.getHitPoint());
         mpGaugeCanvas.setValue(gameModel.getMoodPoint());
+
+        if (hpValid && mpValid) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
@@ -260,7 +319,7 @@ public class GamePanel extends JLayeredPane {
         public TimingCanvas(int width) {
             canvasWidth = width;
             setSize(width, width);
-            outerRadius = width * 8 / 20;
+            outerRadius = width * 6 / 20;
             setBackground(new Color(0, 0, 0, 0));
         }
 
@@ -278,6 +337,7 @@ public class GamePanel extends JLayeredPane {
                 }
             });
             timer.setRepeats(true);
+            timer.start();
         }
 
         public float replyButtonClicked() {
@@ -285,13 +345,18 @@ public class GamePanel extends JLayeredPane {
             // Timerをストップする
             timer.stop();
             float timing;
+            timing = 1.0f - Math.abs(innerRadius - outerRadius) / canvasWidth * 3 / 20;
 
-            return 1.0f;
+            if (timing < 0) {
+                return 0f;
+            }
+
+            return timing;
         }
 
         private void updateCanvas() {
             // 内側の円の半径を変更して、再描画を行う。
-            innerRadius += outerRadius / 60;
+            innerRadius += 1;
             repaint();
         }
 
@@ -304,6 +369,9 @@ public class GamePanel extends JLayeredPane {
             g2d.setColor(Color.yellow);
             g2d.fillOval(canvasWidth / 2 - outerRadius, canvasWidth / 2 - outerRadius,
                     2 * outerRadius, 2 * outerRadius);
+            g2d.setColor(Color.CYAN);
+            g2d.fillOval(canvasWidth / 2 - innerRadius, canvasWidth / 2 - innerRadius,
+                    2 * innerRadius, 2 * innerRadius);
 
         }
 
