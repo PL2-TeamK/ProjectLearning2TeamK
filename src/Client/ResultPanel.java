@@ -8,8 +8,10 @@ import java.awt.*;
  */
 public class ResultPanel extends JLayeredPane {
     private JLabel backgroundLabel;
+    private JButton backButton;
 
-    public ResultPanel () {
+    // ステージ番号とスコアによって表示内容を変更する。
+    public ResultPanel (int stageNum, int score) {
         setLayout(null);
 
 
@@ -17,8 +19,13 @@ public class ResultPanel extends JLayeredPane {
         backgroundLabel = new JLabel();
         backgroundLabel.setOpaque(true);
         backgroundLabel.setBounds(0, 0, Constants.VIEW_WIDTH, Constants.VIEW_HEIGHT);
-        backgroundLabel.setBackground(Color.cyan);
+//        backgroundLabel.setBackground(Color.cyan);
         add(backgroundLabel);
         setLayer(backgroundLabel, DEFAULT_LAYER);
+
+
+        // ホームに戻るボタン
+        backButton = new JButton();
+//        backButton.setIcon(new ImageIcon("./resource/image/buttons/"));
     }
 }

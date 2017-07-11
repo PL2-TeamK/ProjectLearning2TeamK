@@ -140,27 +140,50 @@ public class GamePanel extends JLayeredPane {
 //        });
 //        labelTimer.setRepeats(true);
 //        labelTimer.start();
-        repaint();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e){
-            e.printStackTrace();
-        }
+
+//        repaint();
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e){
+//            e.printStackTrace();
+//        }
 
         // ボタンを有効にする
         for (ReplyButton button : replyButtons) {
             button.setStateStandBy();
         }
         // タイミング円のアニメーション開始
-        timingCanvas.startListening();
+//        timingCanvas.startListening();
         // 次はボタンアクションか時間で停止する。
-
+        Timer timer = new Timer(1000, e -> {
+            timingCanvas.startListening();
+        });
+        timer.setRepeats(false);
+        timer.start();
     }
 
     public void gameFinish() {
         // ゲーム終了時に呼ばれるメソッド
         // TODO: 実装
-        panelSwitcher.switchGamePanelToResultPanel();
+        // タイマー停止
+        // タイマーの起動はAppView.switchChoosePanelToGamePanel()で行なっている
+        gameModel.gameEnd();
+        boolean clearedFlag = true;
+        if (gameModel.getHitPoint() <= 0f || gameModel.getMoodPoint() <= 0f) {
+            clearedFlag = false;
+        }
+        int score;
+        if (gameModel.getStageNum() > 100) {
+            score = gameModel.getPlayTime();
+        } else {
+            if (clearedFlag) {
+                score = Constants.STAGE_CLEARED;
+            } else {
+                score = Constants.STAGE_FAILED;
+            }
+        }
+
+        panelSwitcher.switchGamePanelToResultPanel(gameModel.getStageNum(), score);
     }
 
     public void setRefToGameModel (GameModel ref) {
