@@ -606,11 +606,327 @@ public class Conversation {
 
         tmpRemarkList = new ArrayList<>();
         tmpRemarkList.add(5601);
-        tmpRemarkList.add(2202);
-        tmpRemarkList.add(2203);
-        tmpmap.put(22, tmpRemarkList);
+        tmpRemarkList.add(5602);
+        tmpRemarkList.add(5603);
+        tmpmap.put(56, tmpRemarkList);
         
+        /**
+         * 文脈番号57
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(5701);
+        tmpRemarkList.add(5702);
+        tmpmap.put(57, tmpRemarkList);
         
+        /**
+         * 文脈番号58
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(5801);
+        tmpRemarkList.add(5802);
+        tmpRemarkList.add(5803);
+        tmpmap.put(58, tmpRemarkList);
+        
+        /**
+         * 文脈番号59
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(5901);
+        tmpRemarkList.add(5902);
+        tmpmap.put(59, tmpRemarkList);
+        
+        /**
+         * 文脈番号60
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(6001);
+        tmpRemarkList.add(6002);
+        tmpRemarkList.add(6003);
+        tmpmap.put(60, tmpRemarkList);
+        
+        /**
+         * 文脈番号61
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(6101);
+        tmpRemarkList.add(6102);
+        tmpRemarkList.add(6103);
+        tmpmap.put(61, tmpRemarkList);
+        
+        /**
+         * 文脈番号62
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(6201);
+        tmpRemarkList.add(6202);
+        tmpRemarkList.add(6203);
+        tmpmap.put(62, tmpRemarkList);
+        
+        /**
+         * 文脈番号63
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(6301);
+        tmpRemarkList.add(6302);
+        tmpmap.put(63, tmpRemarkList);
+        
+        /**
+         * 文脈番号64
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(6401);
+        tmpRemarkList.add(6402);
+        tmpmap.put(64, tmpRemarkList);
+        
+        /**
+         * 文脈番号65
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(6501);
+        tmpRemarkList.add(6502);
+        tmpmap.put(65, tmpRemarkList);
+        
+        /**
+         * 文脈番号66
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(6601);
+        tmpmap.put(66, tmpRemarkList);
+        
+        /**
+         * 文脈番号67
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(6701);
+        tmpRemarkList.add(6702);
+        tmpmap.put(67, tmpRemarkList);
+        
+        /**
+         * 文脈番号68
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(6801);
+        tmpmap.put(68, tmpRemarkList);
+        
+        /**
+         * 文脈番号69
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(6901);
+        tmpRemarkList.add(6902);
+        tmpRemarkList.add(6903);
+        tmpmap.put(69, tmpRemarkList);
+        
+        /**
+         * 文脈番号70
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(7001);
+        tmpRemarkList.add(7002);
+        tmpRemarkList.add(7003);
+        tmpmap.put(70, tmpRemarkList);
+        
+        /**
+         * 文脈番号71
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(7101);
+        tmpRemarkList.add(7102);
+        tmpRemarkList.add(7103);
+        tmpmap.put(71, tmpRemarkList);
+        
+        /**
+         * 文脈番号72
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(7201);
+        tmpRemarkList.add(7202);
+        tmpRemarkList.add(7203);
+        tmpmap.put(72, tmpRemarkList);
+        
+        /**
+         * 文脈番号73
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(7301);
+        tmpRemarkList.add(7302);
+        tmpmap.put(73, tmpRemarkList);
+        
+        /**
+         * 文脈番号74
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(7401);
+        tmpRemarkList.add(7402);
+        tmpmap.put(74, tmpRemarkList);
+        
+        /**
+         * 文脈番号75
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(7501);
+        tmpRemarkList.add(7502);
+        tmpmap.put(75, tmpRemarkList);
+        
+        /**
+         * 文脈番号76
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(7601);
+        tmpRemarkList.add(7602);
+        tmpmap.put(76, tmpRemarkList);
+        
+        /**
+         * 文脈番号77
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(7701);
+        tmpmap.put(77, tmpRemarkList);
+        
+        /**
+         * 文脈番号78
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(7801);
+        tmpRemarkList.add(7802);
+        tmpRemarkList.add(7803);
+        tmpmap.put(78, tmpRemarkList);
+        
+        /**
+         * 文脈番号79
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(7901);
+        tmpRemarkList.add(7902);
+        tmpRemarkList.add(7903);
+        tmpmap.put(79, tmpRemarkList);
+        
+        /**
+         * 文脈番号80
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(8001);
+        tmpRemarkList.add(8002);
+        tmpRemarkList.add(8003);
+        tmpmap.put(80, tmpRemarkList);
+        
+        /**
+         * 文脈番号81
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(8101);
+        tmpmap.put(81, tmpRemarkList);
+        
+        /**
+         * 文脈番号82
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(8201);
+        tmpRemarkList.add(8202);
+        tmpmap.put(82, tmpRemarkList);
+        
+        /**
+         * 文脈番号83
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(8301);
+        tmpRemarkList.add(8302);
+        tmpRemarkList.add(8303);
+        tmpmap.put(83, tmpRemarkList);
+        
+        /**
+         * 文脈番号84
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(8401);
+        tmpRemarkList.add(8402);
+        tmpmap.put(84, tmpRemarkList);
+        
+        /**
+         * 文脈番号85
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(8501);
+        tmpRemarkList.add(8502);
+        tmpRemarkList.add(8503);
+        tmpmap.put(85, tmpRemarkList);
+        
+        /**
+         * 文脈番号86
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(8601);
+        tmpRemarkList.add(8602);
+        tmpRemarkList.add(8603);
+        tmpmap.put(86, tmpRemarkList);
+        
+        /**
+         * 文脈番号87
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(8701);
+        tmpRemarkList.add(8702);
+        tmpmap.put(87, tmpRemarkList);
+        
+        /**
+         * 文脈番号88
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(8801);
+        tmpRemarkList.add(8802);
+        tmpmap.put(88, tmpRemarkList);
+        
+        /**
+         * 文脈番号89
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(8901);
+        tmpRemarkList.add(8902);
+        tmpRemarkList.add(8903);
+        tmpmap.put(89, tmpRemarkList);
+        
+        /**
+         * 文脈番号90
+         */
+
+        tmpRemarkList = new ArrayList<>();
+        tmpRemarkList.add(9001);
+        tmpRemarkList.add(9002);
+        tmpmap.put(90, tmpRemarkList);
+     
         
         ALL_CONVERSATIONS = Collections.unmodifiableMap(tmpmap);
     }
