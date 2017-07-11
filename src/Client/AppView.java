@@ -2,6 +2,13 @@ package Client;
 
 import javax.swing.*;
 import javax.swing.plaf.metal.MetalLookAndFeel;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 
 /**
  * 全画面のベースになるクラス
@@ -21,6 +28,8 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
     private MyPagePanel myPagePanel;
     private GamePanel gamePanel;
     private ResultPanel resultPanel;
+
+
 
     public AppView(IViewToController arg) {
         refToController = arg;
@@ -220,17 +229,20 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
         chooseStagePanel.setVisible(false);
         remove(chooseStagePanel);
         chooseStagePanel = null;
+        // gameModelのタイマー起動
+        // 停止は、GamePanel.gameFinished()で行う。
+        gameModel.gameStart();
         gamePanel.gameHandler();
     }
 
     @Override
-    public void switchGamePanelToResultPanel() {
+    public void switchGamePanelToResultPanel(int stageNum, int score) {
         /**
          * 結果表示画面
          * 一般ステージの場合は、成否のみ
          * エンドレスモードの場合は、スコアとハイスコア更新の有無
          */
-        resultPanel = new ResultPanel();
+        resultPanel = new ResultPanel(stageNum, score);
         add(resultPanel);
         resultPanel.setVisible(true);
         gamePanel.setVisible(false);
@@ -249,10 +261,14 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
      */
     @Override
     public boolean receiveNameAndPass(String name, String pass, boolean isNewUser) {
+
         // AppControllerに処理を依頼してServerからの返答を待つ
 
         return refToController.sendNameAndPassToServer(name, pass, isNewUser);
     }
+
+
+
 
 
     /**

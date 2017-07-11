@@ -1,5 +1,14 @@
 package Client;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.util.ArrayList;
+
 /**
  * アプリのベースのクラス
  * 一番最初にこのインスタンスを生成し、その他のインスタンスを順次作成する。
@@ -10,6 +19,13 @@ public class AppController implements IViewToController {
     private User user;
     private AppView appView;
     private GameModel gameModel;
+
+    // 通信関連
+    private String serverAddless = "localhost";
+    private int port = 4231;
+    private Socket socket;
+    private PrintWriter writer;
+    private BufferedReader bufReader;
 
     public AppController() {
         // 画面の用意
@@ -26,15 +42,100 @@ public class AppController implements IViewToController {
          * それ以外の場合にはfalseを返す
          */
         // TODO: 未実装: Serverが完成した段階で記述を行う。
-        user = new User(name);
-        appView.setRefToUser(user);
-        return true;
+        // 接続を確立
+        makeConnectionToServer();
+
+        String sendingMessage;
+        if (isNew) {
+            // 新規登録時
+            sendingMessage = "SignUp," + name + " " + pass;
+        } else {
+            // ログイン
+            sendingMessage = "Login," + name + " " + pass;
+        }
+
+        String recievedMessage = "";
+        writer.println(sendingMessage);
+        try {
+            recievedMessage = bufReader.readLine();
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+
+        String[] tokens = recievedMessage.split(",");
+        if (tokens[1].equals("success")){
+            // 画像の
+            user = new User(name);
+            writer.println("CfmStage,null");
+            try {
+                recievedMessage = bufReader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            user.setMaxClearedStage(Integer.parseInt(recievedMessage.split(",")[1]));
+
+            ArrayList<Integer> scoreList = new ArrayList<>();
+            for (int i = 1; i <= 4; i++) {
+                writer.println("CfmScore," + i);
+                try {
+                    recievedMessage = bufReader.readLine();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                scoreList.add(Integer.parseInt(recievedMessage.split(",")[1]));
+            }
+            user.setHighScore(scoreList);
+
+            appView.setRefToUser(user);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public GameModel makeGameModelAndReturnRef (int stageNum) {
         gameModel = new GameModel(stageNum);
         return  gameModel;
+    }
+
+    // 接続を確立する
+    private void makeConnectionToServer () {
+        // 接続先情報
+        InetSocketAddress socketAddress = new InetSocketAddress(serverAddless, port);
+        // socket
+        socket = new Socket();
+
+        try {
+            socket.connect(socketAddress, port);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+
+        InetAddress inetAddress;
+        if ((inetAddress = socket.getInetAddress()) != null) {
+            System.out.println("connect to " + inetAddress);
+        } else {
+            System.out.println("connection failed");
+            return;
+        }
+
+        // 書き込み
+        try {
+            // autoFlush
+            writer = new PrintWriter(socket.getOutputStream(), true);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+
+        // 読み込み
+        try {
+            bufReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+
+        return;
     }
 
 

@@ -27,5 +27,8 @@ public class Constants {
     // 最後の会話に到達したことを示す文字列
     public static final String LAST_CONV = "reached to final conversation";
 
+    // ステージクリアを示す数値
+    public static final int STAGE_CLEARED = 1;
+    public static final int STAGE_FAILED = -1;
 
 }

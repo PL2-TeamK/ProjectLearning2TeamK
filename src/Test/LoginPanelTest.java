@@ -101,7 +101,7 @@ public class LoginPanelTest extends JFrame implements ISwitchPanel, IReceiveName
     }
 
     @Override
-    public void switchGamePanelToResultPanel() {
+    public void switchGamePanelToResultPanel(int stageNum, int score) {
 
     }
 }

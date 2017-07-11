@@ -147,6 +147,10 @@ public class GameModel {
         timer.cancel();
     }
 
+    public int getPlayTime() {
+        return playTime;
+    }
+
     /**
      *  注意
      *  以下、特にゲームバランスに関わる部分である
@@ -167,16 +171,26 @@ public class GameModel {
             moodPoint += (timing - 1.0f);
         }
 
+        if (moodPoint > 100.0f) {
+            moodPoint = 100.0f;
+        }
+
         if (moodPoint > 0) {
             return true;
         } else {
             // moodPointが0になったらゲームオーバー
             return false;
         }
+
+
     }
 
     public boolean updateHitPoint (int replyNum) {
         // TODO: 実装
+        if (hitPoint > 100.0f) {
+            hitPoint = 100.0f;
+        }
+
         if (hitPoint > 0) {
             return true;
         } else {
@@ -208,5 +222,11 @@ public class GameModel {
         // 現在着目している会話の発言を返す。
         // 自動でRemarkインスタンスの発言カウンタは進む
         return conversations.get(conversationIndex).getRemark();
+
+
+    }
+
+    public int getStageNum() {
+        return stageNum;
     }
 }
