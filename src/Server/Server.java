@@ -1,5 +1,5 @@
 
-package Server;
+
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -185,7 +185,7 @@ public class Server{
 
                 synchronized (accountfile) {
                     bufferedWriter = new BufferedWriter(new FileWriter(accountfile, true));
-                    bufferedWriter.write(command[1] + ",0,000000 000000 000000 000000");
+                    bufferedWriter.write(command[1] + ",0,0 0 0 0");
                     bufferedWriter.newLine();
                 }
 
