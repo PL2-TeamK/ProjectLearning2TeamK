@@ -1,5 +1,5 @@
 
-
+package Server;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -24,8 +24,8 @@ public class Server{
 
     private Server(int port) throws IOException{
         this.port = port;
-        rankfile= new File("ServerFile/rankfile.txt");//logfileは　playername,status,time,opponent
-        accountfile = new File("ServerFile/accountfile.txt"); //accountfileは　playername password,point
+        rankfile= new File("./rankfile.txt");//logfileは　playername,status,time,opponent
+        accountfile = new File("./accountfile.txt"); //accountfileは　playername password,point
 
     }
 
@@ -194,6 +194,7 @@ public class Server{
 
 
             }catch (IOException e){
+                e.printStackTrace();
                 System.err.println("新規登録時にファイルがありません、もしくはソケット接続失敗");
             }
         }
