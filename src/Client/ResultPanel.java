@@ -9,6 +9,7 @@ import java.awt.*;
 public class ResultPanel extends JLayeredPane {
     private JLabel backgroundLabel;
     private JButton backButton;
+    private ISwitchPanel panelSwitcher;
 
     // ステージ番号とスコアによって表示内容を変更する。
     public ResultPanel (int stageNum, int score) {
@@ -27,5 +28,16 @@ public class ResultPanel extends JLayeredPane {
         // ホームに戻るボタン
         backButton = new JButton();
 //        backButton.setIcon(new ImageIcon("./resource/image/buttons/"));
+        backButton.addActionListener(e -> {
+            panelSwitcher.switchResultPanelToHomePanel();
+        });
+        backButton.setBounds(Constants.VIEW_WIDTH / 2 - 80, Constants.VIEW_HEIGHT / 2 - 30,
+                160, 60);
+        add(backButton);
+        setLayer(backButton, PALETTE_LAYER);
+    }
+
+    public void setPanelSwitcher(ISwitchPanel switcher) {
+        this.panelSwitcher = switcher;
     }
 }

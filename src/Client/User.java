@@ -28,13 +28,17 @@ public class User {
         highScore = new ArrayList<Integer>(argList);
     }
 
-    public void setMaxClearedStage(int stageNum) {
+    public boolean setMaxClearedStage(int stageNum) {
         /**
          * 最大ステージクリア数をセットする。
          * ステージは順次解放されるので、最大ステージのみ記録するので問題ない
          */
-        if (maxClearedStage < stageNum)
+        if (maxClearedStage < stageNum) {
             maxClearedStage = stageNum;
+            return true;
+        } else {
+            return false;
+        }
     }
 
 

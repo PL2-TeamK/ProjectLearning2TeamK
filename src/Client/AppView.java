@@ -243,11 +243,39 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
          * エンドレスモードの場合は、スコアとハイスコア更新の有無
          */
         resultPanel = new ResultPanel(stageNum, score);
+        resultPanel.setPanelSwitcher(this);
         add(resultPanel);
+        // Userデータの更新が発生する場合、Controllerに通知しServerに送信する必要がある。
+        // UI関係ないしスレッド化する。
+        new Thread(() -> {
+            if (stageNum < 100) {
+                if (score == Constants.STAGE_CLEARED) {
+                    if (refToUser.setMaxClearedStage(stageNum)) {
+                        // 最大クリア数更新したので、Controllerに投げる
+                        refToController.sendMaxClearedStageNumToServer(stageNum);
+                    }
+                }
+            } else {
+                if (refToUser.updateHighScore(stageNum, score)) {
+                    // ハイスコア更新したので、サーバーに通知する。
+                        refToController.sendHighScoreToServer(stageNum, score);
+                }
+            }
+        }).start();
         resultPanel.setVisible(true);
         gamePanel.setVisible(false);
         remove(gamePanel);
         gamePanel = null;
+    }
+
+    @Override
+    public void switchResultPanelToHomePanel() {
+        homePanel = new HomePanel(this);
+        add(homePanel);
+        homePanel.setVisible(true);
+        resultPanel.setVisible(false);
+        remove(resultPanel);
+        resultPanel = null;
     }
 
     /**

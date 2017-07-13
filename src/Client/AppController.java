@@ -139,6 +139,26 @@ public class AppController implements IViewToController {
 
     @Override
     public void logout() {
-        
+
+    }
+
+    @Override
+    public void sendMaxClearedStageNumToServer(int stageNum) {
+        // 最大クリアステージの更新を通知
+        try {
+            writer.writeUTF("SendClearStage," + stageNum);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void sendHighScoreToServer(int stageNum, int score) {
+        // ハイスコア更新の通知
+        try {
+            writer.writeUTF("SendScore," + stageNum + " " + score);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
