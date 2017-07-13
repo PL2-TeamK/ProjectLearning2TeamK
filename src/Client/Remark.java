@@ -786,7 +786,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(4101, replyScoreMap);
         tmpWordMap.put(4101, "彼氏が女の子とー");
 
@@ -804,7 +804,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(4201, replyScoreMap);
         tmpWordMap.put(4201, "この前ー");
 
@@ -827,7 +827,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(4301, replyScoreMap);
         tmpWordMap.put(4301, "最近、");
 
@@ -849,7 +849,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(4401, replyScoreMap);
         tmpWordMap.put(4401, "私なんもしてないのに");
 
@@ -884,7 +884,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(4601, replyScoreMap);
         tmpWordMap.put(4601, "彼氏がー");
 
@@ -926,7 +926,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(4801, replyScoreMap);
         tmpWordMap.put(4801, "昨日");
 
@@ -943,7 +943,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(4901, replyScoreMap);
         tmpWordMap.put(4901, "殺される夢見て");
 
@@ -957,7 +957,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(5001, replyScoreMap);
         tmpWordMap.put(5001, "久しぶりにー");
 
@@ -979,7 +979,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(5101, replyScoreMap);
         tmpWordMap.put(5101, "夏休みにー");
 
@@ -993,7 +993,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -2);	// うん
+        replyScoreMap.put(4, -2);	// うん
         tmpScoreMap.put(5103, replyScoreMap);
         tmpWordMap.put(5103, "旅行に行くんだー(^^♪");
 
@@ -1002,7 +1002,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(5201, replyScoreMap);
         tmpWordMap.put(5201, "昨日");
 
@@ -1016,7 +1016,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -2);	// うん
+        replyScoreMap.put(4, -2);	// うん
         tmpScoreMap.put(5203, replyScoreMap);
         tmpWordMap.put(5203, "いちごビュッフェ行ってきたのー(^^♪");
 
@@ -1025,7 +1025,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(5301, replyScoreMap);
         tmpWordMap.put(5301, "この前ー");
 
@@ -1040,7 +1040,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -2);	// うん
+        replyScoreMap.put(4, -2);	// うん
         tmpScoreMap.put(5303, replyScoreMap);
         tmpWordMap.put(5303, "チーク買ったんだー(^^♪");
 
@@ -1049,7 +1049,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(5401, replyScoreMap);
         tmpWordMap.put(5401, "昨日");
 
@@ -1063,7 +1063,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -2);	// うん
+        replyScoreMap.put(4, -2);	// うん
         tmpScoreMap.put(5403, replyScoreMap);
         tmpWordMap.put(5403, "彼氏できたー(*^^)v");
 
@@ -1072,7 +1072,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(5501, replyScoreMap);
         tmpWordMap.put(5501, "この前ー");
 
@@ -1082,7 +1082,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -2);	// うん
+        replyScoreMap.put(4, -2);	// うん
         tmpScoreMap.put(5503, replyScoreMap);
         tmpWordMap.put(5503, "リムジン女子会やったのー");
 
@@ -1091,7 +1091,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(5601, replyScoreMap);
         tmpWordMap.put(5601, "サークルのー");
 
@@ -1105,7 +1105,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -2);	// うん
+        replyScoreMap.put(4, -2);	// うん
         tmpScoreMap.put(5603, replyScoreMap);
         tmpWordMap.put(5603, "ディズニーのペアチケもらったのー(^^♪");
 
@@ -1118,7 +1118,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -2);	// うん
+        replyScoreMap.put(4, -2);	// うん
         tmpScoreMap.put(5701, replyScoreMap);
         tmpWordMap.put(5701, "叙々苑のー");
 
@@ -1127,7 +1127,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -2);	// うん
+        replyScoreMap.put(4, -2);	// うん
         tmpScoreMap.put(5702, replyScoreMap);
         tmpWordMap.put(5702, "焼肉おいしかった!(^^)!");
 
@@ -1136,7 +1136,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(5801, replyScoreMap);
         tmpWordMap.put(5801, "この前ー");
 
@@ -1150,7 +1150,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -2);	// うん
+        replyScoreMap.put(4, -2);	// うん
         tmpScoreMap.put(5803, replyScoreMap);
         tmpWordMap.put(5803, "胸が大きくなってた(*^^)v");
 
@@ -1159,7 +1159,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(5901, replyScoreMap);
         tmpWordMap.put(5901, "誕プレでー");
 
@@ -1169,7 +1169,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -2);	// うん
+        replyScoreMap.put(4, -2);	// うん
         tmpScoreMap.put(5902, replyScoreMap);
         tmpWordMap.put(5902, "GUCCIの財布もらったー(*^^)v");
 
@@ -1178,7 +1178,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(6001, replyScoreMap);
         tmpWordMap.put(6001, "K大の人とー");
 
@@ -1192,7 +1192,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -2);	// うん
+        replyScoreMap.put(4, -2);	// うん
         tmpScoreMap.put(6003, replyScoreMap);
         tmpWordMap.put(6003, "全部ごちそうになっちゃった(笑)");
 
@@ -1201,7 +1201,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(6101, replyScoreMap);
         tmpWordMap.put(6101, "この前ー");
 
@@ -1215,7 +1215,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -2);	// うん
+        replyScoreMap.put(4, -2);	// うん
         tmpScoreMap.put(6103, replyScoreMap);
         tmpWordMap.put(6103, "ナンパされちゃったー");
 
@@ -1224,7 +1224,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(6201, replyScoreMap);
         tmpWordMap.put(6201, "渋谷でー");
 
@@ -1238,7 +1238,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -2);	// うん
+        replyScoreMap.put(4, -2);	// うん
         tmpScoreMap.put(6203, replyScoreMap);
         tmpWordMap.put(6203, "スカウトされたのー( *´艸｀) ");
 
@@ -1247,7 +1247,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(6301, replyScoreMap);
         tmpWordMap.put(6301, "昨日");
 
@@ -1256,7 +1256,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -2);	// うん
+        replyScoreMap.put(4, -2);	// うん
         tmpScoreMap.put(6302, replyScoreMap);
         tmpWordMap.put(6302, "カットモデルの撮影したんだー(^_-)-☆");
 
@@ -1270,7 +1270,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -2);	// うん
+        replyScoreMap.put(4, -2);	// うん
         tmpScoreMap.put(6401, replyScoreMap);
         tmpWordMap.put(6401, "３人から告白されちゃった(^^♪");
 
@@ -1279,7 +1279,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -2);	// うん
+        replyScoreMap.put(4, -2);	// うん
         tmpScoreMap.put(6402, replyScoreMap);
         tmpWordMap.put(6402, "すごくない？？");
 
@@ -1288,7 +1288,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(6501, replyScoreMap);
         tmpWordMap.put(6501, "先月ー");
 
@@ -1297,7 +1297,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -2);	// うん
+        replyScoreMap.put(4, -2);	// うん
         tmpScoreMap.put(6502, replyScoreMap);
         tmpWordMap.put(6502, "15万も稼いじゃった(笑)");
 
@@ -1310,7 +1310,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -2);	// うん
+        replyScoreMap.put(4, -2);	// うん
         tmpScoreMap.put(6601, replyScoreMap);
         tmpWordMap.put(6601, "1ヶ月で２kgも痩せたんだー");
 
@@ -1319,7 +1319,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(6701, replyScoreMap);
         tmpWordMap.put(6701, "スクラッチでー");
 
@@ -1328,7 +1328,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -2);	// うん
+        replyScoreMap.put(4, -2);	// うん
         tmpScoreMap.put(6702, replyScoreMap);
         tmpWordMap.put(6702, "1万円当てちゃった(^^♪");
 
@@ -1341,7 +1341,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -2);	// うん
+        replyScoreMap.put(4, -2);	// うん
         tmpScoreMap.put(6801, replyScoreMap);
         tmpWordMap.put(6801, "嵐のライブに当選しちゃった(^^♪");
 
@@ -1350,7 +1350,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(6901, replyScoreMap);
         tmpWordMap.put(6901, "体引き締めようと思ってー");
 
@@ -1364,7 +1364,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -2);	// うん
+        replyScoreMap.put(4, -2);	// うん
         tmpScoreMap.put(6903, replyScoreMap);
         tmpWordMap.put(6903, "腹筋割れてた(笑)");
 
@@ -1373,7 +1373,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(7001, replyScoreMap);
         tmpWordMap.put(7001, "彼氏の誕生日に");
 
@@ -1387,7 +1387,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -2);	// うん
+        replyScoreMap.put(4, -2);	// うん
         tmpScoreMap.put(7003, replyScoreMap);
         tmpWordMap.put(7003, "ローストビーフつくったのー( *´艸｀) ");
 
@@ -1396,7 +1396,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(7101, replyScoreMap);
         tmpWordMap.put(7101, "最近");
 
@@ -1407,7 +1407,7 @@ public class Remark {
 
         replyScoreMap = new HashMap<>();
         replyScoreMap.put(6, 2);    // そんなことないよぉ
-        replyScoreMa.put(4, -10);	// うん
+        replyScoreMap.put(4, -10);	// うん
         tmpScoreMap.put(7103, replyScoreMap);
         tmpWordMap.put(7103, "太っちゃったんだよねー");
 
@@ -1416,7 +1416,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(7201, replyScoreMap);
         tmpWordMap.put(7201, "今日");
 
@@ -1427,7 +1427,7 @@ public class Remark {
 
         replyScoreMap = new HashMap<>();
         replyScoreMap.put(6, 2);    // そんなことないよぉ
-        replyScoreMa.put(4, -10);	// うん
+        replyScoreMap.put(4, -10);	// うん
         tmpScoreMap.put(7203, replyScoreMap);
         tmpWordMap.put(7203, "悪いんだよねー");
 
@@ -1436,13 +1436,13 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(7301, replyScoreMap);
         tmpWordMap.put(7301, "私って可愛くないからー");
 
         replyScoreMap = new HashMap<>();
         replyScoreMap.put(6, 2);    // そんなことないよぉ
-        replyScoreMa.put(4, -10);	// うん
+        replyScoreMap.put(4, -10);	// うん
         tmpScoreMap.put(7302, replyScoreMap);
         tmpWordMap.put(7302, "似合う服がないんだよねー");
 
@@ -1451,14 +1451,14 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
-        replyScoreMa.put(8, 1);
+        replyScoreMap.put(4, 0);
+        replyScoreMap.put(8, 1);
         tmpScoreMap.put(7401, replyScoreMap);
         tmpWordMap.put(7401, "彼氏に振られたんだけど、");
 
         replyScoreMap = new HashMap<>();
         replyScoreMap.put(6, 2);    // そんなことないよぉ
-        replyScoreMa.put(4, -10);	// うん
+        replyScoreMap.put(4, -10);	// うん
         tmpScoreMap.put(7402, replyScoreMap);
         tmpWordMap.put(7402, "やっぱそれって可愛くないからかなー？");
 
@@ -1467,13 +1467,13 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(7501, replyScoreMap);
         tmpWordMap.put(7501, "自分で前髪きったらー");
 
         replyScoreMap = new HashMap<>();
         replyScoreMap.put(6, 2);    // そんなことないよぉ
-        replyScoreMa.put(4, -10);	// うん
+        replyScoreMap.put(4, -10);	// うん
         tmpScoreMap.put(7502, replyScoreMap);
         tmpWordMap.put(7502, "切りすぎちゃった( ;∀;)");
 
@@ -1482,14 +1482,14 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, -10);	// うん
-        replyScoreMa.put(6, 2);	// そんなことないよぉ
+        replyScoreMap.put(4, -10);	// うん
+        replyScoreMap.put(6, 2);	// そんなことないよぉ
         tmpScoreMap.put(7601, replyScoreMap);
         tmpWordMap.put(7601, "私って料理下手じゃん？");
 
         replyScoreMap = new HashMap<>();
         replyScoreMap.put(6, 2);    // そんなことないよぉ
-        replyScoreMa.put(4, -10);	// うん
+        replyScoreMap.put(4, -10);	// うん
         tmpScoreMap.put(7602, replyScoreMap);
         tmpWordMap.put(7602, "だから女子力ないんだよねー");
 
@@ -1499,7 +1499,7 @@ public class Remark {
 
         replyScoreMap = new HashMap<>();
         replyScoreMap.put(6, 2);    // そんなことないよぉ
-        replyScoreMa.put(4, -10);	// うん
+        replyScoreMap.put(4, -10);	// うん
         tmpScoreMap.put(7701, replyScoreMap);
         tmpWordMap.put(7701, "全然モテないー( ;∀;)");
 
@@ -1508,7 +1508,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(7801, replyScoreMap);
         tmpWordMap.put(7801, "わたしー");
 
@@ -1528,7 +1528,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(7901, replyScoreMap);
         tmpWordMap.put(7901, "わたしー");
 
@@ -1549,7 +1549,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(8001, replyScoreMap);
         tmpWordMap.put(8001, "昨日");
 
@@ -1573,7 +1573,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -1);	// うん
+        replyScoreMap.put(4, -1);	// うん
         tmpScoreMap.put(8101, replyScoreMap);
         tmpWordMap.put(8101, "うちの犬可愛くない？？");
 
@@ -1582,7 +1582,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(8201, replyScoreMap);
         tmpWordMap.put(8201, "この写真見て！");
 
@@ -1591,7 +1591,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -1);	// うん
+        replyScoreMap.put(4, -1);	// うん
         tmpScoreMap.put(8202, replyScoreMap);
         tmpWordMap.put(8202, "可愛くない？？");
 
@@ -1600,12 +1600,12 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(8301, replyScoreMap);
         tmpWordMap.put(8301, "夏にでる");
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(8302, replyScoreMap);
         tmpWordMap.put(8302, "新作コスメさー");
 
@@ -1614,7 +1614,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -1);	// うん
+        replyScoreMap.put(4, -1);	// うん
         tmpScoreMap.put(8303, replyScoreMap);
         tmpWordMap.put(8303, "めっちゃかわいくない？？");
 
@@ -1623,7 +1623,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(8401, replyScoreMap);
         tmpWordMap.put(8401, "このワンピさー");
 
@@ -1632,7 +1632,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -1);	// うん
+        replyScoreMap.put(4, -1);	// うん
         tmpScoreMap.put(8402, replyScoreMap);
         tmpWordMap.put(8402, "よくない？？");
 
@@ -1641,12 +1641,12 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(8501, replyScoreMap);
         tmpWordMap.put(8501, "みてみてー");
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(8502, replyScoreMap);
         tmpWordMap.put(8502, "この写真のこの子の服");
 
@@ -1655,7 +1655,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -1);	// うん
+        replyScoreMap.put(4, -1);	// うん
         tmpScoreMap.put(8503, replyScoreMap);
         tmpWordMap.put(8503, "すごい可愛くない？？");
 
@@ -1664,12 +1664,12 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(8601, replyScoreMap);
         tmpWordMap.put(8601, "この前撮った");
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(8602, replyScoreMap);
         tmpWordMap.put(8602, "このカピバラー");
 
@@ -1678,7 +1678,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -1);	// うん
+        replyScoreMap.put(4, -1);	// うん
         tmpScoreMap.put(8603, replyScoreMap);
         tmpWordMap.put(8603, "可愛くない？？");
 
@@ -1687,7 +1687,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(8701, replyScoreMap);
         tmpWordMap.put(8701, "今日のC子");
 
@@ -1696,7 +1696,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -1);	// うん
+        replyScoreMap.put(4, -1);	// うん
         tmpScoreMap.put(8702, replyScoreMap);
         tmpWordMap.put(8702, "いつも以上に可愛いよねー");
 
@@ -1705,7 +1705,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(8801, replyScoreMap);
         tmpWordMap.put(8801, "あそこの赤ちゃん");
 
@@ -1714,7 +1714,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -1);	// うん
+        replyScoreMap.put(4, -1);	// うん
         tmpScoreMap.put(8802, replyScoreMap);
         tmpWordMap.put(8802, "かわいいよねー");
 
@@ -1723,12 +1723,12 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(8901, replyScoreMap);
         tmpWordMap.put(8901, "インテリア雑貨のお店のー");
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(8902, replyScoreMap);
         tmpWordMap.put(8902, "インテリアってー");
 
@@ -1737,7 +1737,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -1);	// うん
+        replyScoreMap.put(4, -1);	// うん
         tmpScoreMap.put(8903, replyScoreMap);
         tmpWordMap.put(8903, "やっぱかわいいよねー");
 
@@ -1746,7 +1746,7 @@ public class Remark {
          */
 
         replyScoreMap = new HashMap<>();
-        replyScoreMa.put(4, 0);
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(9001, replyScoreMap);
         tmpWordMap.put(9001, "この写真のC子さー");
 
@@ -1755,7 +1755,7 @@ public class Remark {
         replyScoreMap.put(2, -2);    // へぇー
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
-        replyScoreMa.put(4, -1);	// うん
+        replyScoreMap.put(4, -1);	// うん
         tmpScoreMap.put(9002, replyScoreMap);
         tmpWordMap.put(9002, "めっちゃ写りいいよねー");
 
