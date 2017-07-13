@@ -1,9 +1,6 @@
 package Client;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
@@ -24,8 +21,8 @@ public class AppController implements IViewToController {
     private String serverAddless = "localhost";
     private int port = 4231;
     private Socket socket;
-    private PrintWriter writer;
-    private BufferedReader bufReader;
+    private DataInputStream reader;
+    private DataOutputStream writer;
 
     public AppController() {
         // 画面の用意
@@ -55,9 +52,9 @@ public class AppController implements IViewToController {
         }
 
         String recievedMessage = "";
-        writer.println(sendingMessage);
         try {
-            recievedMessage = bufReader.readLine();
+            writer.writeUTF(sendingMessage);
+            recievedMessage = reader.readUTF();
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
@@ -66,9 +63,10 @@ public class AppController implements IViewToController {
         if (tokens[1].equals("success")){
             // 画像の
             user = new User(name);
-            writer.println("CfmStage,null");
+
             try {
-                recievedMessage = bufReader.readLine();
+                writer.writeUTF("CfmStage,null");
+                recievedMessage = reader.readUTF();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -76,9 +74,10 @@ public class AppController implements IViewToController {
 
             ArrayList<Integer> scoreList = new ArrayList<>();
             for (int i = 1; i <= 4; i++) {
-                writer.println("CfmScore," + i);
+
                 try {
-                    recievedMessage = bufReader.readLine();
+                    writer.writeUTF("CfmScore," + i);
+                    recievedMessage = reader.readUTF();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -123,14 +122,14 @@ public class AppController implements IViewToController {
         // 書き込み
         try {
             // autoFlush
-            writer = new PrintWriter(socket.getOutputStream(), true);
+            writer = new DataOutputStream(socket.getOutputStream());
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
 
         // 読み込み
         try {
-            bufReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            reader = new DataInputStream(socket.getInputStream());
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
