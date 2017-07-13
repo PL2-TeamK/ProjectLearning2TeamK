@@ -137,7 +137,8 @@ public class AppController implements IViewToController {
         return;
     }
 
-
-
-
+    @Override
+    public void logout() {
+        
+    }
 }
