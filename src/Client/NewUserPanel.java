@@ -112,7 +112,9 @@ public class NewUserPanel extends JLayeredPane {
                 // 入力欄に入力がなされていない場合
                 emptyAlertLabel.setVisible(true);
                 confirmButton.setEnabled(true);
-            } else if (name.contains(" ") || name.contains(",") || pass1.contains(" ") || pass1.contains(",") || pass2.contains(" ") || pass2.contains(",")){
+            } else if (name.contains(" ") || name.contains(",") || name.contains("/") ||
+                    pass1.contains(" ") || pass1.contains(",") || pass1.contains("/") ||
+                    pass2.contains(" ") || pass2.contains(",") || pass2.contains("/")){
                 // 入力欄にスペースかカンマが含まれている場合
                 unusableCharAlertLabel.setVisible(true);
                 confirmButton.setEnabled(true);
@@ -165,7 +167,7 @@ public class NewUserPanel extends JLayeredPane {
         setLayer(inputUsernameRefusedAlertLabel, JLayeredPane.PALETTE_LAYER);
 
         // 使用禁止文字アラートラベル
-        unusableCharAlertLabel = new JLabel("スペースとカンマは入力できません");
+        unusableCharAlertLabel = new JLabel("スペースとカンマとスラッシュは入力できません");
         unusableCharAlertLabel.setForeground(Color.red);
         unusableCharAlertLabel.setBounds(Constants.VIEW_WIDTH / 2 - 160, Constants.VIEW_HEIGHT * 4 / 5 - 50, 320, 20);
         unusableCharAlertLabel.setHorizontalAlignment(JLabel.CENTER);

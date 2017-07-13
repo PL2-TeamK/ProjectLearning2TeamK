@@ -94,13 +94,13 @@ public class LoginPanel extends JLayeredPane {
                 // 入力欄に空欄があるパターンを排除
                 emptyAlertLabel.setVisible(true);
                 confirmButton.setEnabled(true);
-            } else if (name.contains(" ") || name.contains(",")) {
+            } else if (name.contains(" ") || name.contains(",") || name.contains("/")) {
                 // 名前に空白かカンマが存在する場合を排除
                 unusableCharAlertLabel.setVisible(true);
                 confirmButton.setEnabled(true);
                 nameField.setText("");
                 passwordField.setText("");
-            } else if (pass.contains(" ") || pass.contains(",")){
+            } else if (pass.contains(" ") || pass.contains(",") || pass.contains("/")){
                 // パスワードに空白かカンマが存在する場合を排除
                 unusableCharAlertLabel.setVisible(true);
                 confirmButton.setEnabled(true);
@@ -143,7 +143,7 @@ public class LoginPanel extends JLayeredPane {
         refusedAlertLabel.setVisible(false);
 
         // 使用禁止文字アラートラベル
-        unusableCharAlertLabel = new JLabel("スペースとカンマは入力できません");
+        unusableCharAlertLabel = new JLabel("スペースとカンマとスラッシュは入力できません");
         unusableCharAlertLabel.setForeground(Color.red);
         unusableCharAlertLabel.setBounds(Constants.VIEW_WIDTH / 2 - 160, Constants.VIEW_HEIGHT * 4 / 5 - 50, 320, 30);
         unusableCharAlertLabel.setHorizontalAlignment(JLabel.CENTER);
