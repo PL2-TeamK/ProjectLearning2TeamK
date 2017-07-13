@@ -88,7 +88,7 @@ public class NewUserPanel extends JLayeredPane {
         confirmButton = new JButton();
         confirmButton.setIcon(new ImageIcon("./resource/image/buttons/registBtn.png"));
         confirmButton.setHorizontalAlignment(JButton.CENTER);
-        confirmButton.setBounds(Constants.VIEW_WIDTH / 2 - 160, Constants.VIEW_HEIGHT * 4 / 5, 120, 40);
+        confirmButton.setBounds(Constants.VIEW_WIDTH / 2 - 60, Constants.VIEW_HEIGHT * 4 / 5, 120, 40);
         add(confirmButton);
         setLayer(confirmButton, JLayeredPane.PALETTE_LAYER);
         confirmButton.addActionListener(e -> {
@@ -132,6 +132,7 @@ public class NewUserPanel extends JLayeredPane {
                 nameField.setText("");
             } else {
                 // 新規ユーザー登録に成功
+                System.out.println("signUp succeeded");
                 panelSwitcher.switchNewUserPanelToHomePanel();
             }
         });
