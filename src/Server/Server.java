@@ -24,8 +24,8 @@ public class Server{
 
     private Server(int port) throws IOException{
         this.port = port;
-        rankfile= new File("./rankfile.txt");//logfileは　playername,status,time,opponent
-        accountfile = new File("./accountfile.txt"); //accountfileは　playername password,point
+        rankfile= new File("./src/Server/rankfile.txt");//logfileは　playername,status,time,opponent
+        accountfile = new File("./src/Server/accountfile.txt"); //accountfileは　playername password,point
 
     }
 
