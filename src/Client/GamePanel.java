@@ -57,6 +57,9 @@ public class GamePanel extends JLayeredPane {
             button.addActionListener(e -> {
                 // ボタンが押された時の処理をセット
                 // 返答番号が文字列で格納されている。
+                for (ReplyButton but: replyButtons) {
+                    but.setEnabled(false);
+                }
                 String command = e.getActionCommand();
                 int replyNum = Integer.parseInt(command);
                 // 押されたタイミング値を取得
@@ -148,14 +151,16 @@ public class GamePanel extends JLayeredPane {
 //            e.printStackTrace();
 //        }
 
-        // ボタンを有効にする
-        for (ReplyButton button : replyButtons) {
-            button.setStateStandBy();
-        }
+
+
         // タイミング円のアニメーション開始
 //        timingCanvas.startListening();
         // 次はボタンアクションか時間で停止する。
         Timer timer = new Timer(1000, e -> {
+            // ボタンを有効にする
+            for (ReplyButton button : replyButtons) {
+                button.setStateStandBy();
+            }
             timingCanvas.startListening();
         });
         timer.setRepeats(false);

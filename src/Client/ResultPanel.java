@@ -33,7 +33,7 @@ public class ResultPanel extends JLayeredPane {
         backButton.addActionListener(e -> {
             panelSwitcher.switchResultPanelToHomePanel();
         });
-        backButton.setBounds(Constants.VIEW_WIDTH / 2 - 80, Constants.VIEW_HEIGHT / 2 - 30,
+        backButton.setBounds(Constants.VIEW_WIDTH / 2 - 80, Constants.VIEW_HEIGHT * 3/ 4 - 30,
                 160, 60);
         add(backButton);
         setLayer(backButton, PALETTE_LAYER);
