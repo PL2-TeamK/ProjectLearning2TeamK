@@ -10,6 +10,8 @@ public class ResultPanel extends JLayeredPane {
     private JLabel backgroundLabel;
     private JButton backButton;
     private ISwitchPanel panelSwitcher;
+    private JLabel scoreLabel;
+    private int endlessScore;
 
     // ステージ番号とスコアによって表示内容を変更する。
     public ResultPanel (int stageNum, int score) {
@@ -35,9 +37,47 @@ public class ResultPanel extends JLayeredPane {
                 160, 60);
         add(backButton);
         setLayer(backButton, PALETTE_LAYER);
+
+        if (stageNum < 100) {
+            if (score == Constants.STAGE_CLEARED) {
+                stageCleared();
+            } else {
+                stageFailed();
+            }
+        } else {
+            endlessScore = score;
+            endlessEnded();
+
+        }
     }
 
     public void setPanelSwitcher(ISwitchPanel switcher) {
         this.panelSwitcher = switcher;
+    }
+
+    private void stageCleared() {
+        backgroundLabel.setIcon(new ImageIcon("./resource/image/background/clear.png"));
+    }
+
+    private void stageFailed() {
+        backgroundLabel.setIcon(new ImageIcon("./resource/image/background/over.png"));
+    }
+
+    private void endlessEnded() {
+        backgroundLabel.setIcon(new ImageIcon("./resource/image/background/clear.png"));
+        scoreLabel = new JLabel();
+        int hour = endlessScore / 3600;
+        int minute = (endlessScore % 3600) / 60;
+        int second = endlessScore % 60;
+        String text = "<html>あなたは、<br>" + hour + ":" + minute + ":" + second + "<br>耐えました!</html>";
+        scoreLabel.setText(text);
+        scoreLabel.setHorizontalAlignment(JLabel.CENTER);
+        scoreLabel.setVerticalAlignment(JLabel.CENTER);
+        scoreLabel.setBounds(Constants.VIEW_WIDTH * (5 - 1) / 10,
+                Constants.VIEW_HEIGHT * (5 - 1) / 10,
+                Constants.VIEW_WIDTH * 2 / 10,
+                Constants.VIEW_HEIGHT * 2 / 10);
+        add(scoreLabel);
+        setLayer(scoreLabel, PALETTE_LAYER);
     }
 }

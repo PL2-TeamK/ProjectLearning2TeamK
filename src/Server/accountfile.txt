@@ -1,2 +1,2 @@
 Yuki 1415,4,0 0 1 20
-kisse lucky,0,0 0 0 0
+kisse lucky,1,0 0 0 0

@@ -192,6 +192,7 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
     @Override
     public void switchHomePanelBackToStartPanel() {
         createAndVisualizeStartPanel();
+        refToController.logout();
         unvisualizeAndRemoveHomePanel();
     }
 
@@ -270,9 +271,10 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
 
     @Override
     public void switchResultPanelToHomePanel() {
-        homePanel = new HomePanel(this);
-        add(homePanel);
-        homePanel.setVisible(true);
+//        homePanel = new HomePanel(this);
+//        add(homePanel);
+//        homePanel.setVisible(true);
+        createAndVisualizeHomePanel();
         resultPanel.setVisible(false);
         remove(resultPanel);
         resultPanel = null;

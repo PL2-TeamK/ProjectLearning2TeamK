@@ -139,7 +139,12 @@ public class AppController implements IViewToController {
 
     @Override
     public void logout() {
-
+        // 通信の切断を行う
+        try {
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
