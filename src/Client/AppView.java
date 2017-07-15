@@ -169,15 +169,18 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
 
     @Override
     public void switchHomePanelToRankingPanel() {
-        rankingPanel = new RankingPanel();
+        rankingPanel = new RankingPanel(refToController.fetchRankingFromServer());
         rankingPanel.setVisible(true);
-        add(chooseStagePanel);
+        add(rankingPanel);
         unvisualizeAndRemoveHomePanel();
     }
 
     @Override
     public void switchHomePanelToMyPagePanel() {
         myPagePanel = new MyPagePanel();
+        myPagePanel.setRefToUser(refToUser);
+        myPagePanel.setSwitcher(this);
+        myPagePanel.initLabels();
         myPagePanel.setVisible(true);
         add(myPagePanel);
         unvisualizeAndRemoveHomePanel();
@@ -211,7 +214,10 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
 
     @Override
     public void switchMyPagePanelBackToHomePanel() {
-
+        createAndVisualizeHomePanel();
+        myPagePanel.setVisible(false);
+        remove(myPagePanel);
+        myPagePanel = null;
     }
 
     @Override

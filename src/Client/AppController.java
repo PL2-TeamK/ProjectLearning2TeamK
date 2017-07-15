@@ -166,4 +166,21 @@ public class AppController implements IViewToController {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public String[] fetchRankingFromServer() {
+        int num = 4;
+        String rankInfos[] = new String[num];
+        String head = "CfmRank,";
+        for (int i = 0; i < 4; i++) {
+            try {
+                writer.writeUTF(head + (101 + i));
+                String reply = reader.readUTF();
+                rankInfos[i] = reply.split(",")[1];
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return rankInfos;
+    }
 }

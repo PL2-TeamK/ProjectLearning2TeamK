@@ -9,5 +9,5 @@ public interface IViewToController {
     void logout ();
     void sendMaxClearedStageNumToServer (int stageNum);
     void sendHighScoreToServer (int stageNum, int score);
-
+    String[] fetchRankingFromServer();
 }
