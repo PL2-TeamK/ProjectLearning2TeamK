@@ -22,6 +22,7 @@ public class ChooseStagePanel extends JLayeredPane {
         this.refToUserData = refToUserData;
         // 背景ラベル
         backgroundLabel = new JLabel();
+        backgroundLabel.setIcon(new ImageIcon("./resource/image/background/Background.png"));
         backgroundLabel.setOpaque(true);
         backgroundLabel.setBackground(Color.cyan);
         backgroundLabel.setBounds(0, 0, Constants.VIEW_WIDTH, Constants.VIEW_HEIGHT);
@@ -29,7 +30,10 @@ public class ChooseStagePanel extends JLayeredPane {
         setLayer(backgroundLabel, JLayeredPane.DEFAULT_LAYER);
 
         // 戻るボタン
-        backButton = new JButton("前の画面に戻る");
+        backButton = new JButton();
+        backButton.setIcon(new ImageIcon("./resource/image/buttons/backBtn.png"));
+        backButton.setBorderPainted(false);
+        backButton.setContentAreaFilled(false);
         backButton.setBounds(32, 18, 160, 20);
         add(backButton);
         setLayer(backButton, JLayeredPane.PALETTE_LAYER);
@@ -41,17 +45,21 @@ public class ChooseStagePanel extends JLayeredPane {
         int maxClearedStage = refToUserData.getMaxClearedStage();
         for (int i = 0; i < 4; i++) {
             normalStageButtons[i] = new JButton();
+            normalStageButtons[i].setIcon(new ImageIcon("./resource/image/buttons/stage" + (i+1) + "Btn.png"));
+            normalStageButtons[i].setBorderPainted(false);
+            normalStageButtons[i].setContentAreaFilled(false);
             normalStageButtons[i].setBounds(Constants.VIEW_WIDTH * (i + 1) / 5 - Constants.VIEW_WIDTH * 1 / 12, Constants.VIEW_HEIGHT / 3 - Constants.VIEW_HEIGHT / 8, Constants.VIEW_WIDTH * 1 / 6, Constants.VIEW_HEIGHT / 4);
             normalStageButtons[i].setActionCommand("normal," + (i + 1));
             add(normalStageButtons[i]);
             setLayer(normalStageButtons[i], JLayeredPane.PALETTE_LAYER);
             if (maxClearedStage >= i) {
-                normalStageButtons[i].setText("ステージ1");
+                //normalStageButtons[i].setText("ステージ1");
                 normalStageButtons[i].setEnabled(true);
             } else {
-                normalStageButtons[i].setText("未開放");
+                //normalStageButtons[i].setText("未開放");
+                normalStageButtons[i].setDisabledIcon(new ImageIcon("./resource/image/buttons/stage" + (i+1) + "Lock.png"));
                 normalStageButtons[i].setEnabled(false);
-                normalStageButtons[i].setBackground(Color.gray);
+                //normalStageButtons[i].setBackground(Color.gray);
             }
             normalStageButtons[i].addActionListener(e -> {
                 String actionCommand = e.getActionCommand();
@@ -60,17 +68,21 @@ public class ChooseStagePanel extends JLayeredPane {
             });
 
             endlessStageButtons[i] = new JButton();
+            endlessStageButtons[i].setIcon(new ImageIcon("./resource/image/buttons/stage" + (i+1) + "EndlessBtn.png"));
+            endlessStageButtons[i].setBorderPainted(false);
+            endlessStageButtons[i].setContentAreaFilled(false);
             endlessStageButtons[i].setBounds(Constants.VIEW_WIDTH * (i + 1) / 5 - Constants.VIEW_WIDTH * 1 / 12, Constants.VIEW_HEIGHT * 2 / 3 - Constants.VIEW_HEIGHT / 8, Constants.VIEW_WIDTH * 1 / 6, Constants.VIEW_HEIGHT / 4);
             endlessStageButtons[i].setActionCommand("endless," + (i + 1));
             add(endlessStageButtons[i]);
             setLayer(endlessStageButtons[i], JLayeredPane.PALETTE_LAYER);
             if (maxClearedStage > i) {
-                endlessStageButtons[i].setText("<html>ステージ1<br>∞</html>");
+                //endlessStageButtons[i].setText("<html>ステージ1<br>∞</html>");
                 endlessStageButtons[i].setEnabled(true);
             } else {
-                endlessStageButtons[i].setText("未開放");
+                //endlessStageButtons[i].setText("未開放");
                 endlessStageButtons[i].setEnabled(false);
-                endlessStageButtons[i].setBackground(Color.gray);
+                endlessStageButtons[i].setDisabledIcon(new ImageIcon("./resource/image/buttons/stage" + (i+1) + "EndlessLock.png"));
+                //endlessStageButtons[i].setBackground(Color.gray);
 
             }
             endlessStageButtons[i].addActionListener(e -> {

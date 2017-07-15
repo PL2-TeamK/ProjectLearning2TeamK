@@ -29,7 +29,9 @@ public class ResultPanel extends JLayeredPane {
 
         // ホームに戻るボタン
         backButton = new JButton();
-//        backButton.setIcon(new ImageIcon("./resource/image/buttons/"));
+        backButton.setIcon(new ImageIcon("./resource/image/buttons/menuBackBtn.png"));
+        backButton.setBorderPainted(false);
+        backButton.setContentAreaFilled(false);
         backButton.addActionListener(e -> {
             panelSwitcher.switchResultPanelToHomePanel();
         });

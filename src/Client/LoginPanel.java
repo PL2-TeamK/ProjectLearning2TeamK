@@ -77,6 +77,8 @@ public class LoginPanel extends JLayeredPane {
         // 確定ボタン
         confirmButton = new JButton();
         confirmButton.setIcon(new ImageIcon("./resource/image/buttons/loginBtn2.png"));
+        confirmButton.setBorderPainted(false);
+        confirmButton.setContentAreaFilled(false);
         confirmButton.setHorizontalAlignment(JButton.CENTER);
         confirmButton.addActionListener(e -> {
             // ボタンが押されたので、とりあえず停止
@@ -153,7 +155,10 @@ public class LoginPanel extends JLayeredPane {
 
 
         // 前の画面に戻る
-        backButton = new JButton("前の画面に戻る");
+        backButton = new JButton();
+        backButton.setIcon(new ImageIcon("./resource/image/buttons/backBtn.png"));
+        backButton.setBorderPainted(false);
+        backButton.setContentAreaFilled(false);
         backButton.setBounds(32, 18, 160, 20);
         backButton.setHorizontalAlignment(JButton.CENTER);
         add(backButton);

@@ -87,6 +87,8 @@ public class NewUserPanel extends JLayeredPane {
         // 確定ボタン
         confirmButton = new JButton();
         confirmButton.setIcon(new ImageIcon("./resource/image/buttons/registBtn.png"));
+        confirmButton.setBorderPainted(false);
+        confirmButton.setContentAreaFilled(false);
         confirmButton.setHorizontalAlignment(JButton.CENTER);
         confirmButton.setBounds(Constants.VIEW_WIDTH / 2 - 60, Constants.VIEW_HEIGHT * 4 / 5, 120, 40);
         add(confirmButton);
@@ -176,7 +178,10 @@ public class NewUserPanel extends JLayeredPane {
         unusableCharAlertLabel.setVisible(false);
 
         // 前の画面に戻る
-        backButton = new JButton("前の画面に戻る");
+        backButton = new JButton();
+        backButton.setIcon(new ImageIcon("./resource/image/buttons/backBtn.png"));
+        backButton.setBorderPainted(false);
+        backButton.setContentAreaFilled(false);
         backButton.setBounds(32, 18, 160, 20);
         backButton.setHorizontalAlignment(JButton.CENTER);
         add(backButton);

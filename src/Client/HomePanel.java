@@ -44,6 +44,8 @@ public class HomePanel extends JLayeredPane {
         // ステージ選択画面に遷移するボタン
         chooseStageButton = new JButton();
         chooseStageButton.setIcon(new ImageIcon("./resource/image/buttons/stageSelectBtn.png"));
+        chooseStageButton.setBorderPainted(false);
+        chooseStageButton.setContentAreaFilled(false);
         chooseStageButton.setHorizontalAlignment(JButton.CENTER);
         chooseStageButton.setBounds(Constants.VIEW_WIDTH / 4 - 80, Constants.VIEW_HEIGHT * 3 / 5 - 80, 120, 120);
         add(chooseStageButton);
@@ -55,6 +57,8 @@ public class HomePanel extends JLayeredPane {
         // ランキング画面に遷移するボタン
         rankingButton = new JButton();
         rankingButton.setIcon(new ImageIcon("./resource/image/buttons/rankingBtn.png"));
+        rankingButton.setBorderPainted(false);
+        rankingButton.setContentAreaFilled(false);
         rankingButton.setHorizontalAlignment(JButton.CENTER);
         rankingButton.setBounds(Constants.VIEW_WIDTH / 2 - 80, Constants.VIEW_HEIGHT * 3 / 5 - 80, 120, 120);
         add(rankingButton);
@@ -66,6 +70,8 @@ public class HomePanel extends JLayeredPane {
         // マイページに遷移するボタン
         mypageButton = new JButton();
         mypageButton.setIcon(new ImageIcon("./resource/image/buttons/myPageBtn.png"));
+        mypageButton.setBorderPainted(false);
+        mypageButton.setContentAreaFilled(false);
         mypageButton.setHorizontalAlignment(JButton.CENTER);
         mypageButton.setBounds(Constants.VIEW_WIDTH * 3 / 4 - 80, Constants.VIEW_HEIGHT * 3 / 5 - 80, 120, 120);
         add(mypageButton);
@@ -75,7 +81,10 @@ public class HomePanel extends JLayeredPane {
         });
 
         // ログアウト
-        logoutButton = new JButton("タイトル画面へ");
+        logoutButton = new JButton();
+        logoutButton.setIcon(new ImageIcon("./resource/image/buttons/backTitleBtn.png"));
+        logoutButton.setBorderPainted(false);
+        logoutButton.setContentAreaFilled(false);
         logoutButton.setBounds(32, 18, 160, 20);
         logoutButton.setHorizontalAlignment(JButton.CENTER);
         add(logoutButton);
@@ -103,7 +112,10 @@ public class HomePanel extends JLayeredPane {
 
 
         // 決定ボタン
-        confirmButton = new JButton("はい、戻ります");
+        confirmButton = new JButton();
+        confirmButton.setIcon(new ImageIcon("./resource/image/buttons/confirmBtn.png"));
+        confirmButton.setBorderPainted(false);
+        confirmButton.setContentAreaFilled(false);
         confirmButton.setHorizontalAlignment(JButton.CENTER);
         confirmButton.setBounds(Constants.VIEW_WIDTH / 3 - 80, Constants.VIEW_HEIGHT * 2 / 3 - 20, 160, 40);
         add(confirmButton);
@@ -115,7 +127,10 @@ public class HomePanel extends JLayeredPane {
         });
 
         // キャンセルボタン
-        refuseButton = new JButton("いいえ、戻りません");
+        refuseButton = new JButton();
+        refuseButton.setIcon(new ImageIcon("./resource/image/buttons/refuseBtn.png"));
+        refuseButton.setBorderPainted(false);
+        refuseButton.setContentAreaFilled(false);
         refuseButton.setHorizontalAlignment(JButton.CENTER);
         refuseButton.setBounds(Constants.VIEW_WIDTH * 2 / 3 - 80, Constants.VIEW_HEIGHT * 2 / 3 - 20, 160, 40);
         add(refuseButton);

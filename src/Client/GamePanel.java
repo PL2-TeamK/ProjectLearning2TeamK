@@ -75,6 +75,7 @@ public class GamePanel extends JLayeredPane {
 
         // 背景のセット
         backgroundLabel = new JLabel();
+        backgroundLabel.setIcon(new ImageIcon("./resource/image/background/playBackground.png"));
         backgroundLabel.setOpaque(true);
         backgroundLabel.setBackground(Color.cyan);
         backgroundLabel.setBounds(0, 0, Constants.VIEW_WIDTH, Constants.VIEW_HEIGHT);
