@@ -24,6 +24,8 @@ public class RankingPanel extends JLayeredPane {
             scrollPanes[i] = new CustomScrollPane(rankingInfo[i]);
             tabPane.addTab("ステージ" + (i + 1), scrollPanes[i]);
         }
+        tabPane.setBounds(Constants.VIEW_WIDTH * (10 - 9) / 20, Constants.VIEW_HEIGHT * 3 / 10,
+                Constants.VIEW_WIDTH * 18 / 20, Constants.VIEW_HEIGHT * 6 / 10);
         add(tabPane);
         setLayer(tabPane, PALETTE_LAYER);
     }
@@ -56,16 +58,19 @@ class CustomScrollPane extends JScrollPane {
 
 
     public CustomScrollPane(String rankInfo) {
-        setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_AS_NEEDED);
+        //System.out.println("CustomScrollPane():" + rankInfo);
+
+        setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_ALWAYS);
         setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
 
         panel = new JLayeredPane();
         panel.setSize(Constants.VIEW_WIDTH * 9 / 10, rowHeight * 11 + spaceHeight * 11);
         setViewportView(panel);
-        ;
+
         panel.setVisible(true);
         backgroundLabel = new JLabel();
-        backgroundLabel.setIcon(new ImageIcon("./resource/image/background/rank.png"));
+        backgroundLabel.setIcon(new ImageIcon("./resource/image/background/ranking.png"));
+        backgroundLabel.setOpaque(true);
         panel.add(backgroundLabel);
         panel.setLayer(backgroundLabel, JLayeredPane.DEFAULT_LAYER);
 
@@ -122,6 +127,8 @@ class CustomScrollPane extends JScrollPane {
             panel.setLayer(scoreLabels[i], JLayeredPane.PALETTE_LAYER);
 
         }
+
+        setVisible(true);
     }
 }
 

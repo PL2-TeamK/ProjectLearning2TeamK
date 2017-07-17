@@ -174,8 +174,9 @@ public class AppController implements IViewToController {
         String head = "CfmRank,";
         for (int i = 0; i < 4; i++) {
             try {
-                writer.writeUTF(head + (101 + i));
+                writer.writeUTF(head + (i + 1));
                 String reply = reader.readUTF();
+                //System.out.println("Fetch Ranking Data:" + reply);
                 rankInfos[i] = reply.split(",")[1];
             } catch (IOException e) {
                 e.printStackTrace();
