@@ -1,6 +1,7 @@
 package Client;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * マイページ画面
@@ -21,14 +22,14 @@ public class MyPagePanel extends JLayeredPane {
         backgroundLabel.setBounds(0, 0,
                 Constants.VIEW_WIDTH, Constants.VIEW_HEIGHT);
         backgroundLabel.setOpaque(true);
-        backgroundLabel.setIcon(new ImageIcon("./resource/image/background/ranking.png"));
+        backgroundLabel.setIcon(new ImageIcon("./resource/image/background/myPage.png"));
         add(backgroundLabel);
         setLayer(backgroundLabel, DEFAULT_LAYER);
 
         backButton = new JButton();
         backButton.setIcon(new ImageIcon("./resource/image/buttons/backBtn.png"));
-        backButton.setBounds(Constants.VIEW_WIDTH * 1 / 10 - 115, Constants.VIEW_HEIGHT * 1 / 10 - 30,
-                230, 75);
+        backButton.setBounds(Constants.VIEW_WIDTH * 1 / 10 - 70, Constants.VIEW_HEIGHT * 1 / 10 - 30,
+                160, 20);
         backButton.setContentAreaFilled(false);
         backButton.setBorderPainted(false);
         backButton.addActionListener(e -> {
@@ -53,8 +54,9 @@ public class MyPagePanel extends JLayeredPane {
             // 左側のラベル
             String text = "ステージ" + (i + 1) + "∞";
             stageLabels[i] = new JLabel(text);
-            stageLabels[i].setBounds(Constants.VIEW_WIDTH / 4, Constants.VIEW_HEIGHT * (i + 5) / 10,
+            stageLabels[i].setBounds(Constants.VIEW_WIDTH / 4 - 50, Constants.VIEW_HEIGHT * (i + 5) / 10,
                     Constants.VIEW_WIDTH / 4, 30);
+            stageLabels[i].setFont(new Font(Font.SERIF, Font.ITALIC, 36));
             stageLabels[i].setVerticalAlignment(JLabel.CENTER);
             stageLabels[i].setHorizontalAlignment(JLabel.CENTER);
             add(stageLabels[i]);
@@ -62,8 +64,9 @@ public class MyPagePanel extends JLayeredPane {
 
             // 右側のスコア表示
             scoreLabels[i] = new JLabel(secondToText(refToUser.getHighScore().get(i)));
-            scoreLabels[i].setBounds(Constants.VIEW_WIDTH / 2, Constants.VIEW_HEIGHT * (i + 5) / 10,
+            scoreLabels[i].setBounds(Constants.VIEW_WIDTH / 2 + 50, Constants.VIEW_HEIGHT * (i + 5) / 10,
                     Constants.VIEW_WIDTH / 4, 30);
+            scoreLabels[i].setFont(new Font(Font.SERIF, Font.ITALIC, 36));
             scoreLabels[i].setHorizontalAlignment(JLabel.CENTER);
             scoreLabels[i].setVerticalAlignment(JLabel.CENTER);
             add(scoreLabels[i]);
