@@ -1,5 +1,5 @@
 
-package Server;
+
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -24,8 +24,8 @@ public class Server{
 
     private Server(int port) throws IOException{
         this.port = port;
-        rankfile= new File("./src/Server/rankfile.txt");//logfileは　playername,status,time,opponent
-        accountfile = new File("./src/Server/accountfile.txt"); //accountfileは　playername password,point
+        rankfile= new File("ServerFile/rankfile.txt");//logfileは　playername,status,time,opponent
+        accountfile = new File("ServerFile/accountfile.txt"); //accountfileは　playername password,point
 
     }
 
@@ -194,7 +194,6 @@ public class Server{
 
 
             }catch (IOException e){
-                e.printStackTrace();
                 System.err.println("新規登録時にファイルがありません、もしくはソケット接続失敗");
             }
         }
@@ -348,6 +347,7 @@ public class Server{
                     //line = bufferedReader.readLine();
                     line = bufferedReader.readLine();
                     int lookStage = 1;
+                    boolean checked = false;//一回ランキングに反映したらもうしない
                     List<String> lookStageHighScoreInfo = new ArrayList<>();
 
                     while (line!=null){
@@ -362,9 +362,10 @@ public class Server{
                             lookStage++;
                             rankList.add(line);
                         }else if(lookStage == Integer.parseInt(command[1].split(" ",0)[0])){
-                            if(Integer.parseInt(command[1].split(" ",0)[1])>Integer.parseInt(line.split(" ",0)[1])){
+                            if(Integer.parseInt(command[1].split(" ",0)[1])>Integer.parseInt(line.split(" ",0)[1]) && !checked){
 
                                 lookStageHighScoreInfo.add(name + " " + command[1].split(" ",0)[1]);
+                                checked = true;
 
                                 if(lookStageHighScoreInfo.size()<10){//10位更新後は付け足さない
                                     lookStageHighScoreInfo.add(line);
