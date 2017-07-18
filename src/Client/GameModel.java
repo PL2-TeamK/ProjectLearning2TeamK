@@ -67,29 +67,33 @@ public class GameModel {
         conversations = new ArrayList<>();
         switch (stageNum){
             case Constants.FIRST_STAGE:
-                conversations.add(new Conversation(6));
-                conversations.add(new Conversation(13));
-                conversations.add(new Conversation(27));
-                conversations.add(new Conversation(22));
-                conversations.add(new Conversation(2));
-
-                conversations.add(new Conversation(1));
-                conversations.add(new Conversation(16));
-                conversations.add(new Conversation(25));
-                conversations.add(new Conversation(17));
-                conversations.add(new Conversation(28));
-
-                conversations.add(new Conversation(29));
-                conversations.add(new Conversation(4));
-                conversations.add(new Conversation(12));
-                conversations.add(new Conversation(7));
-                conversations.add(new Conversation(20));
-
-                conversations.add(new Conversation(30));
-                conversations.add(new Conversation(24));
-                conversations.add(new Conversation(10));
-                conversations.add(new Conversation(26));
-                conversations.add(new Conversation(27));
+                int convList1[] = {6,13,27,22,2,1,16,25,17,28,29,4,12,7,20,30,24,10,26,27};
+                for (int convNum: convList1) {
+                    conversations.add(new Conversation(convNum));
+                }
+//                conversations.add(new Conversation(6));
+//                conversations.add(new Conversation(13));
+//                conversations.add(new Conversation(27));
+//                conversations.add(new Conversation(22));
+//                conversations.add(new Conversation(2));
+//
+//                conversations.add(new Conversation(1));
+//                conversations.add(new Conversation(16));
+//                conversations.add(new Conversation(25));
+//                conversations.add(new Conversation(17));
+//                conversations.add(new Conversation(28));
+//
+//                conversations.add(new Conversation(29));
+//                conversations.add(new Conversation(4));
+//                conversations.add(new Conversation(12));
+//                conversations.add(new Conversation(7));
+//                conversations.add(new Conversation(20));
+//
+//                conversations.add(new Conversation(30));
+//                conversations.add(new Conversation(24));
+//                conversations.add(new Conversation(10));
+//                conversations.add(new Conversation(26));
+//                conversations.add(new Conversation(27));
                 break;
 
             case Constants.FIRST_ENDLESS:
@@ -99,7 +103,10 @@ public class GameModel {
                 break;
 
             case Constants.SECOND_STAGE:
-
+                int convList2[] = {43,31,5,2,39,45,29,11,22,15,32,42,37,1,50,20,14,30,47,27};
+                for (int convNum: convList2) {
+                    conversations.add(new Conversation(convNum));
+                }
                 break;
 
             case Constants.SECOND_ENDLESS:
@@ -109,7 +116,10 @@ public class GameModel {
                 break;
 
             case Constants.THIRD_STAGE:
-
+                int convList3[] = {8,60,61,24,64,32,19,36,58,9,70,26,41,44,53,40,19,55,21,66};
+                for (int convNum: convList3) {
+                    conversations.add(new Conversation(convNum));
+                }
                 break;
 
             case Constants.THIRD_ENDLESS:
@@ -119,7 +129,10 @@ public class GameModel {
                 break;
 
             case Constants.FOURTH_STAGE:
-
+                int convList4[] = {71,81,73,59,46,67,87,34,28,3,51,74,23,62,83,18,36,75,85,48};
+                for (int convNum: convList4) {
+                    conversations.add(new Conversation(convNum));
+                }
                 break;
 
             case Constants.FOURTH_ENDLESS:

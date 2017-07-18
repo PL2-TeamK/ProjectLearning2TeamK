@@ -29,6 +29,7 @@ public class GamePanel extends JLayeredPane {
         /**
          * ボタンの生成
          */
+
         if (stageNum == Constants.FIRST_STAGE || stageNum == Constants.FIRST_ENDLESS) {
             // 有効なボタン
             int[] validButtonNum = {1, 2, 3, 4, 9, 12};
@@ -44,11 +45,38 @@ public class GamePanel extends JLayeredPane {
                 counter++;
             }
         } else if (stageNum == Constants.SECOND_STAGE || stageNum == Constants.SECOND_ENDLESS) {
-
+            // 有効なボタン
+            int[] validButtonNum = {1, 2, 3, 4, 7, 8, 9, 12};
+            // 無効なボタン
+            int[] invalidButtonNum = {5, 6, 10, 11};
+            int counter = 0;
+            for(int i = 0; i < validButtonNum.length; i++) {
+                replyButtons[counter] = new ReplyButton(validButtonNum[i], true);
+                counter++;
+            }
+            for (int i : invalidButtonNum) {
+                replyButtons[counter] = new ReplyButton(i, false);
+                counter++;
+            }
         } else if (stageNum == Constants.THIRD_STAGE || stageNum == Constants.THIRD_ENDLESS) {
-
+            // 有効なボタン
+            int[] validButtonNum = {1, 2, 3, 4, 5, 7, 8, 9, 11, 12};
+            // 無効なボタン
+            int[] invalidButtonNum = {6, 10};
+            int counter = 0;
+            for(int i = 0; i < validButtonNum.length; i++) {
+                replyButtons[counter] = new ReplyButton(validButtonNum[i], true);
+                counter++;
+            }
+            for (int i : invalidButtonNum) {
+                replyButtons[counter] = new ReplyButton(i, false);
+                counter++;
+            }
         } else if (stageNum == Constants.FOURTH_STAGE || stageNum == Constants.FOURTH_ENDLESS) {
-
+            // 全てのボタンが有効
+            for (int i = 0; i < 12; i++) {
+                replyButtons[i] = new ReplyButton(i + 1, true);
+            }
         }
         /**
          * ボタンの描画
