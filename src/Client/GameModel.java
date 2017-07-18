@@ -2,6 +2,7 @@ package Client;
 
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -66,13 +67,33 @@ public class GameModel {
         conversations = new ArrayList<>();
         switch (stageNum){
             case Constants.FIRST_STAGE:
-                for (int convNum = 1; convNum <= 10; convNum++) {
-                    conversations.add(new Conversation(convNum));
-                }
+                conversations.add(new Conversation(6));
+                conversations.add(new Conversation(13));
+                conversations.add(new Conversation(27));
+                conversations.add(new Conversation(22));
+                conversations.add(new Conversation(2));
+
+                conversations.add(new Conversation(1));
+                conversations.add(new Conversation(16));
+                conversations.add(new Conversation(25));
+                conversations.add(new Conversation(17));
+                conversations.add(new Conversation(28));
+
+                conversations.add(new Conversation(29));
+                conversations.add(new Conversation(4));
+                conversations.add(new Conversation(12));
+                conversations.add(new Conversation(7));
+                conversations.add(new Conversation(20));
+
+                conversations.add(new Conversation(30));
+                conversations.add(new Conversation(24));
+                conversations.add(new Conversation(10));
+                conversations.add(new Conversation(26));
+                conversations.add(new Conversation(27));
                 break;
 
             case Constants.FIRST_ENDLESS:
-                for (int convNum = 1; convNum <= 10; convNum++) {
+                for (int convNum = 1; convNum <= 30; convNum++) {
                     conversations.add(new Conversation(convNum));
                 }
                 break;
@@ -82,7 +103,9 @@ public class GameModel {
                 break;
 
             case Constants.SECOND_ENDLESS:
-
+                for (int convNum = 1; convNum <= 50; convNum++) {
+                    conversations.add(new Conversation(convNum));
+                }
                 break;
 
             case Constants.THIRD_STAGE:
@@ -90,7 +113,9 @@ public class GameModel {
                 break;
 
             case Constants.THIRD_ENDLESS:
-
+                for (int convNum = 1; convNum <= 70; convNum++) {
+                    conversations.add(new Conversation(convNum));
+                }
                 break;
 
             case Constants.FOURTH_STAGE:
@@ -98,7 +123,9 @@ public class GameModel {
                 break;
 
             case Constants.FOURTH_ENDLESS:
-
+                for (int convNum = 1; convNum <= 90; convNum++) {
+                    conversations.add(new Conversation(convNum));
+                }
                 break;
 
             default:
@@ -187,6 +214,52 @@ public class GameModel {
 
     public boolean updateHitPoint (int replyNum) {
         // TODO: 実装
+        int baseScore = 0;
+        switch (replyNum) {
+            case 1: // ふーん
+                baseScore = -1;
+                break;
+            case 2: // へえー
+                baseScore = -1;
+                break;
+            case 3: // そうなんだぁ
+                baseScore = -1;
+                break;
+            case 4: // うん
+                baseScore = 0;
+                break;
+            case 5: // すごいね
+                baseScore = -2;
+                break;
+            case 6: // そんなことないよぉ
+                baseScore = -3;
+                break;
+            case 7: // ありえない！
+                baseScore = -3;
+                break;
+            case 8: // 大丈夫?
+                baseScore = -3;
+                break;
+            case 9: // わかるぅ〜
+                baseScore = -2;
+                break;
+            case 10:// かわいい〜
+                baseScore = -2;
+                break;
+            case 11:// いいなぁ
+                baseScore = -2;
+                break;
+            case 12:// 知るか
+                baseScore = 3;
+                break;
+            default:// その他、未入力
+                baseScore = 0;
+                break;
+        }
+
+        hitPoint += baseScore * hpCoefficient;
+
+
         if (hitPoint > 100.0f) {
             hitPoint = 100.0f;
         }
@@ -203,17 +276,24 @@ public class GameModel {
             // 現在着目している会話が終了点の場合、次の会話を選択する。
 //            System.out.println("conv end");
 //            System.out.println(isEndless);
+
+            // インデックスを変更する前に、
+            // 強制的にConversationインスタンスを初期化する
+            // 2度目呼び出された場合に、困るので
+            conversations.get(conversationIndex).reset();
             if (isEndless) {
                 // エンドレスの場合
                 // ランダムかな
                 // TODO
+                Random rand = new Random();
+                conversationIndex = rand.nextInt(conversations.size());
+
             } else {
                 // 通常ステージの場合
                 // 順番に会話を並べとこう
 //                System.out.println("index updated");
                 conversationIndex++;
             }
-
         }
         if (conversationIndex == conversations.size()) {
             // 通常モードで最後に到達した場合

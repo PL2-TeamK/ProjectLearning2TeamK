@@ -22,6 +22,8 @@ public class GamePanel extends JLayeredPane {
     private int remarkWidth = Constants.VIEW_WIDTH / 3;
     private int remarkHeight = 40;
 
+    private boolean isGameFinishMethodCalled = false;
+
 
     public GamePanel(int stageNum) {
         /**
@@ -29,9 +31,9 @@ public class GamePanel extends JLayeredPane {
          */
         if (stageNum == Constants.FIRST_STAGE || stageNum == Constants.FIRST_ENDLESS) {
             // 有効なボタン
-            int[] validButtonNum = {1, 2, 3, 4, 12};
+            int[] validButtonNum = {1, 2, 3, 4, 9, 12};
             // 無効なボタン
-            int[] invalidButtonNum = {5, 6, 7, 8, 9, 10, 11};
+            int[] invalidButtonNum = {5, 6, 7, 8, 10, 11};
             int counter = 0;
             for(int i = 0; i < validButtonNum.length; i++) {
                 replyButtons[counter] = new ReplyButton(validButtonNum[i], true);
@@ -122,6 +124,9 @@ public class GamePanel extends JLayeredPane {
 
     public void gameHandler() {
         // ボタンが押されたあと、ゲームが継続する場合呼ばれる。
+        if (gameModel.getMoodPoint() <= 0 || gameModel.getHitPoint() <= 0) {
+            gameFinish();
+        }
 
         // 発言取得、remarkLabel更新
         String remarkText = gameModel.getNextRemarkText();
@@ -173,6 +178,12 @@ public class GamePanel extends JLayeredPane {
         // TODO: 実装
         // タイマー停止
         // タイマーの起動はAppView.switchChoosePanelToGamePanel()で行なっている
+        if (isGameFinishMethodCalled) {
+            return;
+        }
+
+        isGameFinishMethodCalled = true;
+
         gameModel.gameEnd();
         boolean clearedFlag = true;
         if (gameModel.getHitPoint() <= 0f || gameModel.getMoodPoint() <= 0f) {

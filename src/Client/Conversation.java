@@ -50,6 +50,13 @@ public class Conversation {
         return isEnd;
     }
 
+    public void reset() {
+        // 初期化のために行う。
+        // 再び呼び出された場合に備えて、インデックスを初期化しておく
+        remarkCounter = 0;
+        isEnd = false;
+    }
+
 
     /**
      * 以下、会話データの記述を行う。
@@ -597,7 +604,6 @@ public class Conversation {
         tmpRemarkList = new ArrayList<>();
         tmpRemarkList.add(5501);
         tmpRemarkList.add(5502);
-        tmpRemarkList.add(5503);
         tmpmap.put(55, tmpRemarkList);
         
         /**

@@ -161,7 +161,7 @@ public class AppController implements IViewToController {
     public void sendHighScoreToServer(int stageNum, int score) {
         // ハイスコア更新の通知
         try {
-            writer.writeUTF("SendScore," + stageNum + " " + score);
+            writer.writeUTF("SendScore," + (stageNum - 100)+ " " + score);
         } catch (IOException e) {
             e.printStackTrace();
         }

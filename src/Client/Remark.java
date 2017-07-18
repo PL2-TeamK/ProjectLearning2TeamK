@@ -689,8 +689,8 @@ public class Remark {
 
         replyScoreMap = new HashMap<>();
         replyScoreMap.put(7, 2);    // ありえない
-        tmpScoreMap.put(3403, replyScoreMap);
-        tmpWordMap.put(3403, "まじむかつくー");
+        tmpScoreMap.put(3402, replyScoreMap);
+        tmpWordMap.put(3402, "まじむかつくー");
 
         /**
          * 文脈番号35
@@ -1083,8 +1083,8 @@ public class Remark {
         replyScoreMap.put(1, -2);    // ふーん
         replyScoreMap.put(3, -2);    // そうなんだぁ
         replyScoreMap.put(4, -2);	// うん
-        tmpScoreMap.put(5503, replyScoreMap);
-        tmpWordMap.put(5503, "リムジン女子会やったのー");
+        tmpScoreMap.put(5502, replyScoreMap);
+        tmpWordMap.put(5502, "リムジン女子会やったのー");
 
         /**
          * 文脈番号56

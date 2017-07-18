@@ -1,2 +1,3 @@
 Yuki 1415,4,0 0 1 20
-kisse lucky,1,0 0 0 0
+kisse lucky,1,141 0 0 0
+shiita 0903,1,0 0 0 0

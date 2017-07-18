@@ -28,6 +28,29 @@ public class RankingPanel extends JLayeredPane {
                 Constants.VIEW_WIDTH * 18 / 20, Constants.VIEW_HEIGHT * 6 / 10);
         add(tabPane);
         setLayer(tabPane, PALETTE_LAYER);
+
+        backgroundLabel = new JLabel();
+        backgroundLabel.setOpaque(true);
+        backgroundLabel.setIcon(new ImageIcon("./resource/image/background/ranking.png"));
+        backgroundLabel.setBounds(0, 0, Constants.VIEW_WIDTH, Constants.VIEW_HEIGHT);
+        add(backgroundLabel);
+        setLayer(backgroundLabel, DEFAULT_LAYER);
+
+        backButtons = new JButton();
+        backButtons.setContentAreaFilled(false);
+        backButtons.setBorderPainted(false);
+        backButtons.setIcon(new ImageIcon("./resource/image/buttons/backBtn.png"));
+        backButtons.setBounds(Constants.VIEW_WIDTH / 10 - 120 , Constants.VIEW_HEIGHT / 10 - 20,
+                240, 40);
+        backButtons.addActionListener(e -> {
+            panelSwitcher.switchRankingPanelBackToHomePanel();
+        });
+        add(backButtons);
+        setLayer(backButtons, PALETTE_LAYER);
+    }
+
+    public void setPanelSwitcher(ISwitchPanel switcher) {
+        panelSwitcher = switcher;
     }
 }
 
@@ -60,12 +83,12 @@ class CustomScrollPane extends JScrollPane {
     public CustomScrollPane(String rankInfo) {
         //System.out.println("CustomScrollPane():" + rankInfo);
 
-        setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_ALWAYS);
+        setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_AS_NEEDED);
         setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
 
         panel = new JLayeredPane();
-        panel.setSize(Constants.VIEW_WIDTH * 9 / 10, rowHeight * 11 + spaceHeight * 11);
-        setViewportView(panel);
+
+        getViewport().add(panel);
 
         panel.setVisible(true);
         backgroundLabel = new JLabel();
@@ -127,6 +150,8 @@ class CustomScrollPane extends JScrollPane {
             panel.setLayer(scoreLabels[i], JLayeredPane.PALETTE_LAYER);
 
         }
+
+        panel.setPreferredSize(new Dimension(Constants.VIEW_WIDTH * 9 / 10, (rowHeight  + spaceHeight) * (nameArray.size() + 1)));
 
         setVisible(true);
     }

@@ -39,6 +39,8 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
             UIManager.setLookAndFeel(new MetalLookAndFeel());
         } catch (UnsupportedLookAndFeelException e) {
 
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         // スタートパネルだけメインスレッドで作成する。
@@ -170,6 +172,7 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
     @Override
     public void switchHomePanelToRankingPanel() {
         rankingPanel = new RankingPanel(refToController.fetchRankingFromServer());
+        rankingPanel.setPanelSwitcher(this);
         rankingPanel.setVisible(true);
         add(rankingPanel);
         unvisualizeAndRemoveHomePanel();
@@ -209,7 +212,10 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
 
     @Override
     public void switchRankingPanelBackToHomePanel() {
-
+        createAndVisualizeHomePanel();
+        rankingPanel.setVisible(false);
+        remove(rankingPanel);
+        rankingPanel = null;
     }
 
     @Override
