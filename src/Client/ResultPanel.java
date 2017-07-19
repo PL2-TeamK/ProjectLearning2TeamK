@@ -35,7 +35,7 @@ public class ResultPanel extends JLayeredPane {
         backButton.addActionListener(e -> {
             panelSwitcher.switchResultPanelToHomePanel();
         });
-        backButton.setBounds(Constants.VIEW_WIDTH / 2 - 80, Constants.VIEW_HEIGHT * 3/ 4 - 30,
+        backButton.setBounds(Constants.VIEW_WIDTH / 2 - 80, Constants.VIEW_HEIGHT * 3/ 4 ,
                 160, 60);
         add(backButton);
         setLayer(backButton, PALETTE_LAYER);
@@ -66,19 +66,20 @@ public class ResultPanel extends JLayeredPane {
     }
 
     private void endlessEnded() {
-        backgroundLabel.setIcon(new ImageIcon("./resource/image/background/clear.png"));
+        backgroundLabel.setIcon(new ImageIcon("./resource/image/background/endlessEnd.png"));
         scoreLabel = new JLabel();
         int hour = endlessScore / 3600;
         int minute = (endlessScore % 3600) / 60;
         int second = endlessScore % 60;
         String text = "<html>あなたは、<br>" + hour + ":" + minute + ":" + second + "<br>耐えました!</html>";
         scoreLabel.setText(text);
+        scoreLabel.setFont(new Font(Font.SERIF, Font.ITALIC, 48));
         scoreLabel.setHorizontalAlignment(JLabel.CENTER);
         scoreLabel.setVerticalAlignment(JLabel.CENTER);
-        scoreLabel.setBounds(Constants.VIEW_WIDTH * (5 - 1) / 10,
-                Constants.VIEW_HEIGHT * (5 - 1) / 10,
-                Constants.VIEW_WIDTH * 2 / 10,
-                Constants.VIEW_HEIGHT * 2 / 10);
+        scoreLabel.setBounds(Constants.VIEW_WIDTH * (5 - 1) / 10 - 100,
+                Constants.VIEW_HEIGHT * (5 - 1) / 10 - 100,
+                Constants.VIEW_WIDTH * 2 / 5,
+                Constants.VIEW_HEIGHT * 2 / 5);
         add(scoreLabel);
         setLayer(scoreLabel, PALETTE_LAYER);
     }
