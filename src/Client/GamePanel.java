@@ -350,12 +350,15 @@ public class GamePanel extends JLayeredPane {
              * テキストのセット
              * 表示設定
              */
+            setIcon(new ImageIcon("./resource/image/buttons/replyBtn" + replyNum + ".png"));
+            //setBorderPainted(false);
+            //setContentAreaFilled(false);
             setBounds(Constants.VIEW_WIDTH / 14 * (1 + xPos * 3), Constants.VIEW_HEIGHT / 14 * (7 + yPos * 2), Constants.VIEW_WIDTH * 3 / 14, Constants.VIEW_HEIGHT * 2 / 14);
             setActionCommand(replyNum + ""); // replyNumがそのままコマンドになる
             if (isValid) {
-                setText(ReplyList.ALL_REPLY.get(replyNum));
+                //setText(ReplyList.ALL_REPLY.get(replyNum));
             } else {
-                setText("今日は必要ないね");
+                //setText("今日は必要ないね");
             }
             setEnabled(isValid);
         }
