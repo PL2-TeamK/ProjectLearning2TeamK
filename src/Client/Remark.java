@@ -1,5 +1,8 @@
 package Client;
 
+import javax.sound.sampled.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -12,12 +15,16 @@ import java.util.*;
 public class Remark {
     private String word;
     private HashMap<Integer, Integer> score;
+    private int remarkNum;
+
+    private Clip clip;
 
     public Remark(int remarkNum) {
         /**
          * 引数で与えられた番号の発言のインスタンスを生成する。
          * 発言番号は重複しない
          */
+        this.remarkNum = remarkNum;
 
         if (SCORE_MAP.containsKey(remarkNum) && WORD_MAP.containsKey(remarkNum)) {
             // 定義されている場合
@@ -27,6 +34,8 @@ public class Remark {
         } else {
             // 単語が定義されていない場合にはエラーを発生させたい。
         }
+
+
     }
 
     public String getWord() {
@@ -40,6 +49,43 @@ public class Remark {
         } else {
             // key値が存在しない場合、デフォルト値を返す
             return -3;
+        }
+    }
+
+    public void playSound(int speed) {
+        String folderText = "";
+        String speedText = "";
+        switch (speed) {
+            case Constants.SPEED_100_PERCENT:
+                folderText = "100";
+                speedText = "-1";
+                break;
+            case Constants.SPEED_125_PERCENT:
+                folderText = "125";
+                speedText = "-2";
+                break;
+            case Constants.SPEED_150_PERCENT:
+                folderText = "150";
+                speedText = "-3";
+                break;
+            default:
+        }
+        AudioInputStream audioInputStream;
+        try {
+            File soundFile = new File("../../resource/sound/" + folderText + "/" + remarkNum + speedText + ".wav");
+            audioInputStream = AudioSystem.getAudioInputStream(soundFile);
+            AudioFormat audioFormat = audioInputStream.getFormat();
+            DataLine.Info info = new DataLine.Info(Clip.class, audioFormat);
+            clip = (Clip) AudioSystem.getLine(info);
+            clip.open(audioInputStream);
+            // 再生したらしっぱなしで良さげ
+            clip.start();
+        } catch (UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (LineUnavailableException e) {
+            e.printStackTrace();
         }
     }
 

@@ -57,6 +57,10 @@ public class Conversation {
         isEnd = false;
     }
 
+    public void playRemark(int speed) {
+       currentRemark.playSound(speed);
+    }
+
 
     /**
      * 以下、会話データの記述を行う。

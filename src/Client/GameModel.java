@@ -48,6 +48,12 @@ public class GameModel {
 
     private int conversationIndex = 0;
 
+    /**
+     * ゲームスピードをコントロールするための変数を用意する
+     */
+
+    private int gameSpeed = Constants.SPEED_100_PERCENT;
+
 
     public GameModel (int stageNum) {
         /**
@@ -314,9 +320,9 @@ public class GameModel {
         }
         // 現在着目している会話の発言を返す。
         // 自動でRemarkインスタンスの発言カウンタは進む
-        return conversations.get(conversationIndex).getRemark();
-
-
+        String returnText = conversations.get(conversationIndex).getRemark();
+        conversations.get(conversationIndex).playRemark(gameSpeed);
+        return returnText;
     }
 
     public int getStageNum() {

@@ -31,4 +31,9 @@ public class Constants {
     public static final int STAGE_CLEARED = 1;
     public static final int STAGE_FAILED = -1;
 
+    // 音楽速度を示す定数
+    public static final int SPEED_100_PERCENT = 1;
+    public static final int SPEED_125_PERCENT = 2;
+    public static final int SPEED_150_PERCENT = 3;
+
 }
