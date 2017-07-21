@@ -1,5 +1,6 @@
 package Client;
 
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 import java.io.BufferedReader;
@@ -30,6 +31,11 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
     private ResultPanel resultPanel;
 
 
+    private String AppBGMPath = "./resource/music/NotPlayBGM.wav";
+
+    private Clip BGMClip;
+
+
 
     public AppView(IViewToController arg) {
         refToController = arg;
@@ -47,9 +53,13 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
         startPanel = new StartPanel(this);
         startPanel.setVisible(true);
         add(startPanel);
-        Thread makePanelThread = new Thread(() -> {
-           // その他のパネルを作成するスレッド
-        });
+        new Thread(() -> {
+            BGMClip = Music.getClipFromFilePath(AppBGMPath);
+            Music.volumeControlByLinerScaler(BGMClip, 0.1);
+            BGMClip.loop(Clip.LOOP_CONTINUOUSLY);
+        }).start();
+
+
 
         setSize(Constants.VIEW_WIDTH, Constants.VIEW_HEIGHT);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -232,6 +242,11 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
          * ステージ選択後
          * 指定されたステージ番号のステージ画面を生成し、遷移する。
          */
+
+        // BGMを停止
+        BGMClip.stop();
+        BGMClip = null;
+
         gamePanel = new GamePanel(stageNum);
         add(gamePanel);
         gamePanel.setVisible(true);
@@ -287,9 +302,15 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
 //        add(homePanel);
 //        homePanel.setVisible(true);
         createAndVisualizeHomePanel();
+        new Thread(() -> {
+            BGMClip = Music.getClipFromFilePath(AppBGMPath);
+            Music.volumeControlByLinerScaler(BGMClip, 0.2);
+            BGMClip.loop(Clip.LOOP_CONTINUOUSLY);
+        }).start();
         resultPanel.setVisible(false);
         remove(resultPanel);
         resultPanel = null;
+
     }
 
     /**

@@ -1,5 +1,6 @@
 package Client;
 
+import javax.sound.sampled.Clip;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
@@ -52,8 +53,14 @@ public class GameModel {
      * ゲームスピードをコントロールするための変数を用意する
      */
 
+
+    private Timer speedUpTimer;
     private int gameSpeed = Constants.SPEED_100_PERCENT;
 
+    /**
+     * BGMをここから流すのでClipを用意
+     */
+    private Clip BGMClip;
 
     public GameModel (int stageNum) {
         /**
@@ -186,6 +193,11 @@ public class GameModel {
                     playTime++;
             }
         }, 1000, 1000);
+
+        if (isEndless) {
+            // スピードアップに関わるメソッドをここからタイマーで呼ぶ
+
+        }
     }
 
     public void gameEnd() {
@@ -328,4 +340,9 @@ public class GameModel {
     public int getStageNum() {
         return stageNum;
     }
+
+    public void playBGM(int stageNum, int gameSpeed) {
+        // ゲームステージと、ゲームスピードにより流す音楽を決定する。
+    }
+
 }

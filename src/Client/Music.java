@@ -30,4 +30,13 @@ public class Music {
 
         return returnClip;
     }
+
+    static void volumeControlByLinerScaler(Clip clip, double linerScaler) {
+        // 音量調節を行う
+        // 0.5 -> 50%
+        // 2.0 -> 200%
+        FloatControl control = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
+        control.setValue((float)Math.log10(linerScaler) * 20);
+        return;
+    }
 }

@@ -16,7 +16,7 @@ public class ResultPanelTest {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.setTitle("ResultPanelTest");
-        ResultPanel resultPanel = new ResultPanel(Constants.FIRST_STAGE, Constants.STAGE_CLEARED);
+        ResultPanel resultPanel = new ResultPanel(Constants.FIRST_STAGE, Constants.STAGE_FAILED);
         frame.add(resultPanel);
         resultPanel.setVisible(true);
     }
