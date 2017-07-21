@@ -70,22 +70,13 @@ public class Remark {
                 break;
             default:
         }
-        AudioInputStream audioInputStream;
-        try {
-            File soundFile = new File("../../resource/sound/" + folderText + "/" + remarkNum + speedText + ".wav");
-            audioInputStream = AudioSystem.getAudioInputStream(soundFile);
-            AudioFormat audioFormat = audioInputStream.getFormat();
-            DataLine.Info info = new DataLine.Info(Clip.class, audioFormat);
-            clip = (Clip) AudioSystem.getLine(info);
-            clip.open(audioInputStream);
-            // 再生したらしっぱなしで良さげ
+
+        String filePath = "./resource/sound/" + folderText + "/" + remarkNum + speedText + ".wav";
+        clip = Music.getClipFromFilePath(filePath);
+        if(clip.equals(null)) {
+            System.err.println("Remark: 音声ファイルがnull");
+        } else {
             clip.start();
-        } catch (UnsupportedAudioFileException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (LineUnavailableException e) {
-            e.printStackTrace();
         }
     }
 
