@@ -40,8 +40,8 @@ public class RankingPanel extends JLayeredPane {
         backButtons.setContentAreaFilled(false);
         backButtons.setBorderPainted(false);
         backButtons.setIcon(new ImageIcon("./resource/image/buttons/backBtn.png"));
-        backButtons.setBounds(Constants.VIEW_WIDTH / 10 - 120 , Constants.VIEW_HEIGHT / 10 - 20,
-                240, 40);
+        backButtons.setBounds(Constants.VIEW_WIDTH / 10 - 60 , Constants.VIEW_HEIGHT / 10 - 20,
+                160, 20);
         backButtons.addActionListener(e -> {
             panelSwitcher.switchRankingPanelBackToHomePanel();
         });
@@ -92,7 +92,8 @@ class CustomScrollPane extends JScrollPane {
 
         panel.setVisible(true);
         backgroundLabel = new JLabel();
-        backgroundLabel.setIcon(new ImageIcon("./resource/image/background/ranking.png"));
+        backgroundLabel.setBounds(0, 0, Constants.VIEW_WIDTH, Constants.VIEW_HEIGHT);
+        backgroundLabel.setIcon(new ImageIcon("./resource/image/background/frame.png"));
         backgroundLabel.setOpaque(true);
         panel.add(backgroundLabel);
         panel.setLayer(backgroundLabel, JLayeredPane.DEFAULT_LAYER);
