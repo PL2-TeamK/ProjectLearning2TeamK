@@ -2,6 +2,7 @@ package Client;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.Random;
 
 /**
@@ -504,6 +505,7 @@ public class GamePanel extends JLayeredPane {
         private int canvasWidth;
         private int canvasHeight;
         private Color gaugeColor;
+        private String text;
 
         public GaugeCanvas (int width, int height) {
             canvasWidth = width;
@@ -519,6 +521,10 @@ public class GamePanel extends JLayeredPane {
 
         public void setGaugeColor(Color color) {
             gaugeColor = color;
+        }
+
+        public void setText(String arg) {
+            text = arg;
         }
 
         @Override
