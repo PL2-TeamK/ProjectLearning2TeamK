@@ -467,7 +467,7 @@ public class GamePanel extends JLayeredPane {
 
         private void updateCanvas() {
             // 内側の円の半径を変更して、再描画を行う。
-            innerRadius += 3;
+            innerRadius += 2.5;
             repaint();
         }
 
