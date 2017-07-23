@@ -3,6 +3,8 @@ package Client;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 /**
@@ -28,6 +30,7 @@ public class GamePanel extends JLayeredPane {
 
     // 内心モードであるか
     private boolean isMindMode = false;
+    private boolean isNextButtonShuffle = false;
 
     // 内心モード用Randomインスタンス
     private Random random;
@@ -167,6 +170,10 @@ public class GamePanel extends JLayeredPane {
             gameFinish();
         }
 
+        // isNextButtonShuffle = trueの場合、ボタンの位置を変更させる
+        if (isNextButtonShuffle) {
+            shuffleReplyButtons();
+        }
         // 発言取得、remarkLabel更新
         String remarkText = gameModel.getNextRemarkText();
         if (remarkText.equals(Constants.LAST_CONV)) {
@@ -200,13 +207,23 @@ public class GamePanel extends JLayeredPane {
 
         // タイミング円のアニメーション開始
 //        timingCanvas.startListening();
-        // 内心モードを決定する
-        if (random.nextFloat() < 0.1 && gameModel.getConvIsEnd()) {
-            // 5%の確率で内心モードに変更する
-            isMindMode = true;
-        } else {
-            isMindMode = false;
+
+
+        // 文脈の終端時に特定のモードに入る可能性がある
+        isMindMode = false;
+        isNextButtonShuffle = false;
+
+        if (gameModel.getConvIsEnd()) {
+            float value = random.nextFloat();
+            if (value <= 0.1) {
+                // 内心モード
+                isMindMode = true;
+            } else if (value <= 0.2) {
+                // ボタンシャッフルモード
+                isNextButtonShuffle = true;
+            }
         }
+
 
         // ボタンが動くまでの時間をゲームスピードによって変更する
         int delay = 1000;
@@ -311,6 +328,19 @@ public class GamePanel extends JLayeredPane {
         }
     }
 
+    public void shuffleReplyButtons() {
+        ArrayList<Integer> nums = new ArrayList<>();
+        for (int i = 1; i <= replyButtons.length; i++) {
+            nums.add(i);
+        }
+
+        Collections.shuffle(nums);
+
+        for (int i = 0; i < replyButtons.length; i++) {
+            replyButtons[i].changePosition(nums.get(i));
+        }
+    }
+
 
     /**
      * GamePanel内で用いるカスタムしたJButton
@@ -399,11 +429,74 @@ public class GamePanel extends JLayeredPane {
                 //setText("今日は必要ないね");
             }
             setEnabled(isValid);
+            setContentAreaFilled(false);
+            setBorderPainted(false);
         }
 
         public void setStateStandBy() {
             // 有効なボタンのみ有効化する
             setEnabled(isValid);
+        }
+
+        public void changePosition(int position) {
+            int xPos;
+            int yPos;
+            switch (position) {
+                case 1: // ふーん
+                    xPos = 1;
+                    yPos = 0;
+                    break;
+                case 2: // へえー
+                    xPos = 2;
+                    yPos = 0;
+                    break;
+                case 3: // そうなんだぁ
+                    xPos = 1;
+                    yPos = 1;
+                    break;
+                case 4: // うん
+                    xPos = 2;
+                    yPos = 1;
+                    break;
+                case 5: // すごいね
+                    xPos = 1;
+                    yPos = 2;
+                    break;
+                case 6: // そんなことないよぉ
+                    xPos = 0;
+                    yPos = 0;
+                    break;
+                case 7: // ありえない!
+                    xPos = 3;
+                    yPos = 0;
+                    break;
+                case 8: // 大丈夫?
+                    xPos = 0;
+                    yPos = 1;
+                    break;
+                case 9: // 分かるぅ〜
+                    xPos = 3;
+                    yPos = 1;
+                    break;
+                case 10: // かわいい〜
+                    xPos = 0;
+                    yPos = 2;
+                    break;
+                case 11: // いいなぁ
+                    xPos = 3;
+                    yPos = 2;
+                    break;
+                case 12: // 知るか
+                    xPos = 2;
+                    yPos = 2;
+                    break;
+                default:
+                    xPos = 0;
+                    yPos = 0;
+            }
+            setBounds(Constants.VIEW_WIDTH / 14 * (1 + xPos * 3), Constants.VIEW_HEIGHT / 14 * (7 + yPos * 2),
+                    Constants.VIEW_WIDTH * 3 / 14, Constants.VIEW_HEIGHT * 2 / 14);
+            repaint();
         }
 
 
@@ -477,17 +570,29 @@ public class GamePanel extends JLayeredPane {
             // 描画メソッド
             g2d.setColor(new Color(0, 0, 0, 0));
             g2d.clearRect(0, 0, canvasWidth, canvasWidth);
-            g2d.setColor(Color.yellow);
+
+            // 外側の円の描画
             if (isMindMode) {
                 // 内心モードが有効の場合には色を変更する
                 g2d.setColor(Color.BLUE);
+            } else if (isNextButtonShuffle) {
+                // ボタンシャッフル時も
+                g2d.setColor(Color.red);
+            } else {
+                // 通常時
+                g2d.setColor(Color.yellow);
             }
             g2d.fillOval(canvasWidth / 2 - (int)outerRadius, canvasWidth / 2 - (int)outerRadius,
                     2 * (int)outerRadius, 2 * (int)outerRadius);
-            g2d.setColor(Color.CYAN);
+
+            // 内側の円の描画
             if (isMindMode) {
                 // 内心モード有効時には色を変更する
                 g2d.setColor(Color.MAGENTA);
+            } else if (isNextButtonShuffle) {
+                g2d.setColor(Color.ORANGE);
+            } else {
+                g2d.setColor(Color.CYAN);
             }
             g2d.fillOval(canvasWidth / 2 - (int)innerRadius, canvasWidth / 2 - (int)innerRadius,
                     2 * (int)innerRadius, 2 * (int)innerRadius);
