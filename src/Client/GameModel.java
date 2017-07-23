@@ -220,6 +220,11 @@ public class GameModel {
         if (speedUpTimer != null && speedUpTimer.isRunning()) {
             speedUpTimer.stop();
         }
+
+        if (BGMClip != null && BGMClip.isRunning()) {
+            BGMClip.stop();
+            BGMClip = null;
+        }
     }
 
     public int getPlayTime() {
@@ -363,6 +368,7 @@ public class GameModel {
 
         if (BGMClip != null && BGMClip.isRunning()) {
             BGMClip.stop();
+            BGMClip = null;
         }
         String filePath = "./resource/music/stage";
         switch (stageNum) {
