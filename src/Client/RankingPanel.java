@@ -69,6 +69,10 @@ class CustomScrollPane extends JScrollPane {
     private JLabel rankLabels[] = new JLabel[10];
     private JLabel nameLabels[] = new JLabel[10];
     private JLabel scoreLabels[] = new JLabel[10];
+    private JLabel rankHeadLabel;
+    private JLabel nameHeadLabel;
+    private JLabel scoreHeadLabel;
+
 
     private Font font = new Font(Font.SANS_SERIF, Font.BOLD, 24);
 
@@ -97,6 +101,37 @@ class CustomScrollPane extends JScrollPane {
         backgroundLabel.setOpaque(true);
         panel.add(backgroundLabel);
         panel.setLayer(backgroundLabel, JLayeredPane.DEFAULT_LAYER);
+
+        rankHeadLabel = new JLabel("順位");
+        rankHeadLabel.setHorizontalAlignment(JLabel.CENTER);
+        rankHeadLabel.setVerticalAlignment(JLabel.CENTER);
+        rankHeadLabel.setBounds(Constants.VIEW_WIDTH * 1 / 10 - rankColumnWidth / 2,
+                spaceHeight,
+                rankColumnWidth, rowHeight);
+        rankHeadLabel.setFont(font);
+        panel.add(rankHeadLabel);
+        panel.setLayer(rankHeadLabel, JLayeredPane.PALETTE_LAYER);
+
+
+        nameHeadLabel = new JLabel("ユーザー名");
+        nameHeadLabel.setHorizontalAlignment(JLabel.CENTER);
+        nameHeadLabel.setVerticalAlignment(JLabel.CENTER);
+        nameHeadLabel.setBounds(Constants.VIEW_WIDTH * 4 / 10 - nameColumnWidth / 2,
+                spaceHeight,
+                nameColumnWidth, rowHeight);
+        nameHeadLabel.setFont(font);
+        panel.add(nameHeadLabel);
+        panel.setLayer(nameHeadLabel, JLayeredPane.PALETTE_LAYER);
+
+        scoreHeadLabel = new JLabel("スコア");
+        scoreHeadLabel.setHorizontalAlignment(JLabel.CENTER);
+        scoreHeadLabel.setVerticalAlignment(JLabel.CENTER);
+        scoreHeadLabel.setBounds(Constants.VIEW_WIDTH * 7 / 10 - scoreColumnWidth / 2,
+                spaceHeight,
+                scoreColumnWidth, rowHeight);
+        scoreHeadLabel.setFont(font);
+        panel.add(scoreHeadLabel);
+        panel.setLayer(scoreHeadLabel, JLayeredPane.PALETTE_LAYER);
 
         String[] nameScores = rankInfo.split("/");
         ArrayList<String> nameArray = new ArrayList<>();
@@ -139,9 +174,9 @@ class CustomScrollPane extends JScrollPane {
             int minute = (score % 3600) / 60;
             int second = score % 60;
 
-            String scoreText = hour + ":" + minute + ":" + second;
+            String scoreText = String.format("%02d", hour) + ":" + String.format("%02d", minute)+ ":" + String.format("%02d", second);
             scoreLabels[i] = new JLabel(scoreText);
-            scoreLabels[i].setBounds(Constants.VIEW_WIDTH * 6 / 10 - scoreColumnWidth / 2,
+            scoreLabels[i].setBounds(Constants.VIEW_WIDTH * 7 / 10 - scoreColumnWidth / 2,
                     (i + 1) * (rowHeight + spaceHeight),
                     scoreColumnWidth, rowHeight);
             scoreLabels[i].setHorizontalAlignment(JLabel.CENTER);
