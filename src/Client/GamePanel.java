@@ -207,9 +207,23 @@ public class GamePanel extends JLayeredPane {
             isMindMode = false;
         }
 
+        // ボタンが動くまでの時間をゲームスピードによって変更する
+        int delay = 1000;
+        switch (gameModel.getGameSpeed()) {
+            case Constants.SPEED_100_PERCENT:
+                delay = 1000;
+                break;
+            case Constants.SPEED_125_PERCENT:
+                delay = 800;
+                break;
+            case Constants.SPEED_150_PERCENT:
+                delay = 660;
+                break;
+        }
+
 
         // 次はボタンアクションか時間で停止する。
-        Timer timer = new Timer(1000, e -> {
+        Timer timer = new Timer(delay, e -> {
             // ボタンを有効にする
             for (ReplyButton button : replyButtons) {
                 button.setStateStandBy();

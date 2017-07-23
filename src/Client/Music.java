@@ -9,7 +9,7 @@ import java.io.IOException;
  */
 public class Music {
     static Clip getClipFromFilePath(String filePath) {
-        System.out.println("Music, filePath: " + filePath);
+        //System.out.println("Music, filePath: " + filePath);
         AudioInputStream audioInputStream;
         Clip returnClip = null;
         try {

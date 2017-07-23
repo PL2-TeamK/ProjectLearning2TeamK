@@ -430,4 +430,8 @@ public class GameModel {
         return;
     }
 
+    public int getGameSpeed() {
+        return gameSpeed;
+    }
+
 }
