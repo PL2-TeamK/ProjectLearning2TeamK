@@ -417,8 +417,8 @@ public class GamePanel extends JLayeredPane {
     class TimingCanvas extends Canvas {
 
 
-        private int outerRadius;
-        private int innerRadius;
+        private float outerRadius;
+        private float innerRadius;
         // 正方形だからwidthだけ
         private int canvasWidth;
 
@@ -467,7 +467,7 @@ public class GamePanel extends JLayeredPane {
 
         private void updateCanvas() {
             // 内側の円の半径を変更して、再描画を行う。
-            innerRadius += 1;
+            innerRadius += 3;
             repaint();
         }
 
@@ -482,15 +482,15 @@ public class GamePanel extends JLayeredPane {
                 // 内心モードが有効の場合には色を変更する
                 g2d.setColor(Color.BLUE);
             }
-            g2d.fillOval(canvasWidth / 2 - outerRadius, canvasWidth / 2 - outerRadius,
-                    2 * outerRadius, 2 * outerRadius);
+            g2d.fillOval(canvasWidth / 2 - (int)outerRadius, canvasWidth / 2 - (int)outerRadius,
+                    2 * (int)outerRadius, 2 * (int)outerRadius);
             g2d.setColor(Color.CYAN);
             if (isMindMode) {
                 // 内心モード有効時には色を変更する
                 g2d.setColor(Color.MAGENTA);
             }
-            g2d.fillOval(canvasWidth / 2 - innerRadius, canvasWidth / 2 - innerRadius,
-                    2 * innerRadius, 2 * innerRadius);
+            g2d.fillOval(canvasWidth / 2 - (int)innerRadius, canvasWidth / 2 - (int)innerRadius,
+                    2 * (int)innerRadius, 2 * (int)innerRadius);
 
         }
 
