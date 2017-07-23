@@ -579,9 +579,14 @@ public class Remark {
         tmpWordMap.put(2501, "抹茶苦手な人ってー");
 
         replyScoreMap = new HashMap<>();
-        replyScoreMap.put(9, 1);    // わかるー
+        replyScoreMap.put(4, 0);
         tmpScoreMap.put(2502, replyScoreMap);
-        tmpWordMap.put(2502, "人生の３割は損してるよねー(笑)");
+        tmpWordMap.put(2502, "人生のー");
+
+        replyScoreMap = new HashMap<>();
+        replyScoreMap.put(9, 1);    // わかるー
+        tmpScoreMap.put(2503, replyScoreMap);
+        tmpWordMap.put(2503, "３割は損してるよねー(笑)");
 
         /**
          * 文脈番号26
@@ -640,13 +645,13 @@ public class Remark {
         replyScoreMap = new HashMap<>();
         replyScoreMap.put(4, 0);
         tmpScoreMap.put(2901, replyScoreMap);
-        tmpWordMap.put(2901, "女性の幽霊ってー");
+        tmpWordMap.put(2901, "1限ってー");
 
         replyScoreMap = new HashMap<>();
         replyScoreMap.put(4, 0);
         replyScoreMap.put(9, 1);    // わかるー
         tmpScoreMap.put(2902, replyScoreMap);
-        tmpWordMap.put(2902, "黒髪ロング&白ワンピのイメージあるよねー");
+        tmpWordMap.put(2902, "起きるのつらいよねー");
 
         /**
          * 文脈番号30
