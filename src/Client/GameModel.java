@@ -440,4 +440,8 @@ public class GameModel {
         return gameSpeed;
     }
 
+    public boolean getConvIsEnd() {
+        return conversations.get(conversationIndex).getIsEnd();
+    }
+
 }

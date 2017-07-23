@@ -201,7 +201,7 @@ public class GamePanel extends JLayeredPane {
         // タイミング円のアニメーション開始
 //        timingCanvas.startListening();
         // 内心モードを決定する
-        if (random.nextFloat() < 0.05) {
+        if (random.nextFloat() < 0.1 && gameModel.getConvIsEnd()) {
             // 5%の確率で内心モードに変更する
             isMindMode = true;
         } else {
