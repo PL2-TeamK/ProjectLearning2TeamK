@@ -2,6 +2,7 @@ package Client;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 /**
  * ゲーム画面
@@ -23,6 +24,12 @@ public class GamePanel extends JLayeredPane {
     private int remarkHeight = 40;
 
     private boolean isGameFinishMethodCalled = false;
+
+    // 内心モードであるか
+    private boolean isMindMode = false;
+
+    // 内心モード用Randomインスタンス
+    private Random random;
 
 
     public GamePanel(int stageNum) {
@@ -148,6 +155,9 @@ public class GamePanel extends JLayeredPane {
         add(remarkLabel);
         setLayer(remarkLabel, PALETTE_LAYER);
 
+        // Randomインスタンスの生成
+        random = new Random();
+
     }
 
     public void gameHandler() {
@@ -189,6 +199,15 @@ public class GamePanel extends JLayeredPane {
 
         // タイミング円のアニメーション開始
 //        timingCanvas.startListening();
+        // 内心モードを決定する
+        if (random.nextFloat() < 0.05) {
+            // 5%の確率で内心モードに変更する
+            isMindMode = true;
+        } else {
+            isMindMode = false;
+        }
+
+
         // 次はボタンアクションか時間で停止する。
         Timer timer = new Timer(1000, e -> {
             // ボタンを有効にする
@@ -263,8 +282,12 @@ public class GamePanel extends JLayeredPane {
         boolean hpValid = gameModel.updateHitPoint(replyNum);
         boolean mpValid = gameModel.updateMoodPoint(replyNum, timing);
         // Canvasに値を渡して更新
+
         hpGaugeCanvas.setValue(gameModel.getHitPoint());
-        mpGaugeCanvas.setValue(gameModel.getMoodPoint());
+        if (!isMindMode) {
+            // 内心モード時には雰囲気の更新はしない
+            mpGaugeCanvas.setValue(gameModel.getMoodPoint());
+        }
 
         if (hpValid && mpValid) {
             return true;
@@ -385,6 +408,8 @@ public class GamePanel extends JLayeredPane {
         private int canvasWidth;
 
 
+
+
         private Timer timer;
 
         public TimingCanvas(int width) {
@@ -438,9 +463,17 @@ public class GamePanel extends JLayeredPane {
             g2d.setColor(new Color(0, 0, 0, 0));
             g2d.clearRect(0, 0, canvasWidth, canvasWidth);
             g2d.setColor(Color.yellow);
+            if (isMindMode) {
+                // 内心モードが有効の場合には色を変更する
+                g2d.setColor(Color.BLUE);
+            }
             g2d.fillOval(canvasWidth / 2 - outerRadius, canvasWidth / 2 - outerRadius,
                     2 * outerRadius, 2 * outerRadius);
             g2d.setColor(Color.CYAN);
+            if (isMindMode) {
+                // 内心モード有効時には色を変更する
+                g2d.setColor(Color.MAGENTA);
+            }
             g2d.fillOval(canvasWidth / 2 - innerRadius, canvasWidth / 2 - innerRadius,
                     2 * innerRadius, 2 * innerRadius);
 

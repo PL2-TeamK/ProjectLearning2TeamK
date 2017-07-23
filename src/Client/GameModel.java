@@ -4,8 +4,9 @@ import javax.sound.sampled.Clip;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
+//import java.util.Timer;
+//import java.util.TimerTask;
+import javax.swing.Timer;
 
 /**
  * ゲームのモデル
@@ -185,24 +186,40 @@ public class GameModel {
         /**
          * 1秒ごとにplayTimeが1ずつ増えてく
          */
+        new Thread(() -> {
+           playBGM();
+        }).start();
+
         playTime = 0;
-        timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                    playTime++;
-            }
-        }, 1000, 1000);
+
+        timer = new Timer(1000, e -> {
+            playTime++;
+        });
+        timer.start();
 
         if (isEndless) {
             // スピードアップに関わるメソッドをここからタイマーで呼ぶ
-
+            speedUpTimer = new Timer(60000, e -> {
+                upGameSpeed();
+                new Thread(() -> {
+                    playBGM();
+                }).start();
+                if (gameSpeed != Constants.SPEED_150_PERCENT) {
+                    speedUpTimer.stop();
+                    speedUpTimer.start();
+                }
+            });
+            speedUpTimer.setRepeats(false);
+            speedUpTimer.start();
         }
     }
 
     public void gameEnd() {
         // タイマー停止
-        timer.cancel();
+        timer.stop();
+        if (speedUpTimer != null && speedUpTimer.isRunning()) {
+            speedUpTimer.stop();
+        }
     }
 
     public int getPlayTime() {
@@ -341,8 +358,76 @@ public class GameModel {
         return stageNum;
     }
 
-    public void playBGM(int stageNum, int gameSpeed) {
+    public void playBGM() {
         // ゲームステージと、ゲームスピードにより流す音楽を決定する。
+
+        if (BGMClip != null && BGMClip.isRunning()) {
+            BGMClip.stop();
+        }
+        String filePath = "./resource/music/stage";
+        switch (stageNum) {
+            case Constants.FIRST_STAGE:
+                filePath += "1";
+                break;
+            case Constants.FIRST_ENDLESS:
+                filePath += "1";
+                break;
+            case Constants.SECOND_STAGE:
+                filePath += "2";
+                break;
+            case Constants.SECOND_ENDLESS:
+                filePath += "2";
+                break;
+            case Constants.THIRD_STAGE:
+                filePath += "3";
+                break;
+            case Constants.THIRD_ENDLESS:
+                filePath += "3";
+                break;
+            case Constants.FOURTH_STAGE:
+                filePath += "4";
+                break;
+            case Constants.FOURTH_ENDLESS:
+                filePath += "4";
+                break;
+        }
+
+        filePath += "BGM-";
+
+        switch (gameSpeed) {
+            case Constants.SPEED_100_PERCENT:
+                filePath += "1";
+                break;
+            case Constants.SPEED_125_PERCENT:
+                filePath += "2";
+                break;
+            case Constants.SPEED_150_PERCENT:
+                filePath += "3";
+                break;
+        }
+
+        filePath += ".wav";
+
+        BGMClip = Music.getClipFromFilePath(filePath);
+        Music.volumeControlByLinerScaler(BGMClip, 0.2);
+        BGMClip.loop(Clip.LOOP_CONTINUOUSLY);
+
+    }
+
+    public void upGameSpeed() {
+        // エンドレスモードのスピードをあげる
+        switch (gameSpeed) {
+            case Constants.SPEED_100_PERCENT:
+                gameSpeed = Constants.SPEED_125_PERCENT;
+                break;
+            case Constants.SPEED_125_PERCENT:
+                gameSpeed = Constants.SPEED_150_PERCENT;
+                break;
+            default:
+                // 何もしない
+        }
+
+        return;
     }
 
 }
