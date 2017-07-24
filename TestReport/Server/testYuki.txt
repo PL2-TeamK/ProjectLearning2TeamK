@@ -1,0 +1,11 @@
+SignUp,Yuki 1415
+Login,Yuki 1415
+CfmStage,null
+CfmScore,3
+SendClearStage,4
+CfmRank,4
+SendScore,4 10
+SendScore,4 50
+SendScore,4 20
+CfmRank,4
+CfmStage,null
