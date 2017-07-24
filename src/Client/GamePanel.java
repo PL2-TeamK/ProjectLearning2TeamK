@@ -516,6 +516,13 @@ public class GamePanel extends JLayeredPane {
         private int canvasWidth;
 
 
+        // 色
+        private Color bgColor = new Color(Integer.parseInt("F0F0F0", 16));
+        private Color outerColor = new Color(Integer.parseInt("CE7754", 16));
+        private Color normalColor = new Color(Integer.parseInt("3E90BA", 16));
+        private Color mindModeColor = new Color(Integer.parseInt("B94E8A", 16));
+        private Color shuffleColor = new Color(Integer.parseInt("E5D64C", 16));
+
 
 
         private Timer timer;
@@ -524,7 +531,7 @@ public class GamePanel extends JLayeredPane {
             canvasWidth = width;
             setSize(width, width);
             outerRadius = width * 6 / 20;
-            setBackground(new Color(0, 0, 0, 0));
+            setBackground(bgColor);
         }
 
         public void startListening() {
@@ -568,33 +575,27 @@ public class GamePanel extends JLayeredPane {
         public void paint(Graphics g) {
             Graphics2D g2d = (Graphics2D)g;
             // 描画メソッド
-            g2d.setColor(new Color(0, 0, 0, 0));
+            g2d.setColor(bgColor);
             g2d.clearRect(0, 0, canvasWidth, canvasWidth);
 
+            // 線の太さ指定
+            g2d.setStroke(new BasicStroke(5));
+
             // 外側の円の描画
-            if (isMindMode) {
-                // 内心モードが有効の場合には色を変更する
-                g2d.setColor(Color.BLUE);
-            } else if (isNextButtonShuffle) {
-                // ボタンシャッフル時も
-                g2d.setColor(Color.red);
-            } else {
-                // 通常時
-                g2d.setColor(Color.yellow);
-            }
-            g2d.fillOval(canvasWidth / 2 - (int)outerRadius, canvasWidth / 2 - (int)outerRadius,
+            g2d.setColor(outerColor);
+            g2d.drawOval(canvasWidth / 2 - (int)outerRadius, canvasWidth / 2 - (int)outerRadius,
                     2 * (int)outerRadius, 2 * (int)outerRadius);
 
             // 内側の円の描画
             if (isMindMode) {
                 // 内心モード有効時には色を変更する
-                g2d.setColor(Color.MAGENTA);
+                g2d.setColor(mindModeColor);
             } else if (isNextButtonShuffle) {
-                g2d.setColor(Color.ORANGE);
+                g2d.setColor(shuffleColor);
             } else {
-                g2d.setColor(Color.CYAN);
+                g2d.setColor(normalColor);
             }
-            g2d.fillOval(canvasWidth / 2 - (int)innerRadius, canvasWidth / 2 - (int)innerRadius,
+            g2d.drawOval(canvasWidth / 2 - (int)innerRadius, canvasWidth / 2 - (int)innerRadius,
                     2 * (int)innerRadius, 2 * (int)innerRadius);
 
         }
