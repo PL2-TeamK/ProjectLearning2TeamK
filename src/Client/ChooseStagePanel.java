@@ -93,9 +93,10 @@ public class ChooseStagePanel extends JLayeredPane {
             });
         }
 
-        tutorialButton = new JButton("チュートリアル");
+        tutorialButton = new JButton();
+        tutorialButton.setIcon(new ImageIcon("./resource/image/buttons/tutorialBtn.png"));
         tutorialButton.setBounds(Constants.VIEW_WIDTH * 9 / 10 - 120, Constants.VIEW_HEIGHT / 10 - 30,
-                240, 60);
+                200, 60);
         tutorialButton.setContentAreaFilled(false);
         tutorialButton.setBorderPainted(false);
         tutorialButton.addActionListener(e -> {
