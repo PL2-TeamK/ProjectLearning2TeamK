@@ -519,9 +519,9 @@ public class GamePanel extends JLayeredPane {
         // 色
         private Color bgColor = new Color(Integer.parseInt("F0F0F0", 16));
         private Color outerColor = new Color(Integer.parseInt("CE7754", 16));
-        private Color normalColor = new Color(Integer.parseInt("3E90BA", 16));
-        private Color mindModeColor = new Color(Integer.parseInt("B94E8A", 16));
-        private Color shuffleColor = new Color(Integer.parseInt("E5D64C", 16));
+        private Color mindModeColor = new Color(Integer.parseInt("3E90BA", 16));
+        private Color shuffleColor = new Color(Integer.parseInt("B94E8A", 16));
+        private Color normalColor = new Color(Integer.parseInt("E5D64C", 16));
 
 
 
