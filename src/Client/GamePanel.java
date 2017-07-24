@@ -517,11 +517,11 @@ public class GamePanel extends JLayeredPane {
 
 
         // 色
-        private Color bgColor = new Color(Integer.parseInt("F0F0F0", 16));
-        private Color outerColor = new Color(Integer.parseInt("CE7754", 16));
-        private Color mindModeColor = new Color(Integer.parseInt("3E90BA", 16));
-        private Color shuffleColor = new Color(Integer.parseInt("B94E8A", 16));
-        private Color normalColor = new Color(Integer.parseInt("E5D64C", 16));
+        private Color bgColor = new Color(Integer.parseInt("100000", 16));
+        private Color outerColor = new Color(Integer.parseInt("FFFFFF", 16));//CE7754
+        private Color normalColor = new Color(Integer.parseInt("FFFF00", 16));//3E90BA
+        private Color mindModeColor = new Color(Integer.parseInt("1E90FF", 16));//B94E8A
+        private Color shuffleColor = new Color(Integer.parseInt("FF0000", 16));//E5D64C
 
 
 
@@ -575,11 +575,16 @@ public class GamePanel extends JLayeredPane {
         public void paint(Graphics g) {
             Graphics2D g2d = (Graphics2D)g;
             // 描画メソッド
+
+            // アンチエイリアス処理
+            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                    RenderingHints.VALUE_ANTIALIAS_ON);
+
             g2d.setColor(bgColor);
             g2d.clearRect(0, 0, canvasWidth, canvasWidth);
 
             // 線の太さ指定
-            g2d.setStroke(new BasicStroke(5));
+            g2d.setStroke(new BasicStroke(12));
 
             // 外側の円の描画
             g2d.setColor(outerColor);
