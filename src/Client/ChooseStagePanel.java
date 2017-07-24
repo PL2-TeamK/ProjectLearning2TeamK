@@ -15,6 +15,7 @@ public class ChooseStagePanel extends JLayeredPane {
     private JLabel panelTitleLabel;
     private JButton normalStageButtons[] = new JButton[4];
     private JButton endlessStageButtons[] = new JButton[4];
+    private JButton tutorialButton;
 
 
     public ChooseStagePanel(ISwitchPanel switcher, IUserDataForAppView refToUserData) {
@@ -92,6 +93,16 @@ public class ChooseStagePanel extends JLayeredPane {
             });
         }
 
+        tutorialButton = new JButton("チュートリアル");
+        tutorialButton.setBounds(Constants.VIEW_WIDTH * 9 / 10 - 120, Constants.VIEW_HEIGHT / 10 - 30,
+                240, 60);
+        tutorialButton.setContentAreaFilled(false);
+        tutorialButton.setBorderPainted(false);
+        tutorialButton.addActionListener(e -> {
+            switcher.switchChoosePanelToTutorialPanel();
+        });
+        add(tutorialButton);
+        setLayer(tutorialButton, PALETTE_LAYER);
     }
 
     /**

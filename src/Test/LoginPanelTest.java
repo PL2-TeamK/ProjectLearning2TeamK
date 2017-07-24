@@ -109,4 +109,14 @@ public class LoginPanelTest extends JFrame implements ISwitchPanel, IReceiveName
     public void switchResultPanelToHomePanel() {
 
     }
+
+    @Override
+    public void switchChoosePanelToTutorialPanel() {
+
+    }
+
+    @Override
+    public void switchTutorialPanelBackToChoosePanel() {
+
+    }
 }

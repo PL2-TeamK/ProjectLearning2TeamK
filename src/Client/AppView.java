@@ -29,6 +29,7 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
     private MyPagePanel myPagePanel;
     private GamePanel gamePanel;
     private ResultPanel resultPanel;
+    private TutorialPanel tutorialPanel;
 
 
     private String AppBGMPath = "./resource/music/NotPlayBGM.wav";
@@ -311,6 +312,26 @@ public class AppView extends JFrame implements ISwitchPanel, IReceiveNameAndPass
         remove(resultPanel);
         resultPanel = null;
 
+    }
+
+    @Override
+    public void switchChoosePanelToTutorialPanel() {
+        tutorialPanel = new TutorialPanel(this);
+        add(tutorialPanel);
+        tutorialPanel.setVisible(true);
+        chooseStagePanel.setVisible(false);
+        remove(chooseStagePanel);
+        chooseStagePanel = null;
+    }
+
+    @Override
+    public void switchTutorialPanelBackToChoosePanel() {
+        chooseStagePanel = new ChooseStagePanel(this, this);
+        add(chooseStagePanel);
+        chooseStagePanel.setVisible(true);
+        tutorialPanel.setVisible(false);
+        remove(tutorialPanel);
+        tutorialPanel = null;
     }
 
     /**
